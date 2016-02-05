@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
-	Homepage 1
 	<nav role="navigation" class="navbar navbar-inner navbar-fixed-top">
   
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -15,6 +13,7 @@
             </button>
             <div class="navbar-brand">TBK Carwash</div>
         </div>
+
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -44,7 +43,6 @@
                 <!-- /.dropdown -->
             </ul>
         </div>
-
 </nav>
 <br>
 <div class="jumbotron" style="background-color:transparent;">
