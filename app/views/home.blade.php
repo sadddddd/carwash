@@ -20,10 +20,10 @@
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="maintenance.html">Maintenance</a></li>
                 <li><a href="scheduling.html">Scheduling</a></li>
-				<li><a href="transaction.html">Transaction</a></li>
-				<li><a href="transaction.html">Reports</a></li>
+                <li><a href="transaction.html">Transaction</a></li>
+                <li><a href="transaction.html">Reports</a></li>
             </ul>
-			<ul class="nav navbar-top-links navbar-right">
+            <ul class="nav navbar-top-links navbar-right">
  
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
