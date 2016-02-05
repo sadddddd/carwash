@@ -26,11 +26,12 @@
 		</main>
 
 		<!--SCRIPTS START-->
-		{{ HTML::script('js/bootstrap.min.js') }}
 		{{ HTML::script('js/jquery.dataTables.min.js') }}
 		{{ HTML::script('js/jquery.min.js') }}
+		{{ HTML::script('js/bootstrap.min.js') }}
 		{{ HTML::script('js/metisMenu.min.js') }}
 		{{ HTML::script('js/sb-admin-2.js') }}
+		{{ HTML::script('js/dropdown.js') }}
 		<!--SCRIPTS END-->
 	</body>
 </html>
