@@ -18,7 +18,7 @@
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="maintenance.html">Maintenance</a></li>
+                <li><a href="/Maintenance">Maintenance</a></li>
                 <li><a href="scheduling.html">Scheduling</a></li>
                 <li><a href="transaction.html">Transaction</a></li>
                 <li><a href="transaction.html">Reports</a></li>
@@ -35,7 +35,7 @@
                         <li><a href="#"><font color=white><i class="fa fa-gear fa-fw"></i> Settings</a></font>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><font color=white><i class="fa fa-sign-out fa-fw"></i> Logout</a></font>
+                        <li><a href="/Login"><font color=white><i class="fa fa-sign-out fa-fw"></i> Logout</a></font>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -54,10 +54,5 @@
     </div>
 </div>
 
-<script type="text/javascript">
-$(document).ready(function () {
-        $('.dropdown-toggle').dropdown();
-    });
-</script>
 
 @stop

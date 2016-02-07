@@ -36,6 +36,22 @@
  .navbar .nav > .active > a:hover, 
  .navbar .nav > .active > a:focus { 
 
+ 	  .btn .btn-danger . btn-circle .btn-lg > .active > a, 
+ .btn .btn-danger .btn-circle .btn-lg > .active > a:hover, 
+ .btn  .btn-danger .btn-circle .btn-lg > .active > a:focus { 
+
  background-color: black ; 
  color: white; 
- } 
+ }
+
+ td {
+    height: 40px;
+    vertical-align: bottom;
+	padding: 15px;
+}
+table{
+ border-collapse: collapse;
+ }
+
+  .font-color{
+ font-color{white;}
