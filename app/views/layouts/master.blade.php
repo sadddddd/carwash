@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Carwash/title>
+		<title>Carwash</title>
 		<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
 
 		<!---STYLES START -->
 		{{ HTML::style('css/bootstrap.min.css') }}
-		{{ HTML::style('css/jquery.dataTables.min.css')}}
+		{{ HTML::style('css/dataTables.bootstrap.min.css')}}
 		{{ HTML::style('css/style.css')}}
 		{{ HTML::style('css/metisMenu.min.css') }}
 		{{ HTML::style('css/sb-admin-2.css') }}
@@ -26,12 +26,13 @@
 		</main>
 
 		<!--SCRIPTS START-->
-		{{ HTML::script('js/jquery.dataTables.min.js') }}
 		{{ HTML::script('js/jquery.min.js') }}
 		{{ HTML::script('js/bootstrap.min.js') }}
+		{{ HTML::script('js/jquery.dataTables.min.js') }}
+		{{ HTML::script('js/dataTables.bootstrap.min.js') }}
 		{{ HTML::script('js/metisMenu.min.js') }}
 		{{ HTML::script('js/sb-admin-2.js') }}
-		{{ HTML::script('js/dropdown.js') }}
+		{{ HTML::script('js/app.js') }}
 		<!--SCRIPTS END-->
 	</body>
 </html>

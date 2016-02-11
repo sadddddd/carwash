@@ -13,28 +13,30 @@
 
 Route::get('/Home', "HomeController@showWelcome");
 
-Route::get('/Login',"HomeController@logIn");
+Route::get('/Login',"LoginController@logIn");
 
 Route::get('/Maintenance',"HomeController@maintenaceMain");
 
-Route::get('/CustomerDetails', "HomeController@maintenanceCustomer");
+Route::get('/CustomerDetails', "CustomerController@maintenanceCustomer");
 
-Route::get('/SupplierDetails', "HomeController@maintenanceSupplier");
+Route::get('/SupplierDetails', "SupplierController@maintenanceSupplier");
 
-Route::get('/CarType', "HomeController@maintenanceCartype");
+Route::get('/CarType', "CarController@maintenanceCartype");
 
-Route::get('/CarBrand', "HomeController@maintenanceCarbrand");
+Route::get('/CarBrand', "CarController@maintenanceCarbrand");
 
-Route::get('/CarModel', "HomeController@maintenanceCarmodel");
+Route::post('/carbrandUp', array('uses'=>'CarController@updateCarbrand'));
 
-Route::get('/Categories', "HomeController@maintenanceProSerCat");
+Route::get('/CarModel', "CarController@maintenanceCarmodel");
 
-Route::get('/ServiceDetails', "HomeController@maintenanceService");
+Route::get('/Categories', "ProductServiceController@maintenanceProSerCat");
 
-Route::get('/ProductDetails', "HomeController@maintenanceProduct");
+Route::get('/ServiceDetails', "ProductServiceController@maintenanceService");
 
-Route::get('/Package', "HomeController@maintenancePackage");
+Route::get('/ProductDetails', "ProductServiceController@maintenanceProduct");
 
-Route::get('/Promo', "HomeController@maintenancePromo");
+Route::get('/Package', "PackageController@maintenancePackage");
 
-Route::get('/FreqCard', "HomeController@maintenanceFreqCard");
+Route::get('/Promo', "PromoController@maintenancePromo");
+
+Route::get('/FreqCard', "FreqCardController@maintenanceFreqCard");
