@@ -21,8 +21,12 @@
  .navbar .nav > li > a { 
  background-color:#cc0000 ; 
  color: white; 
+ }
 
- } 
+ .panel{
+ 	background-color: rgba(245, 245, 245, 0.4);
+ 	 color: white;
+ }
 
 
  /* set hover and focus to black */ 
@@ -49,8 +53,9 @@
     vertical-align: bottom;
 	padding: 15px;
 }
-table{
+.table{
  border-collapse: collapse;
+  color: white; 
  }
 
   .font-color{

@@ -9,6 +9,7 @@ class tblCarTypeSeeder extends Seeder{
 			array(
 
 				'strCarTypeId' => 'CTYPE0001',
+				'strCarTypeName' => 'Sedan',
 				'strCarTypeDesc' => 'Sedan',
 				'status'=>'1'
 			),
@@ -16,6 +17,7 @@ class tblCarTypeSeeder extends Seeder{
 			array(
 
 				'strCarTypeId' => 'CTYPE0002',
+				'strCarTypeName' => 'AUV',
 				'strCarTypeDesc' => 'AUV',
 				'status'=>'1'
 			),
@@ -23,6 +25,7 @@ class tblCarTypeSeeder extends Seeder{
 			array(
 
 				'strCarTypeId' => 'CTYPE0003',
+				'strCarTypeName' => 'Van',
 				'strCarTypeDesc' => 'Van',
 				'status'=>'1'
 			)

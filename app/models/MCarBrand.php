@@ -4,9 +4,9 @@ class MCarBrand extends Eloquent
 {
 	protected $table = 'tblCarBrand';
 	protected $primaryKey = 'strCarBrandId';
-	protected $fillable =array( 'strCarBrandDesc', 'status');
+	protected $fillable =array('strCarBrandId','strCarBrandDesc', 'status');
 	
-	public function carbmt() {
-		return $this->belongsTo('MCarBMT', 'strCBrand', 'strCarBrandId');
+	public function carmodel() {
+		return $this->belongsTo('MCarModel', 'strCMBrand', 'strCarBrandId');
 	}
 }

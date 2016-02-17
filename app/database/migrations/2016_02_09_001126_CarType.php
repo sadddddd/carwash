@@ -14,7 +14,8 @@ class CarType extends Migration {
 	{
 		Schema::create('tblCarType', function($table){
 			$table->string('strCarTypeId')->primary();
-			$table->string('strCarTypeDesc')->unique();
+			$table->string('strCarTypeName')->unique();
+			$table->string('strCarTypeDesc');
 			$table->boolean('status')->default('1');
 			$table->timestamps();
 		});

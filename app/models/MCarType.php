@@ -4,9 +4,9 @@ class MCarType extends Eloquent
 {
 	protected $table = 'tblCarType';
 	protected $primaryKey = 'strCarTypeId';
-	protected $fillable = array('strCarTypeDesc', 'status');
+	protected $fillable = array('strCarTypeId', 'strCarTypeName', 'strCarTypeDesc', 'status');
 	
-	public function carbmt() {
-		return $this->belongsTo('MCarBMT', 'strCType', 'strCarTypeId');
+	public function carmodel() {
+		return $this->belongsTo('MCarModel', 'strCMType', 'strCarTypeId');
 	}
 }

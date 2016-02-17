@@ -14,7 +14,7 @@
             <div class="navbar-brand">TBK Carwash</div>
         </div>
 
-        <!-- Collection of nav links and other content for toggling -->
+        <!-- Collection of nav links and other content for toggling--> 
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
@@ -43,7 +43,7 @@
                 <!-- /.dropdown -->
             </ul>
         </div>
-</nav>
+</nav> 
 <br>
 <div class="jumbotron" style="background-color:transparent;">
     <div class="container">

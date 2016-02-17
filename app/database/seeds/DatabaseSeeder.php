@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder {
 		$this->call('tblCarTypeSeeder');
 		$this->call('tblCarBrandSeeder');
 		$this->call('tblCarModelSeeder');
+		$this->call('tblCustomerSeeder');
+		$this->call('tblCustCarSeeder');
+		
 	}
 
 }
