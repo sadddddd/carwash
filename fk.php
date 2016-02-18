@@ -20,10 +20,7 @@ class ForeignKeys extends Migration {
 
 		Schema::table('tblCustCar', function($table){
 			$table->foreign('strCCModel')->references('strCarModelId')->on('tblCarModel');
-		});
-
-		Schema::table('tblCustomer', function($table){
-			$table->foreign('strCustCCId')->references('strCustCarId')->on('tblCustCar');
+			$table->foreign('strCCCust')->references('strCustId')->on('tblCustomer');
 		});
 	}
 
@@ -41,13 +38,13 @@ class ForeignKeys extends Migration {
 
 		Schema::table('tblCustCar', function ($table) {
 			$table->dropColumn('strCCModel');
-		});		
-
-		Schema::table('tblCustomer', function ($table) {
-			$table->dropColumn('strCustCCId');
-		});		
+			$table->dropColumn('strCCCust');
+		});	
 	}
 
 	
 
 }
+
+
+

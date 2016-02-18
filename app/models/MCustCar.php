@@ -3,7 +3,7 @@
 class MCustCar extends Eloquent
 {
 	protected $table = 'tblCustCar';
-	protected $primaryKey = 'strCCCust';
+	protected $primaryKey = 'strCCPlateNo';
 	protected $fillable = array( 'strCCCust','strCCModel','strCCPlateNo','status');
 	
 	public function carmodels() {

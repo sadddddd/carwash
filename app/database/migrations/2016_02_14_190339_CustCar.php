@@ -20,7 +20,7 @@ class CustCar extends Migration {
 			$table->timestamps();
 
 			//composite keys
-			$table->primary(array('strCCCust','strCCModel'));
+			$table->primary(array('strCCCust','strCCModel','strCCPlateNo'));
 		});
 	}
 

@@ -14,7 +14,7 @@ class tblCustCarSeeder extends Seeder{
 			),
 
 			array(
-				'strCCCust' => 'CUST0001',
+				'strCCCust' => 'CUST0003',
 				'strCCModel' => 'CMODEL0001',
 				'strCCPlateNo' => 'QWE1111',
 				'status'=>'1'

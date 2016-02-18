@@ -1,12 +1,77 @@
-@extends('layouts.master')
+@extends('maintenance')
 
-@section('content')
+@section('contentMaintenance')
 
 	<form id="Car_Type" >  			
   		<div class="panel panel-primary">
   			<div class="panel-heading">
   				Car Types 
-  				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalAdd">Add</button>
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" style="position:absolute; left:96%;" data-toggle="modal" data-target="#modalAdd"><i class="glyphicon-plus"></i> </button>     
+
+  				<!-- Modal dummy -->
+									<div id="delete" class="modal fade" role="dialog">
+									  <div class="modal-dialog">
+
+									    <!-- Modal content-->
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal">&times;</button>
+									        <h4 class="modal-title" style="color:black">DELETE</h4>
+									      </div>
+									      <div class="modal-body">
+									      	<p>
+									      	<form id="delete" action="/cartypeabc" method="post">
+									        <div class="form-group" style="color:black">
+									        	<label>Car Type Id </label>
+											    <input id="car_type_id_del" name="car_type_id_del" class="form-control" type="text" readonly>
+											    <label>Car Type Name </label>
+											    <input id="car_type_name_del" name="car_type_name_del" class="form-control" type="text" readonly>
+										  	</div>
+									      </div>
+									      <div class="modal-footer">
+									        <button type="submit" class="btn btn-danger">Confirm</button>
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+									      </div>
+									  	</form>
+									    </div>
+									  </div>
+									</div><!-- Modal dummy -->
+
+				<!-- Modal Add -->
+									<div id="modalAdd" class="modal fade" role="dialog">
+									  <div class="modal-dialog">
+
+									    <!-- Modal content-->
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal">&times;</button>
+									        <h4 class="modal-title" style="color:black">ADD</h4>
+									      </div>
+									      <div class="modal-body">
+									      	<p>
+									      	<form action="/cartypeAdd" method="post">
+										        <div class="form-group" style="color:black">
+										        	<label>Car Type Id </label>
+												    <input value="{{$newID}}" id="car_type_id_add" name="car_type_id_add" class="form-control" type="text" required>
+													
+													<label>Car Type Name </label>
+												    <input id="car_type_name_add" name="car_type_name_add" class="form-control" type="text" required>
+												    
+												    <label>Car Type Description </label>
+												    <input id="car_type_desc_add" name="car_type_desc_add" class="form-control" type="text" required>
+												</div>
+											</p>
+									      </div>
+									      <div class="modal-footer">
+									        <button type="submit" class="btn btn-info">Add</button>
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+									      </div>
+									  	</form>
+									    </div>
+									  </div>
+									</div><!-- Modal Add -->
+
+
   			</div>
   			<div class="panel-body">
 
@@ -32,34 +97,7 @@
                       			<button id="btn_delete" type="button" class="btn btn-info" data-toggle="modal" href="#delete{{ $ctypes->strCarTypeId }}">Delete</button>
                       		
 
-                      				<!-- Modal dummy -->
-									<div id="delete" class="modal fade" role="dialog">
-									  <div class="modal-dialog">
-
-									    <!-- Modal content-->
-									    <div class="modal-content">
-									      <div class="modal-header">
-									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title" style="color:black">DELETE</h4>
-									      </div>
-									      <div class="modal-body">
-									      	<p>
-									      	<form id="delete" action="/cartypeabc" method="post">
-									        <div class="form-group" style="color:black">
-									        	<label>Car Type Id </label>
-											    <input value="{{$ctypes->strCarTypeId}}" id="car_type_id_del" name="car_type_id_del" class="form-control" type="text" readonly>
-											    <label>Car Type Name </label>
-											    <input value="{{ $ctypes->strCarTypeName }}" id="car_type_name_del" name="car_type_name_del" class="form-control" type="text" readonly>
-										  	</div>
-									      </div>
-									      <div class="modal-footer">
-									        <button type="submit" class="btn btn-danger">Confirm</button>
-									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-									      </div>
-									  	</form>
-									    </div>
-									  </div>
-									</div><!-- Modal dummy -->
+                      				
 				
                       				<!-- Modal Delete -->
 									<div id="delete{{ $ctypes->strCarTypeId }}" class="modal fade" role="dialog">
@@ -123,39 +161,6 @@
 									  </div>
 									</div><!-- Modal Edit -->
 
-									<!-- Modal Add -->
-									<div id="modalAdd" class="modal fade" role="dialog">
-									  <div class="modal-dialog">
-
-									    <!-- Modal content-->
-									    <div class="modal-content">
-									      <div class="modal-header">
-									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title" style="color:black">ADD</h4>
-									      </div>
-									      <div class="modal-body">
-									      	<p>
-									      	<form action="/cartypeAdd" method="post">
-										        <div class="form-group" style="color:black">
-										        	<label>Car Type Id </label>
-												    <input value="{{$newID}}" id="car_type_id_add" name="car_type_id_add" class="form-control" type="text" required>
-													
-													<label>Car Type Name </label>
-												    <input id="car_type_name_add" name="car_type_name_add" class="form-control" type="text" required>
-												    
-												    <label>Car Type Description </label>
-												    <input id="car_type_desc_add" name="car_type_desc_add" class="form-control" type="text" required>
-												</div>
-											</p>
-									      </div>
-									      <div class="modal-footer">
-									        <button type="submit" class="btn btn-info">Add</button>
-									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-									      </div>
-									  	</form>
-									    </div>
-									  </div>
-									</div><!-- Modal Add -->
                       		</td>
                       	</tr>
                       		@endif

@@ -1,40 +1,14 @@
-@extends('layouts.master')
+@extends('maintenance')
 
-@section('content')
+@section('contentMaintenance')
 
 	<form id="Car_Model" >  			
   		<div class="panel panel-primary">
   			<div class="panel-heading">
   				Car Models 
-  				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalAdd">Add</button>
-  			</div>
-  			<div class="panel-body">
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" style="position:absolute; left:96%;" data-toggle="modal" data-target="#modalAdd"><i class="glyphicon-plus"></i> </button>     
 
-  			  	<table id="table" class="table table-bordered table-responsive">
-
-  			  		<thead>
-                        <tr>
-                          <th>Car Model Id</th>
-                          <th>Car Model Name</th>
-                          <th>Car Brand</th>
-                          <th>Car Type</th>
-                          <th>Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      	@foreach($carModels as $cmodel)
-                      		@if($cmodel->status == 1)
-                      	<tr>
-                      		<td>{{ $cmodel->strCarModelId }}</td>
-                      		<td>{{ $cmodel->strCarModelDesc }}</td>
-                      		<td>{{ $cmodel->strCarBrandDesc }}</td>
-                      		<td>{{ $cmodel->strCarTypeName }}</td>
-                      		<td>
-								<button id="btn_edit" type="button" class="btn btn-info" data-toggle="modal" href="#edit{{ $cmodel->strCarModelId }}">Edit</button>
-								<button id="btn_delete" type="button" class="btn btn-info" data-toggle="modal" href="#delete{{ $cmodel->strCarModelId }}">Delete</button>
-
-
-								<!-- Modal dummy -->
+  				<!-- Modal dummy -->
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
@@ -62,6 +36,85 @@
 									    </div>
 									  </div>
 									</div><!-- Modal dummy -->
+
+				<!-- Modal Add -->
+									<div id="modalAdd" class="modal fade" role="dialog">
+									  <div class="modal-dialog">
+
+									    <!-- Modal content-->
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal">&times;</button>
+									        <h4 class="modal-title" style="color:black">ADD</h4>
+									      </div>
+									      <div class="modal-body">
+									      	<form action="/carmodelAdd" method="post">
+									        <div class="form-group" style="color:black">
+
+									        	<label>Car Model Id </label>
+											    <input value="{{$newID}}" id="car_model_id_add" name="car_model_id_add" class="form-control" type="text" required>
+												
+												<label>Car Model Name </label>
+											    <input id="car_model_name_add" name="car_model_name_add" class="form-control" type="text" required>
+												
+												<label>Pick the car's brand:</label>
+											    <div class="input-field">
+											      <select class="form-control" name="carbrand_add" id="carbrand_add" required>
+											        <option selected disabled value="Pick a car brand">Pick a brand</option>
+					                                @foreach($carBrands as $brand)
+					                                	@if($brand->status == '1')
+					                                		<option value="{{ $brand->strCarBrandId }}">{{ $brand->strCarBrandDesc }}</option>
+					                                	@endif
+					                                @endforeach
+											      </select>
+											    </div>
+
+											    <label>Pick the car's type:</label>
+											    <div class="input-field">
+											      <select class="form-control" name="cartype_add" id="cartype_add" required>
+											        <option selected disabled value="Pick a car type">Pick a type</option>
+					                                @foreach($carTypes as $type)
+					                                <option value="{{ $type->strCarTypeId }}">{{ $type->strCarTypeName }}</option>
+					                                @endforeach
+											      </select>
+											    </div>
+
+											</div>
+									      </div>
+									      <div class="modal-footer">
+									        <button type="submit" class="btn btn-info">Add</button>
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+									      </div>
+									  	</form>
+									    </div>
+									  </div>
+									</div><!-- Modal Add -->
+
+  			</div>
+  			<div class="panel-body">
+
+  			  	<table id="table" class="table table-bordered table-responsive">
+
+  			  		<thead>
+                        <tr>
+                          <th>Car Model Id</th>
+                          <th>Car Model Name</th>
+                          <th>Car Brand</th>
+                          <th>Car Type</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      	@foreach($carModels as $cmodel)
+                      		@if($cmodel->status == 1)
+                      	<tr>
+                      		<td>{{ $cmodel->strCarModelId }}</td>
+                      		<td>{{ $cmodel->strCarModelDesc }}</td>
+                      		<td>{{ $cmodel->strCarBrandDesc }}</td>
+                      		<td>{{ $cmodel->strCarTypeName }}</td>
+                      		<td>
+								<button id="btn_edit" type="button" class="btn btn-info" data-toggle="modal" href="#edit{{ $cmodel->strCarModelId }}">Edit</button>
+								<button id="btn_delete" type="button" class="btn btn-info" data-toggle="modal" href="#delete{{ $cmodel->strCarModelId }}">Delete</button>
 
                       			<!-- Modal Edit -->
 									<div id="edit{{ $cmodel->strCarModelId }}" class="modal fade" role="dialog">
@@ -154,58 +207,7 @@
                       </tbody>                   
   			  	</table>
   			
-  			  						<!-- Modal Add -->
-									<div id="modalAdd" class="modal fade" role="dialog">
-									  <div class="modal-dialog">
-
-									    <!-- Modal content-->
-									    <div class="modal-content">
-									      <div class="modal-header">
-									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title" style="color:black">ADD</h4>
-									      </div>
-									      <div class="modal-body">
-									      	<form action="/carmodelAdd" method="post">
-									        <div class="form-group" style="color:black">
-
-									        	<label>Car Model Id </label>
-											    <input value="{{$newID}}" id="car_model_id_add" name="car_model_id_add" class="form-control" type="text" required>
-												
-												<label>Car Model Name </label>
-											    <input id="car_model_name_add" name="car_model_name_add" class="form-control" type="text" required>
-												
-												<label>Pick the car's brand:</label>
-											    <div class="input-field">
-											      <select class="form-control" name="carbrand_add" id="carbrand_add" required>
-											        <option selected disabled value="Pick a car brand">Pick a brand</option>
-					                                @foreach($carBrands as $brand)
-					                                	@if($brand->status == '1')
-					                                		<option value="{{ $brand->strCarBrandId }}">{{ $brand->strCarBrandDesc }}</option>
-					                                	@endif
-					                                @endforeach
-											      </select>
-											    </div>
-
-											    <label>Pick the car's type:</label>
-											    <div class="input-field">
-											      <select class="form-control" name="cartype_add" id="cartype_add" required>
-											        <option selected disabled value="Pick a car type">Pick a type</option>
-					                                @foreach($carTypes as $type)
-					                                <option value="{{ $type->strCarTypeId }}">{{ $type->strCarTypeName }}</option>
-					                                @endforeach
-											      </select>
-											    </div>
-
-											</div>
-									      </div>
-									      <div class="modal-footer">
-									        <button type="submit" class="btn btn-info">Add</button>
-									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-									      </div>
-									  	</form>
-									    </div>
-									  </div>
-									</div><!-- Modal Add -->
+  			  						
 
 			</div>
   			<div class="panel-footer">

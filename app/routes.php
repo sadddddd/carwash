@@ -13,6 +13,14 @@
 
 Route::get('/Home', "HomeController@showWelcome");
 
+Route::post('/details',array('uses'=>'CustCarController@carDetails'));
+
+Route::post('/carEdit',array('uses'=>'CustCarController@carEdit'));
+
+Route::post('/carDelete',array('uses'=>'CustCarController@carDelete'));
+
+Route::post('/carAdd',array('uses'=>'CustCarController@carAdd'));
+
 Route::get('/Login',"LoginController@logIn");
 
 Route::get('/Maintenance',"HomeController@maintenaceMain");
@@ -26,6 +34,12 @@ Route::post('/customerEdit', array('uses'=>'CustomerController@updateCustomer'))
 Route::post('/customerDelete', array('uses'=>'CustomerController@deleteCustomer'));
 
 Route::get('/SupplierDetails', "SupplierController@maintenanceSupplier");
+
+Route::post('/supplierAdd', array('uses'=>'SupplierController@addSupplier'));
+
+Route::post('/supplierDelete', array('uses'=>'SupplierController@deleteSupplier'));
+
+Route::post('/supplierUpdate', array('uses'=>'SupplierController@updateSupplier'));
 
 Route::get('/CarType', "CarController@maintenanceCartype");
 
