@@ -16,6 +16,11 @@
 		{{ HTML::style('css/sb-admin-2.css') }}
 		{{ HTML::style('css/font-awesome.min.css') }}
 		<!--STYLES END -->
+
+
+		{{ HTML::script('js/jquery.dataTables.min.js') }}
+		{{ HTML::script('js/dataTables.bootstrap.min.js') }}
+		
 <nav role="navigation" class="navbar navbar-inner navbar-fixed-top">
   
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -76,8 +81,6 @@
 		<!--SCRIPTS START-->
 		{{ HTML::script('js/jquery.min.js') }}
 		{{ HTML::script('js/bootstrap.min.js') }}
-		{{ HTML::script('js/jquery.dataTables.min.js') }}
-		{{ HTML::script('js/dataTables.bootstrap.min.js') }}
 		{{ HTML::script('js/metisMenu.min.js') }}
 		{{ HTML::script('js/sb-admin-2.js') }}
 		{{ HTML::script('js/app.js') }}

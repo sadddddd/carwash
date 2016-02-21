@@ -56,11 +56,6 @@ class ForeignKeys extends Migration {
 			$table->foreign('strCFCard')->references('strCardId')->on('tblCard');
 		});
 
-		Schema::table('tblServFreq', function($table){
-			$table->foreign('strSFServ')->references('strServId')->on('tblServ');
-			$table->foreign('strSFFreq')->references('strCFId')->on('tblCardFreq');
-		});
-
 		Schema::table('tblPackFreq', function($table){
 			$table->foreign('strPFPack')->references('strPackId')->on('tblPackage');
 			$table->foreign('strPFFreq')->references('strCFId')->on('tblCardFreq');
@@ -125,11 +120,6 @@ class ForeignKeys extends Migration {
 
 		Schema::table('tblCardFreq', function ($table) {
 			$table->dropColumn('strCFCard');
-		});	
-
-		Schema::table('tblServFreq', function ($table) {
-			$table->dropColumn('strSFServ');
-			$table->dropColumn('strSFFreq');
 		});	
 
 		Schema::table('tblPackFreq', function ($table) {

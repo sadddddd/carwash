@@ -15,16 +15,8 @@ class CustomerController extends BaseController {
 
 		$cust = MCustomer::all();
 		$carmodel = MCarModel::all();
-		//$custcar = MCustCar::all();
-		$custcar = DB::table('tblCustCar')
-				->join('tblCustomer', 'tblCustCar.strCCCust','=','tblCustomer.strCustId')
-				->join('tblCarModel', 'tblCustCar.strCCModel','=','tblCarModel.strCarModelId')
-				->join('tblCarType', 'tblCarModel.strCMType', '=', 'tblCarType.strCarTypeId')
-				->join('tblCarBrand', 'tblCarModel.strCMBrand', '=', 'tblCarBrand.strCarBrandId')
-				->select('tblCustCar.*', 'tblCarModel.strCarModelDesc', 'tblCustomer.strCustId', 'tblCarType.strCarTypeName','tblCarBrand.strCarBrandDesc')
-				->get();
 
-		return View::make('customerMaintenance')->with('customers', $cust)->with('custcars', $custcar)->with('carmodel', $carmodel)->with('newID', $newID);
+		return View::make('customerMaintenance')->with('customers', $cust)->with('carmodel', $carmodel)->with('newID', $newID);
 	}
 
 	public function updateCustomer()

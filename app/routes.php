@@ -10,6 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('/', "HomeController@showWelcome");
 
 Route::get('/Home', "HomeController@showWelcome");
 
@@ -67,11 +68,39 @@ Route::post('/carmodelEdit', array('uses'=>'CarController@updateCarmodel'));
 
 Route::get('/Categories', "ProductServiceController@maintenanceProSerCat");
 
-Route::get('/ServiceDetails', "ProductServiceController@maintenanceService");
+Route::post('/categoryDel', array('uses'=>'ProductServiceController@deleteCategory'));
 
-Route::get('/ProductDetails', "ProductServiceController@maintenanceProduct");
+Route::post('/categoryUp', array('uses'=>'ProductServiceController@updateCategory'));
+
+Route::post('/categoryAdd', array('uses'=>'ProductServiceController@addCategory'));
+
+Route::get('/ServiceDetails', "ServiceController@maintenanceService");
+
+Route::post('/serviceAdd', array('uses'=>'ServiceController@addService'));
+
+Route::post('/serviceDel', array('uses'=>'ServiceController@deleteService'));
+
+Route::post('/serviceUp', array('uses'=>'ServiceController@updateService'));
+
+Route::post('/ProdPerServ', array('uses'=>'ProductServiceController@productPerService'));
+
+Route::post('/ppsDel', array('uses'=>'ProductServiceController@productPerServiceDel'));
+
+Route::post('/ppsAdd', array('uses'=>'ProductServiceController@productPerServiceAdd'));
+
+Route::post('/ppsUp', array('uses'=>'ProductServiceController@productPerServiceUp'));
+
+Route::get('/ProductDetails', "ProductController@maintenanceProduct");
+
+Route::post('/productDel', array('uses'=>'ProductController@deleteProduct'));
+
+Route::post('/productUp', array('uses'=>'ProductController@updateProduct'));
+
+Route::post('/productAdd', array('uses'=>'ProductController@addProduct'));
 
 Route::get('/Package', "PackageController@maintenancePackage");
+
+Route::post('/packDel', array('uses'=>'PackageController@deletePackage'));
 
 Route::get('/Promo', "PromoController@maintenancePromo");
 

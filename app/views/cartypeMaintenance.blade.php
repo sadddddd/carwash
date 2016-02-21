@@ -3,12 +3,10 @@
 @section('contentMaintenance')
 
 	<form id="Car_Type" >  			
-  		<div class="panel panel-primary">
+  		<div class="panel" style="border:0px;">
   			<div class="panel-heading">
-  				Car Types 
-  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" style="position:absolute; left:96%;" data-toggle="modal" data-target="#modalAdd"><i class="glyphicon-plus"></i> </button>     
-
-  				<!-- Modal dummy -->
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" style="position:absolute; left:96%;" data-toggle="modal" data-target="#modalAdd"><i class="glyphicon-plus"></i> </button> 
+                <!-- Modal dummy -->
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
@@ -22,7 +20,7 @@
 									      	<p>
 									      	<form id="delete" action="/cartypeabc" method="post">
 									        <div class="form-group" style="color:black">
-									        	<label>Car Type Id </label>
+									        	<label>Car Type ID </label>
 											    <input id="car_type_id_del" name="car_type_id_del" class="form-control" type="text" readonly>
 											    <label>Car Type Name </label>
 											    <input id="car_type_name_del" name="car_type_name_del" class="form-control" type="text" readonly>
@@ -51,10 +49,10 @@
 									      	<p>
 									      	<form action="/cartypeAdd" method="post">
 										        <div class="form-group" style="color:black">
-										        	<label>Car Type Id </label>
+										        	<label>* Car Type ID </label>
 												    <input value="{{$newID}}" id="car_type_id_add" name="car_type_id_add" class="form-control" type="text" required>
 													
-													<label>Car Type Name </label>
+													<label>* Car Type Name </label>
 												    <input id="car_type_name_add" name="car_type_name_add" class="form-control" type="text" required>
 												    
 												    <label>Car Type Description </label>
@@ -72,14 +70,15 @@
 									</div><!-- Modal Add -->
 
 
-  			</div>
-  			<div class="panel-body">
+  			<h2 style="color:white">CAR TYPES</H2>
+  			
+  			<div class="table-bordered table-responsive" style="border:0px;">
 
-  			  	<table id="table" class="table table-bordered table-responsive">
+  			  	<table id="table" class="table" style="border:1px">
 
   			  		<thead>
                         <tr>
-                          <th>Car Type Id</th>
+                          <th>Car Type ID</th>
                           <th>Car Type Name</th>
                           <th>Car Type Description</th>
                           <th>Actions</th>
@@ -113,7 +112,7 @@
 									      	<p>
 									      	<form id="delete" action="/cartypeDel" method="post">
 									        <div class="form-group" style="color:black">
-									        	<label>Car Type Id </label>
+									        	<label>Car Type ID </label>
 											    <input value="{{$ctypes->strCarTypeId}}" id="car_type_id_del" name="car_type_id_del" class="form-control" type="text" readonly>
 											    <label>Car Type Name </label>
 											    <input value="{{ $ctypes->strCarTypeName }}" id="car_type_name_del" name="car_type_name_del" class="form-control" type="text" readonly>
@@ -141,7 +140,7 @@
 									      <div class="modal-body">
 									      	<form id="update" action="/cartypeUp" method="post">
 										        <div class="form-group" style="color:black">
-										        	<label>Car Type Id </label>
+										        	<label>Car Type ID </label>
 												    <input value="{{$ctypes->strCarTypeId}}" name="car_type_id_edit" id="car_type_id_edit" class="form-control" type="text" readonly>
 												    
 													<label>Car Type Name </label>
@@ -168,8 +167,8 @@
                       </tbody>
   			  	</table>
 			</div>
-  			<div class="panel-footer">
-
+  			<div class="panel-footer" style="border:0px;">
+				<label style="color:black"> No. of records:  </label>
   			</div>
   		</div>
     </form>

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CustCar extends Migration {
+class ServProd extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,15 +12,16 @@ class CustCar extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('tblCustCar', function($table){
-			$table->string('strCCCust');//fk
-			$table->string('strCCModel');//fk
-			$table->string('strCCPlateNo')->unique();
+		Schema::create('tblServProd', function($table){
+			$table->string('strSPServ');//fk
+			$table->string('strSPProd'); //fk
+			$table->string('strServProd');
+			$table->double('dblUseProd');
 			$table->boolean('status')->default('1');
 			$table->timestamps();
 
 			//composite keys
-			$table->primary(array('strCCCust','strCCModel','strCCPlateNo'));
+			$table->primary(array('strSPServ','strSPProd','strServProd'));
 		});
 	}
 
@@ -31,7 +32,7 @@ class CustCar extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('tblCustCar');
+	Schema::downIfExists('tblServProd');
 	}
 
 }

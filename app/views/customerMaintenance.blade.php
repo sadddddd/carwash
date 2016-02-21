@@ -4,12 +4,10 @@
 
 
 	<form id="Customers" >  			
-  		<div class="panel panel-primary">
+  		<div class="panel" style="border:0px;">
   			<div class="panel-heading">
-  				Customers 
-  				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalAdd">Add</button>
-
-  				<!-- Modal dummy -->
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" style="position:absolute; left:96%;" data-toggle="modal" data-target="#modalAdd"><i class="glyphicon-plus"></i> </button> 
+                <!-- Modal dummy -->
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
@@ -53,11 +51,11 @@
 									      	<p>
 									      	<form action="/customerAdd" method="post">
 										        <div class="form-group" style="color:black">
-										        	<label>Customer Id </label>
+										        	<label>* Customer ID </label>
 												    <input value="{{$newID}}" id="custid_add" name="custid_add" class="form-control" type="text" required>
 													
 													<div class="form-group">
-														<label>Name </label>
+														<label>* Name </label>
 													    <input id="cus_Fname_add" name="cus_Fname_add" class="form-control" type="text" placeholder="First name" required>
 														<input id="cus_Mname_add" name="cus_Mname_add" class="form-control" type="text" placeholder="Middle Initial" required>
 														<input id="cus_Lname_add" name="cus_Lname_add" class="form-control" type="text" placeholder="Last name" required>
@@ -65,15 +63,15 @@
 
 												    <div class="form-group">
 														<label>Address </label>
-														<input id="cus_St_add" name="cus_St_add" class="form-control" type="text" placeholder="Street" required>
-													    <input id="cus_City_add" name="cus_City_add" class="form-control" type="text" placeholder="City" required>
-													    <input id="cus_State_add" name="cus_State_add" class="form-control" type="text" placeholder="State" required>
+														<input id="cus_St_add" name="cus_St_add" class="form-control" type="text" placeholder="Street">
+													    <input id="cus_City_add" name="cus_City_add" class="form-control" type="text" placeholder="City">
+													    <input id="cus_State_add" name="cus_State_add" class="form-control" type="text" placeholder="State">
 													</div>
 
-													<label>Contact Number</label>
+													<label>* Contact Number</label>
 												    <input id="custCont_add" name="custCont_add" class="form-control" type="text" required>
 													
-													<label>Liscence Number</label>
+													<label>* License Number</label>
 												    <input id="custLisc_add" name="custLisc_add" class="form-control" type="text" required>
 												</div>
 											</p>
@@ -86,14 +84,16 @@
 									    </div>
 									  </div>
 									</div><!-- Modal Add -->
-  			</div>
-  			<div class="panel-body">
 
-  			  	<table id="table" class="table table-bordered table-responsive">
+  			<h2 style="color:white">CUSTOMERS</H2>
+  			
+  			<div class="table-bordered table-responsive" style="border:0px;">
+
+  			  	<table id="table" class="table" style="border:1px">
 
   			  		<thead>
                         <tr>
-                          <th>Customer Id</th>
+                          <th>Customer ID</th>
                           <th>Customer Name</th>
                           <th>Address</th>
                           <th>Contact No.</th>
@@ -140,7 +140,7 @@
 									      	<p>
 									      	<form action="/customerEdit" method="post">
 										        <div class="form-group" style="color:black">
-										        	<label>Customer Id </label>
+										        	<label>Customer ID </label>
 												    <input value="{{ $cust->strCustId }}" id="custid_edit" name="custid_edit" class="form-control" type="text" readonly>
 													
 													<div class="form-group">
@@ -152,15 +152,15 @@
 
 												    <div class="form-group">
 														<label>Address </label>
-														<input value="{{ $cust->strCustStAdd }}" id="cus_St_edit" name="cus_St_edit" class="form-control" type="text" placeholder="Street" required>
-													    <input value="{{ $cust->strCustCityAdd }}" id="cus_City_edit" name="cus_City_edit" class="form-control" type="text" placeholder="Banranggay" required>
-													    <input value="{{ $cust->strCustStateAdd }}" id="cus_State_edit" name="cus_State_edit" class="form-control" type="text" placeholder="City" required>
+														<input value="{{ $cust->strCustStAdd }}" id="cus_St_edit" name="cus_St_edit" class="form-control" type="text" placeholder="Street">
+													    <input value="{{ $cust->strCustCityAdd }}" id="cus_City_edit" name="cus_City_edit" class="form-control" type="text" placeholder="Banranggay">
+													    <input value="{{ $cust->strCustStateAdd }}" id="cus_State_edit" name="cus_State_edit" class="form-control" type="text" placeholder="City">
 													</div>
 
 													<label>Contact Number</label>
 												    <input value="{{ $cust->strCustContNo }}" id="custCont_edit" name="custCont_edit" class="form-control" type="text" required>
 													
-													<label>Liscence Number</label>
+													<label>License Number</label>
 												    <input value="{{ $cust->strCustLiscNo }}" id="custLisc_edit" name="custLisc_edit" class="form-control" type="text" required>
 												</div>
 											</p>
@@ -188,7 +188,7 @@
 									      	<p>
 									      	<form action="/customerDelete" method="post">
 										        <div class="form-group" style="color:black">
-										        	<label>Customer Id </label>
+										        	<label>Customer ID </label>
 												    <input value="{{ $cust->strCustId }}" id="custid_delete" name="custid_delete" class="form-control" type="text" readonly>
 													
 													<div class="form-group">
@@ -216,8 +216,9 @@
                     
                       </tbody>
   			  	</table>
-  			<div class="panel-footer">
-
+  			</div>
+  			<div class="panel-footer" style="border:0px;">
+				<label style="color:black"> No. of records:  </label>
   			</div>
   		</div>
     </form>

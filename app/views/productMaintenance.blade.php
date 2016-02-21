@@ -3,40 +3,11 @@
 @section('contentMaintenance')
 
 	<form id="Product_Details" >  	
-	<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" style="position:absolute; left:96%; top:21px" data-toggle="modal" data-target="#modalAdd"><i class="glyphicon-plus"></i> </button>     
-                    			
-  				<h2 style="color:white">PRODUCTS</H2>		
-  		<div class="panel panel-primary" style="border:0px;">
-  			
-  			<div class="table-bordered table-responsive" style="border:0px;">
-
-  			  	<table id="table" class="table" style="border:1px">
-
-  			  		<thead>
-                        <tr>
-                        	<th>Service Category Name</th>
-                          <th>Product ID</th>
-                          <th>Product Name</th>
-                          <th>Product Description</th>
-                          <th>Stock</th>
-                          <th>Reorder Level</th>
-
-
-                          <th>Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      	
-                      	<tr>
-                      		<td></td>
-                      		<td></td>
-                      		<td></td>
-                      		<td>
-								<button id="btn_edit" type="button"  class="btn btn-default" style="background-color:black; border:black; color:white" data-toggle="modal" href="#edit">Edit</button>
-                      			<button id="btn_delete" type="button" class="btn btn-danger" data-toggle="modal" href="#delete">Delete</button>
-                      		
-
-                      				<!-- Modal dummy -->
+	<div class="panel" style="border:0px;">
+  			<div class="panel-heading">
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" style="position:absolute; left:96%;" data-toggle="modal" data-target="#modalAdd"><i class="glyphicon-plus"></i> </button>     
+  				 
+  				<!-- Modal dummy -->
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
@@ -50,9 +21,9 @@
 									      	<p>
 									      	<form id="delete" action="" method="post">
 									        <div class="form-group" style="color:black">
-									        	<label>Product and Service Category ID </label>
+									        	<label>Product ID </label>
 											    <input value="" id="prod_ser_cat_id_del" name="prod_ser_cat_id_del" class="form-control" type="text" readonly>
-											    <label>Product and Service Category Name </label>
+											    <label>Product Name </label>
 											    <input value="" id="prod_ser_cat_name_del" name="prod_ser_cat_name_del" class="form-control" type="text" readonly>
 										  	</div>
 									      </div>
@@ -64,87 +35,8 @@
 									    </div>
 									  </div>
 									</div><!-- Modal dummy -->
-				
-                      				<!-- Modal Delete -->
-									<div id="delete" class="modal fade" role="dialog">
-									  <div class="modal-dialog">
 
-									    <!-- Modal content-->
-									    <div class="modal-content">
-									      <div class="modal-header" style="background-color:black; color:white;">
-									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title">DELETE</h4>
-									      </div>
-									      <div class="modal-body">
-									      	<p>
-									      	<form id="delete" action="" method="post">
-									        <div class="form-group" style="color:black">
-									        	<label>Product ID </label>
-											    <input value="" id="prod_id_del" name="prod_id_del" class="form-control" type="text" readonly>
-											    <label>Product  Name </label>
-											    <input value="" id="prod_name_del" name="prod_name_del" class="form-control" type="text" readonly>
-										  	</div>
-									      </div>
-									      <div class="modal-footer">
-									        <button type="submit" class="btn btn-danger">Confirm</button>
-									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-									      </div>
-									  	</form>
-									    </div>
-									  </div>
-									</div><!-- Modal Delete -->
-
-									<!-- Modal Edit -->
-									<div id="edit" class="modal fade" role="dialog">
-									  <div class="modal-dialog">
-									  	
-									    <!-- Modal content-->
-									    <div class="modal-content">
-									      <div class="modal-header"  style="background-color:black; color:white;">
-									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title"> EDIT</h4>
-									      </div>
-									      <div class="modal-body">
-									      	<form id="update" action="/cartypeUp" method="post">
-										        <div class="form-group" style="color:black">
-										        	<label> Service Category Name</label>
-													<select class="form-control" value="" name="prod_sercat_edit" id="prod_sercat_edit">
-								                        <option>1</option>
-								                        <option>2</option>
-								                        <option>3</option>
-								                        <option>4</option>
-								                        <option>5</option>
-								                    </select>
-
-										        	<label>Product ID </label>
-												    <input value="" name="prod_id_edit" id="prod_ser_cat_id_edit" class="form-control" type="text" readonly>
-												    
-													<label>Product Name </label>
-												    <input value="" name="prod_name_edit" id="prod_ser_cat_id_name_edit" class="form-control" type="text" required>
-
-												    <label>Product Description </label>
-												    <input value="" name="prod_desc_edit" id="prod_ser_cat_desc_edit" class="form-control" type="text" required>
-												
-												 	<label>Stock </label>
-												    <input value="" name="prod_stock_edit" id="prod_stock_edit" class="form-control" type="text" required>
-												
-												 	<label>Reorder Level </label>
-												    <input value="" name="prod_reorderLevel_edit" id="prod_reorderLevel_edit" class="form-control" type="text" required>
-												
-
-												</div>
-									      </div>
-									      <div class="modal-footer">
-									        <button type="submit" class="btn btn-primary" style="background-color:black; border:black; color:white">Save</button>
-									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-									      </div>
-									      </form>
-									    </div>
-									    
-									  </div>
-									</div><!-- Modal Edit -->
-
-									<!-- Modal Add -->
+				<!-- Modal Add -->
 									<div id="modalAdd" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
@@ -156,31 +48,50 @@
 									      </div>
 									      <div class="modal-body">
 									      	<p>
-									      	<form action="" method="post">
+									      	<form action="/productAdd" method="post">
 										        <div class="form-group" style="color:black">
-										        	<label> Service Category Name</label>
-													<select class="form-control" value="" name="prod_sercat_edit" id="prod_sercat_edit">
-								                        <option>1</option>
-								                        <option>2</option>
-								                        <option>3</option>
-								                        <option>4</option>
-								                        <option>5</option>
-								                    </select>
 
-										        	<label>Product ID </label>
-												    <input value="" name="prod_id_add" id="prod_id_add" class="form-control" type="text" required>
+										        	<label>* Product ID </label>
+												    <input value="{{$newID}}" name="prod_id_add" id="prod_id_add" class="form-control" type="text" required>
 												    
-													<label>Product Name </label>
-												    <input value="" name="prod_name_add" id="prod_name_add" class="form-control" type="text" required>
+													<label>* Product Name </label>
+												    <input name="prod_name_add" id="prod_name_add" class="form-control" type="text" required>
 
 												    <label>Product Description </label>
-												    <input value="" name="prod_desc_add" id="prod_desc_add" class="form-control" type="text" required>
+												    <input name="prod_desc_add" id="prod_desc_add" class="form-control" type="text">
 													
-													<label>Stock </label>
-												    <input value="" name="prod_stock_add" id="prod_stock_add" class="form-control" type="text" required>
-												
-												 	<label>Reorder Level </label>
-												    <input value="" name="prod_reorderLevel_add" id="prod_reorderLevel_add" class="form-control" type="text" required>
+												    <label>* Service Category Name</label>
+								                    <select class="form-control" name="prod_sercat_add" id="prod_sercat_add" required>
+												        <option selected disabled value="Pick a category">Pick a category</option>
+						                                @foreach($categories as $cat)
+						                                @if($cat->status=='1')
+						                                <option value="{{ $cat->strProdSerCatId }}">{{ $cat->strProdSerName }}</option>
+						                                @endif
+						                                @endforeach
+											      	</select>
+
+											      	<label>* Supplier Name</label>
+								                    <select class="form-control" name="prod_supp_add" id="prod_supp_add" required>
+												        <option selected disabled value="Pick a supplier">Pick a supplier</option>
+						                                @foreach($suppliers as $supp)
+						                                @if($supp->status=='1')
+						                                <option value="{{ $supp->strSuppId }}">{{ $supp->strSuppName }}</option>
+						                                @endif
+						                                @endforeach
+											      	</select>
+
+											      	<label>* Unit of Measurement</label>
+								                    <select class="form-control" name="prod_uom_add" id="prod_uom_add" required>
+												        <option selected disabled value="unit of measurement">unit of measurement</option>
+						                                @foreach($uom as $uom)
+						                                @if($uom->status=='1')
+						                                <option value="{{ $uom->strUOMId }}">{{ $uom->strUOMDesc }}</option>
+						                                @endif
+						                                @endforeach
+											      	</select>
+
+													<label>* Reorder Level </label>
+												    <input name="prod_reorderLevel_add" id="prod_reorderLevel_add" class="form-control" type="number" min="0" required>
 																					
 											</div>
 											</p>
@@ -193,9 +104,175 @@
 									    </div>
 									  </div> 
 									</div><!-- Modal Add -->
+
+  				<h2 style="color:white">PRODUCTS</H2>	
+			
+  			<div class="table-bordered table-responsive" style="border:0px;">
+
+  			  	<table id="table" class="table" style="border:1px">
+
+  			  		<thead>
+                        <tr>
+                          	<th>Product ID</th>
+                          	<th>Product Name</th>
+                          	<th>Product Description</th>
+                          	<th>Category Name</th>
+                          	<th>Supplier</th>
+                        	<th>Reorder Level</th>
+							<th>Actions</th>
+							<th hidden>Stock</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      	@foreach($products as $prod)
+                      		@if($prod->status == '1')
+                      	<tr>
+                      		<td>{{$prod->strProdId}}</td>
+                      		<td>{{$prod->strProdName}}</td>
+                      		<td>{{$prod->strProdDesc}}</td>
+                      		<td>{{$prod->strProdSerName}}</td>
+                      		<td>{{$prod->strSuppName}}</td>
+                      		<td>{{$prod->intProdReOLvl}}</td>
+                      		<td>
+								<button id="btn_edit" type="button"  class="btn btn-default" style="background-color:black; border:black; color:white" data-toggle="modal" href="#edit{{$prod->strProdId}}">Edit</button>
+                      			<button id="btn_delete" type="button" class="btn btn-danger" data-toggle="modal" href="#delete{{$prod->strProdId}}">Delete</button>
+                      		
+
+                      				<!-- Modal Edit -->
+									<div id="edit{{$prod->strProdId}}" class="modal fade" role="dialog">
+									  <div class="modal-dialog">
+									  	
+									    <!-- Modal content-->
+									    <div class="modal-content">
+									      <div class="modal-header"  style="background-color:black; color:white;">
+									        <button type="button" class="close" data-dismiss="modal">&times;</button>
+									        <h4 class="modal-title"> EDIT</h4>
+									      </div>
+									      <div class="modal-body">
+									      	<form id="update" action="/productUp" method="post">
+										        <div class="form-group" style="color:black">
+										        	<label>Product ID </label>
+												    <input value="{{$prod->strProdId}}" name="prod_id_edit" id="prod_ser_cat_id_edit" class="form-control" type="text" readonly>
+												    
+													<label>Product Name </label>
+												    <input value="{{$prod->strProdName}}" name="prod_name_edit" id="prod_ser_cat_id_name_edit" class="form-control" type="text" required>
+
+												    <label>Product Description </label>
+												    <input value="{{$prod->strProdDesc}}" name="prod_desc_edit" id="prod_ser_cat_desc_edit" class="form-control" type="text">
+												
+												    <label>Service Category Name</label>
+								                    <select class="form-control" name="prod_sercat_edit" id="prod_sercat_edit" required>
+												        <option selected value="{{$prod->strPCategory}}">{{$prod->strProdSerName}}</option>
+						                                @foreach($categories as $cat)
+						                                @if(($cat->status=='1') && ($cat->strProdSerCatId != $prod->strPCategory))
+						                                <option value="{{ $cat->strProdSerCatId }}">{{ $cat->strProdSerName }}</option>
+						                                @endif
+						                                @endforeach
+											      	</select>
+
+											      	<label>Supplier Name</label>
+								                    <select class="form-control" name="prod_supp_edit" id="prod_supp_edit" required>
+												        <option selected value="{{$prod->strPSupp}}">{{$prod->strSuppName}}</option>
+						                                @foreach($suppliers as $supp)
+						                                @if(($supp->status=='1') && ($supp->strSuppId != $prod->strPSupp))
+						                                <option value="{{ $supp->strSuppId }}">{{ $supp->strSuppName }}</option>
+						                                @endif
+						                                @endforeach
+											      	</select>
+
+											      	<label>Unit of Measurement</label>
+								                    <select class="form-control" name="prod_uom_edit2" id="prod_uom_edit2" required>
+												        <option selected value="{{$prod->strPUOM}}">{{$prod->strUOMDesc}}</option>
+						                                @foreach($uom2 as $ewan)
+						                                @if(($ewan->status=='1') && ($ewan->strUOMId != $prod->strPUOM))
+						                                <option value="{{ $ewan->strUOMId }}">{{ $ewan->strUOMDesc }}</option>
+						                                @endif
+						                                @endforeach
+											      	</select>
+
+											      	<input value="{{$prod->strPUOM}}" name="prod_uom_edit" id="prod_uom_edit" type="text" hidden>
+												
+
+												 	<label >Reorder Level </label>
+												    <input value="{{$prod->intProdReOLvl}}" name="prod_reorderLevel_edit" id="prod_reorderLevel_edit" class="form-control" type="text" required>
+												
+
+												</div>
+									      </div>
+									      <div class="modal-footer">
+									        <button type="submit" class="btn btn-primary" style="background-color:black; border:black; color:white">Save</button>
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+									      </div>
+									      </form>
+									    </div>
+									   </div>
+									</div><!-- Modal Edit -->
+				
+                      				<!-- Modal Delete -->
+									<div id="delete{{$prod->strProdId}}" class="modal fade" role="dialog">
+									  <div class="modal-dialog">
+
+									    <!-- Modal content-->
+									    <div class="modal-content">
+									      <div class="modal-header" style="background-color:black; color:white;">
+									        <button type="button" class="close" data-dismiss="modal">&times;</button>
+									        <h4 class="modal-title">DELETE</h4>
+									      </div>
+									      <div class="modal-body">
+									      	<p>
+									      	<form id="delete" action="/productDel" method="post">
+									        <div class="form-group" style="color:black">
+									        	<label>Product ID </label>
+											    <input value="{{$prod->strProdId}}" id="prod_id_del" name="prod_id_del" class="form-control" type="text" readonly>
+											    <label>Product  Name </label>
+											    <input value="{{$prod->strProdName}}" id="prod_name_del" name="prod_name_del" class="form-control" type="text" readonly>
+										  	</div>
+									      </div>
+									      <div class="modal-footer">
+									        <button type="submit" class="btn btn-danger">Confirm</button>
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+									      </div>
+									  	</form>
+									    </div>
+									  </div>
+									</div><!-- Modal Delete -->
+
+									
+
+									<!-- Modal dummy -->
+									<div id="delete" class="modal fade" role="dialog">
+									  <div class="modal-dialog">
+
+									    <!-- Modal content-->
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal">&times;</button>
+									        <h4 class="modal-title" style="color:black">DELETE</h4>
+									      </div>
+									      <div class="modal-body">
+									      	<p>
+									      	<form id="delete" action="/cartypeabc" method="post">
+									        <div class="form-group" style="color:black">
+									        	<label>Car Type Id </label>
+											    <input id="car_type_id_del" name="car_type_id_del" class="form-control" type="text" readonly>
+											    <label>Car Type Name </label>
+											    <input id="car_type_name_del" name="car_type_name_del" class="form-control" type="text" readonly>
+										  	</div>
+									      </div>
+									      <div class="modal-footer">
+									        <button type="submit" class="btn btn-danger">Confirm</button>
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+									      </div>
+									  	</form>
+									    </div>
+									  </div>
+									</div><!-- Modal dummy -->	
+
+									
                       		</td>
                       	</tr>
-                      	
+                      	@endif
+                      	@endforeach
                       </tbody>
   			  	</table>
 			</div>

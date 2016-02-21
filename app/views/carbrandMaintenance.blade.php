@@ -3,11 +3,10 @@
 @section('contentMaintenance')
 
 	<form id="Car_Brand" >  			
-  		<div class="panel panel-primary">
+  		<div class="panel" style="border:0px;">
   			<div class="panel-heading">
-  				Car Brands 
-  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" style="position:absolute; left:96%;" data-toggle="modal" data-target="#modalAdd"><i class="glyphicon-plus"></i> </button>     
-  				<!-- Modal dummy -->
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" style="position:absolute; left:96%;" data-toggle="modal" data-target="#modalAdd"><i class="glyphicon-plus"></i> </button> 
+                <!-- Modal dummy -->
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
@@ -21,7 +20,7 @@
 									      	<p>
 									      	<form id="delete" action="/cartypeabc" method="post">
 									        <div class="form-group" style="color:black">
-									        	<label>Car Type Id </label>
+									        	<label>Car Type ID </label>
 											    <input id="car_type_id_del" name="car_type_id_del" class="form-control" type="text" readonly>
 											    <label>Car Type Name </label>
 											    <input id="car_type_name_del" name="car_type_name_del" class="form-control" type="text" readonly>
@@ -49,9 +48,9 @@
 										      <div class="modal-body">
 										      	<form action="/carbrandAdd" method="post">
 										        <div class="form-group" style="color:black">										        	 	
-										        	<label>Car Brand Id </label>
+										        	<label>* Car Brand ID </label>
 												    <input value="{{$newID}}" id="car_brand_id_add" name="car_brand_id_add" class="form-control" type="text" required>
-													<label>Car Brand Name </label>
+													<label>* Car Brand Name </label>
 												    <input id="car_brand_name_add" name="car_brand_name_add" class="form-control" type="text" required>
 												</div>
 										      </div>
@@ -63,14 +62,15 @@
 										    </div>
 										  </div>
 										</div><!-- Modal Add -->
-  			</div>
-  			<div class="panel-body">
+  			<h2 style="color:white">CAR BRANDS</H2>
+  			
+  			<div class="table-bordered table-responsive" style="border:0px;">
 
-  			  	<table id="table" class="table table-bordered table-responsive">
+  			  	<table id="table" class="table" style="border:1px">
 
   			  		<thead>
                         <tr>
-                          <th>Car Brand Id</th>
+                          <th>Car Brand ID</th>
                           <th>Car Brand Name</th>
                           <th>Actions</th>
                         </tr>
@@ -100,7 +100,7 @@
 									      <div class="modal-body">
 									      	<form id="delete" action="/carbrandDel" method="post">
 									        <div class="form-group"style="color:black">
-									        	<label>Car Brand Id </label>
+									        	<label>Car Brand ID </label>
 											    <input value="{{$cbrands->strCarBrandId}}" id="car_brand_id_del" name="car_brand_id_del" class="form-control" type="text" readonly>
 												<label>Car Brand Name </label>
 											    <input value="{{ $cbrands->strCarBrandDesc }}" id="car_brand_name_del" name="car_brand_name_del" class="form-control" type="text" readonly>
@@ -128,7 +128,7 @@
 									      <div class="modal-body">
 									      	<form id="update" action="/carbrandUp" method="post">
 										        <div class="form-group" style="color:black">
-										        	<label>Car Brand Id </label>
+										        	<label>Car Brand ID </label>
 												    <input value="{{$cbrands->strCarBrandId}}" name="car_brand_id_edit" id="car_brand_id_edit" class="form-control" type="text" readonly>
 												    
 													<label>Car Brand Name </label>
@@ -152,12 +152,9 @@
                         @endforeach
                       </tbody>
   			  	</table>
-
-  			  	
-
 			</div>
-  			<div class="panel-footer">
-
+  			<div class="panel-footer" style="border:0px;">
+				<label style="color:black"> No. of records:  </label>
   			</div>
   		</div>
     </form>

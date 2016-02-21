@@ -6,8 +6,7 @@
 		<div class="panel" style="border:0px;">
   			<div class="panel-heading">
   				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" style="position:absolute; left:96%;" data-toggle="modal" data-target="#modalAdd"><i class="glyphicon-plus"></i> </button> 
-
-  				<!-- Modal dummy -->
+                <!-- Modal dummy -->
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
@@ -50,30 +49,30 @@
 									      	<p>
 									      	<form action="/supplierAdd" method="post">
 										        <div class="form-group" style="color:black">
-													<label>Supplier ID </label>
-												    <input value="{{$newID}}" name="supplier_id_add" id="supplier_id_add" class="form-control" type="text">
+													<label>* Supplier ID </label>
+												    <input value="{{$newID}}" name="supplier_id_add" id="supplier_id_add" class="form-control" type="text" required>
 												    
-													<label>Supplier Name </label>
+													<label>* Supplier Name </label>
 												    <input name="supplier_name_add" id="supplier_name_add" class="form-control" type="text" required>
 
 												    <h4>Address</h4>
 												    <div class="form-group">
 													    <label>Street </label>
-													    <input name="supplier_st_add" id="supplier_st_add" class="form-control" type="text" required>
+													    <input name="supplier_st_add" id="supplier_st_add" class="form-control" type="text">
 														
 														<label>Baranggay</label>
-													    <input name="supplier_brgy_add" id="supplier_brgy_add" class="form-control" type="text" required>
+													    <input name="supplier_brgy_add" id="supplier_brgy_add" class="form-control" type="text">
 													    
 														<label>City </label>
-													    <input name="supplier_city_add" id="supplier_city_add" class="form-control" type="text" required>
+													    <input name="supplier_city_add" id="supplier_city_add" class="form-control" type="text" >
 												    </div>
-												    <label>Contact Number </label>
+												    <label>* Contact Number </label>
 												    <input name="supplier_contactNo_add" id="supplier_contactNo_add" class="form-control" type="text" required>
 												 	
-												 	<label>Email Address </label>
-												    <input name="supplier_emailAd_add" id="supplier_emailAd_add" class="form-control" type="email" required>
+												 	<label> Email Address </label>
+												    <input name="supplier_emailAd_add" id="supplier_emailAd_add" class="form-control" type="email">
 													
-													<h4>Contact Person</h4>
+													<h4>* Contact Person</h4>
 													<div class="form-group">
 														<label>First Name</label>
 												    	<input name="supplier_fname_add" id="supplier_fname_add" class="form-control" type="text"  required>
@@ -95,11 +94,11 @@
 									</div><!-- Modal Add -->
 
   				<h2 style="color:white">SUPPLIERS</H2>
-
-            </div>
+  			
   			<div class="table-bordered table-responsive" style="border:0px;">
 
-  			  	<table id="table" class="table" style="border:1px ">
+  			  	<table id="tableSupplier" class="table" style="border:1px">
+
   			  		<thead>
                         <tr>
                           <th>Supplier ID</th>
@@ -178,20 +177,20 @@
 												    <h4>Address</h4>
 												    <div class="form-group">
 													    <label>Street </label>
-													    <input value="{{$supp->strSuppStAdd}}" name="supplier_st_edit" id="supplier_st_edit" class="form-control" type="text" required>
+													    <input value="{{$supp->strSuppStAdd}}" name="supplier_st_edit" id="supplier_st_edit" class="form-control" type="text">
 														
 														<label>Baranggay</label>
-													    <input value="{{$supp->strSuppCityAdd}}" name="supplier_brgy_edit" id="supplier_brgy_edit" class="form-control" type="text" required>
+													    <input value="{{$supp->strSuppCityAdd}}" name="supplier_brgy_edit" id="supplier_brgy_edit" class="form-control" type="text">
 													    
 														<label>City </label>
-													    <input value="{{$supp->strSuppStateAdd}}" name="supplier_city_edit" id="supplier_city_edit" class="form-control" type="text" required>
+													    <input value="{{$supp->strSuppStateAdd}}" name="supplier_city_edit" id="supplier_city_edit" class="form-control" type="text">
 													</div>
 
 												    <label>Contact Number </label>
 												    <input value="{{$supp->strSSCont}}" name="supplier_contactNo_edit" id="supplier_contactNo_edit" class="form-control" type="text" required>
 												 	
 												 	<label>Email Address </label>
-												    <input value="{{$supp->strSuppEAdd}}" name="supplier_emailAd_edit" id="supplier_emailAd_edit" class="form-control" type="email" required>
+												    <input value="{{$supp->strSuppEAdd}}" name="supplier_emailAd_edit" id="supplier_emailAd_edit" class="form-control" type="email">
 												
 													<h4>Contact Person</h4>
 													<div class="form-group">
@@ -224,12 +223,16 @@
 						@endforeach
                       </tbody>                   
   			  	</table>
-
-  			  </div>
-  			  <div class="panel-footer" style="border:0px;">
+  			  	<script>
+  			  		$(document).ready(function() {
+					    $('#tableSupplier').DataTable();
+					} );
+  			  	</script>
+			</div>
+  			<div class="panel-footer" style="border:0px;">
 				<label style="color:black"> No. of records:  </label>
   			</div>
-  			</div>
+  		</div>
    </form>
 
 @stop

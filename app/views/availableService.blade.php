@@ -81,7 +81,7 @@
                      <br>
             </div>
        
-  				<h2 style="color:white">LIST OF CARS</H2>		
+  				<h2 style="color:white">AVAILABLE SERVICES, PACKAGES AND DISCOUNTS FOR PROMO</H2>		
   		
   			
   			<div class="table-bordered table-responsive" style="border:0px;">
@@ -89,8 +89,8 @@
 					<thead>
 						<tr>
 							
-							<th>Plate No.</th>
-							<th>Car Model</th>
+							<th>ID</th>
+							<th>Name</th>
 							<th>Car Brand</th>
 							<th>Car Type</th>
 							<th>Actions</th>
@@ -180,7 +180,7 @@
 												</div>
 									      	</p>
 										      <div class="modal-footer">
-										        <button type="submit" class="btn btn-danger">Confirm</button>
+										        <button type="submit" class="btn btn-info">Save</button>
 										        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 										      </div>
 									  		</form>
