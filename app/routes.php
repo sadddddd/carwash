@@ -102,6 +102,14 @@ Route::get('/Package', "PackageController@maintenancePackage");
 
 Route::post('/packDel', array('uses'=>'PackageController@deletePackage'));
 
+Route::post('/packageUp', array('uses'=>'PackageController@updatePackage'));
+
 Route::get('/Promo', "PromoController@maintenancePromo");
 
 Route::get('/FreqCard', "FreqCardController@maintenanceFreqCard");
+
+Route::post('/ServPack', array('uses'=>'PackageController@servicePackage'));
+
+Route::post('/servpackDel', array('uses'=>'PackageController@deleteServpack'));
+
+Route::get('/productUOM', "ProductController@prodUOM");

@@ -6,7 +6,7 @@
 	<form id="Customers" >  			
   		<div class="panel" style="border:0px;">
   			<div class="panel-heading">
-  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" style="position:absolute; left:96%;" data-toggle="modal" data-target="#modalAdd"><i class="glyphicon-plus"></i> </button> 
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" data-toggle="modal" data-target="#modalAdd" style="position:absolute; left:1000px; top:30px"><i class="glyphicon glyphicon-plus"></i> </button> 
                 <!-- Modal dummy -->
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
@@ -28,8 +28,8 @@
 										  	</div>
 									      </div>
 									      <div class="modal-footer">
-									        <button type="submit" class="btn btn-danger">Confirm</button>
-									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+									        <button type="submit" class="btn btn-danger">Yes</button>
+									        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
 									      </div>
 									  	</form>
 									    </div>
@@ -43,16 +43,16 @@
 
 									    <!-- Modal content-->
 									    <div class="modal-content">
-									      <div class="modal-header">
+									      <div class="modal-header" style="background-color:black">
 									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title" style="color:black">ADD</h4>
+									        <h4 class="modal-title" style="color:white"><CENTER>ADD CUSTOMER</CENTER></h4>
 									      </div>
 									      <div class="modal-body">
 									      	<p>
 									      	<form action="/customerAdd" method="post">
 										        <div class="form-group" style="color:black">
-										        	<label>* Customer ID </label>
-												    <input value="{{$newID}}" id="custid_add" name="custid_add" class="form-control" type="text" required>
+										        	<!-- <label>* Customer ID </label> -->
+												    <input value="{{$newID}}" id="custid_add" name="custid_add" type="text" hidden>
 													
 													<div class="form-group">
 														<label>* Name </label>
@@ -78,7 +78,7 @@
 									      </div>
 									      <div class="modal-footer">
 									        <button type="submit" class="btn btn-info">Add</button>
-									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+									        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
 									      </div>
 									  	</form>
 									    </div>
@@ -89,11 +89,11 @@
   			
   			<div class="table-bordered table-responsive" style="border:0px;">
 
-  			  	<table id="table" class="table" style="border:1px">
+  			  	<table id="table" class="table" style="border:1px; color:white">
 
   			  		<thead>
                         <tr>
-                          <th>Customer ID</th>
+                          
                           <th>Customer Name</th>
                           <th>Address</th>
                           <th>Contact No.</th>
@@ -108,19 +108,19 @@
                       	<tr>
                       		<form action="/details" method="post">
                       			<input value="{{ $cust->strCustId }}"  id="customerId" name="customerId" type="text" hidden>
-                      		<td>{{ $cust->strCustId }}</td>
+                      		<td hidden>{{ $cust->strCustId }}</td>
                       		<td>{{ $cust->strCustFName }} {{ $cust->strCustMInit }}. {{ $cust->strCustLName }}</td>
                       		<td>{{ $cust->strCustStAdd }}, {{$cust->strCustCityAdd}}, {{$cust->strCustStateAdd}}</td>
                       		<td>{{ $cust->strCustContNo }}</td>
                       		<td>{{ $cust->strCustLiscNo }}</td>
                       		<td>
-								<button type="submit" class="btn btn-info">List of Cars</button>
+								<button type="submit" class="btn btn-danger">List of Cars</button>
                       		</form>
                       		</td>
                       				
                       		<td>
-								<button id="btn_edit" type="button" class="btn btn-info" data-toggle="modal" href="#edit{{ $cust->strCustId }}">Edit</button>
-                      			<button id="btn_delete" type="button" class="btn btn-info" data-toggle="modal" href="#delete{{ $cust->strCustId }}">Delete</button>
+								<button id="btn_edit" type="button" class="btn btn-danger" data-toggle="modal" href="#edit{{ $cust->strCustId }}" title="Edit"><i class="glyphicon glyphicon-pencil"> </i></button>
+                      			<button id="btn_delete" type="button" class="btn btn-danger" data-toggle="modal" href="#delete{{ $cust->strCustId }}" title="Delete"><i class="glyphicon glyphicon-remove"> </i></button>
                       		</td>
                       		
 
@@ -132,16 +132,16 @@
 
 									    <!-- Modal content-->
 									    <div class="modal-content">
-									      <div class="modal-header">
+									      <div class="modal-header" style="background-color:black; color:white;">
 									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title" style="color:black">EDIT</h4>
+									        <h4 class="modal-title"><CENTER>EDIT CUSTOMER</CENTER></h4>
 									      </div>
 									      <div class="modal-body">
 									      	<p>
 									      	<form action="/customerEdit" method="post">
 										        <div class="form-group" style="color:black">
-										        	<label>Customer ID </label>
-												    <input value="{{ $cust->strCustId }}" id="custid_edit" name="custid_edit" class="form-control" type="text" readonly>
+										        	<!-- <label>Customer ID </label> -->
+												    <input value="{{ $cust->strCustId }}" id="custid_edit" name="custid_edit" type="text" hidden>
 													
 													<div class="form-group">
 														<label>Name </label>
@@ -166,8 +166,8 @@
 											</p>
 									      </div>
 									      <div class="modal-footer">
-									        <button type="submit" class="btn btn-info">Edit</button>
-									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+									        <button type="submit" class="btn btn-info">Save</button>
+									        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
 									      </div>
 									  	</form>
 									    </div>
@@ -179,28 +179,32 @@
 									  <div class="modal-dialog">
 
 									    <!-- Modal content-->
-									    <div class="modal-content">
-									      <div class="modal-header">
-									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title" style="color:black">DELETE</h4>
-									      </div>
-									      <div class="modal-body">
+									    <div class="modal-content" >
+									      
+									      <div class="modal-body" style="background-color:black; color:white;">
 									      	<p>
 									      	<form action="/customerDelete" method="post">
-										        <div class="form-group" style="color:black">
-										        	<label>Customer ID </label>
-												    <input value="{{ $cust->strCustId }}" id="custid_delete" name="custid_delete" class="form-control" type="text" readonly>
+										        <div class="form-group" style="color:black;  color:white;">
+										        	 <button type="button" class="close" data-dismiss="modal">&times;</button>
+										        	<!-- <label>Customer ID </label> -->
+												    <input value="{{ $cust->strCustId }}" id="custid_delete" name="custid_delete" type="text" hidden>
 													
 													<div class="form-group">
-														<label>Name </label>
-													    <input value="{{ $cust->strCustFName }} {{ $cust->strCustMInit }}. {{ $cust->strCustLName }}" class="form-control" type="text" readonly>
+														<label style="margin-left:20px; font-weight:bold;">Are you sure you want to delete?</label><br>
+													    <input value="{{ $cust->strCustFName }} {{ $cust->strCustMInit }}. {{ $cust->strCustLName }}" type="text" hidden>
+												    	<label style="margin-left:20px; font-size:20px;">  {{ $cust->strCustFName }} {{ $cust->strCustMInit }}. {{ $cust->strCustLName }} </label>
 												    </div>
 												</div>
 									      	</p>
-										      <div class="modal-footer">
-										        <button type="submit" class="btn btn-info">Delete</button>
-										        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-										      </div>
+										    
+										    <div class="container" style="margin-left:450px">
+										    
+										        <button type="submit" class="btn btn-danger">Yes</button>
+										        <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+
+
+
+										     </div>
 									  		</form>
 									    </div>
 									  </div>
@@ -221,5 +225,6 @@
 				<label style="color:black"> No. of records:  </label>
   			</div>
   		</div>
+  		<script> </script>
     </form>
 @stop

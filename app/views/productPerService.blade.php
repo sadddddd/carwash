@@ -1,6 +1,38 @@
 @extends('maintenance')
 
 @section('contentMaintenance')
+<script type="text/javascript">
+    // $("#prod_edit").onchange(function(){//palitan nyo ng method para sa combobox XD
+    //     $.ajax({
+    //         url: 'productUOM', //eto yung url nyo sa route
+    //         type: 'GET',
+    //         traditional: true,
+    //         contentType: 'application/json; charset=utf-8',
+    //         success: function(data){
+    //             $("#uom_add").val(data[0].strUOMDesc); //palitan nyo yung uom kung anong pangalan na nakalagay sa json
+    //         }
+    //     });
+    // });   
+
+	document.getElementById("#prod_edit").onchange = function() {myFunction()};
+
+
+	function myFunction() {
+	    //var x = document.getElementById("prod_edit");
+	    //x.value = x.value.toUpperCase();
+	    $.ajax({
+            url: 'productUOM', //eto yung url nyo sa route
+            type: 'GET',
+            traditional: true,
+            contentType: 'application/json; charset=utf-8',
+            success: function(data){
+            	var y = document.getElementById("#uom_add")
+            	y.value = data[0].strSPServ;
+                //$("#uom_add").val(data[0].strUOMDesc); //palitan nyo yung uom kung anong pangalan na nakalagay sa json
+            }
+        });
+	}
+  </script>
 
 	<form id="ProductService_Details" >  	
 	<div class="panel" style="border:0px;">
@@ -64,6 +96,8 @@
 						                                @endforeach
 												      </select>
 												    </div>
+
+												    <input name="uom_add" id="uom_add" class="form-control" type="text">
 
 										        	<label>Product Measurement</label>
 												    <input name="measure_add" id="measure_add" class="form-control" type="number" min="0" required>

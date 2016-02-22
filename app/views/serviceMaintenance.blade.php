@@ -5,8 +5,9 @@
 	<form id="Service_Details" >  	
 	<div class="panel" style="border:0px;">
   			<div class="panel-heading">
-  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" style="position:absolute; left:96%;" data-toggle="modal" data-target="#modalAdd"><i class="glyphicon-plus"></i> </button> 
-                	<!-- Modal dummy -->
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" data-toggle="modal" data-target="#modalAdd" style="position:absolute; left:1000px; top:30px"><i class="glyphicon glyphicon-plus"></i> </button> 
+             <!-- Modal dummy -->
+			 	<!-- Modal dummy -->
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
@@ -43,14 +44,14 @@
 									    <div class="modal-content">
 									      <div class="modal-header" style="background-color:black; color:white">
 									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title">ADD</h4>
+									        <h4 class="modal-title"><center>ADD SERVICE</center></h4>
 									      </div>
 									      <div class="modal-body">
 									      	<p>
 									      	<form action="/serviceAdd" method="post">
 										        <div class="form-group" style="color:black">
-										        	<label>* Service ID </label>
-												    <input value="{{$newID}}" name="service_id_add" id="service_id_add" class="form-control" type="text" required>
+										        	<!-- <label>* Service ID </label> -->
+												    <input value="{{$newID}}" name="service_id_add" id="service_id_add"  type="text" hidden>
 												    
 													<label>* Service Name </label>
 												    <input name="service_name_add" id="service_name_add" class="form-control" type="text" required>
@@ -60,7 +61,7 @@
 								                        <option selected disabled value="Pick a category">Pick a category</option>
 								                        @foreach($categories as $cat)
 						                                @if($cat->status=='1')
-						                                <option value="{{ $cat->strProdSerCatId }}">{{ $cat->strProdSerName }}</option>
+						                                <option value="{{ $cat->strCategId }}">{{ $cat->strCategName }}</option>
 						                                @endif
 						                                @endforeach
 								                    </select>
@@ -97,12 +98,12 @@
   			
             <div class="table-bordered table-responsive" style="border:0px;">
 
-  			  	<table id="table" class="table" style="border:1px">
+  			  	<table id="table" class="table" style="border:1px; color:white">
 
   			  		<thead>
   			  			
                         <tr>
-                        	<th>Service ID</th>
+                        <!-- 	<th>Service ID</th> -->
                           	<th>Service Name</th>
                           	<th>Service Category Name</th>
                           	<th>Car Type</th>
@@ -118,9 +119,9 @@
                       	<tr>
 							<form action="/ProdPerServ" method="post">
 								<input value="{{$serv->strServId}}"  id="servId" name="servId" type="text" hidden>
-                      		<td>{{$serv->strServId}}</td>
+                      		<td hidden>{{$serv->strServId}}</td>
                       		<td>{{$serv->strServName}}</td>
-                      		<td>{{$serv->strProdSerName}}</td>
+                      		<td>{{$serv->strCategName}}</td>
                       		<td>{{$serv->strCarTypeName}}</td>
                       		@foreach($servprice as $price)
                       			@if($price->strSPServ == $serv->strServId)
@@ -134,8 +135,8 @@
                       		</form>
                       		</td>
                       		<td>
-								<button id="btn_edit" type="button"  class="btn btn-default" style="background-color:black; border:black; color:white" data-toggle="modal" href="#edit{{$serv->strServId}}">Edit</button>
-                      			<button id="btn_delete" type="button" class="btn btn-danger" data-toggle="modal" href="#delete{{$serv->strServId}}">Delete</button>
+								<button id="btn_edit" type="button"  class="btn btn-danger" data-toggle="modal" href="#edit{{$serv->strServId}}"><i class="glyphicon glyphicon-pencil"></i></button>
+                      			<button id="btn_delete" type="button" class="btn btn-danger" data-toggle="modal" href="#delete{{$serv->strServId}}"><i class="glyphicon glyphicon-remove"></i></button>
                       		
 
                       				
@@ -146,24 +147,22 @@
 
 									    <!-- Modal content-->
 									    <div class="modal-content">
-									      <div class="modal-header" style="background-color:black; color:white;">
-									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title">DELETE</h4>
-									      </div>
-									      <div class="modal-body">
+									    
+									      <div class="modal-body" style="background-color:black; color:white">
 									      	<p>
 									      	<form id="delete" action="/serviceDel" method="post">
-									        <div class="form-group" style="color:black">
-									        	<label>Service ID </label>
-											    <input value="{{$serv->strServId}}" id="ser_id_del" name="ser_id_del" class="form-control" type="text" readonly>
-											    <label>Service Name </label>
-											    <input value="{{$serv->strServName}}" id="ser_name_del" name="ser_name_del" class="form-control" type="text" readonly>
+									        <div class="form-group" >
+									        	<label>Are you sure you want to delete? </label><br>
+											    <input value="{{$serv->strServId}}" id="ser_id_del" name="ser_id_del"  type="text" hidden>
+											    <label>{{$serv->strServName}} </label>
+											    <input value="{{$serv->strServName}}" id="ser_name_del" name="ser_name_del"  type="text" hidden>
+										  	<div class="container" style="margin-left:430px">
+									        <button type="submit" class="btn btn-danger">Yes</button>
+									        <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+									      </div>
 										  	</div>
 									      </div>
-									      <div class="modal-footer">
-									        <button type="submit" class="btn btn-danger">Confirm</button>
-									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-									      </div>
+									      
 									  	</form>
 									    </div>
 									  </div>
@@ -177,23 +176,23 @@
 									    <div class="modal-content">
 									      <div class="modal-header"  style="background-color:black; color:white;">
 									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title"> EDIT</h4>
+									        <h4 class="modal-title"> <Center>EDIT SERVICE</center></h4>
 									      </div>
 									      <div class="modal-body">
 									      	<form id="update" action="/serviceUp" method="post">
 										        <div class="form-group" style="color:black">
-										        	<label>Service ID </label>
-												    <input value="{{$serv->strServId}}" name="service_id_edit" id="service_id_edit" class="form-control" type="text" readonly>
+										        	<!-- <label>Service ID </label> -->
+												    <input value="{{$serv->strServId}}" name="service_id_edit" id="service_id_edit"  type="text" hidden>
 												    
 													<label>Service Name </label>
 												    <input value="{{$serv->strServName}}" name="service_name_edit" id="service_name_edit" class="form-control" type="text" required>
 
 												    <label> Service Category Name</label>
 													<select class="form-control" name="service_cat_edit" id="service_cat_edit" required>
-								                        <option selected value="{{$serv->strSServCat}}">{{$serv->strProdSerName}}</option>
+								                        <option selected value="{{$serv->strSServCat}}">{{$serv->strCategName}}</option>
 								                        @foreach($categories as $category)
-						                                @if(($category->status=='1') && ($category->strProdSerCatId != $serv->strSServCat))
-						                                <option value="{{ $category->strProdSerCatId }}">{{ $category->strProdSerName }}</option>
+						                                @if(($category->status=='1') && ($category->strCategId != $serv->strSServCat))
+						                                <option value="{{ $category->strCategId }}">{{ $category->strCategName }}</option>
 						                                @endif
 						                                @endforeach
 								                    </select>

@@ -5,8 +5,8 @@
 	<form id="Supplier_Details" >
 		<div class="panel" style="border:0px;">
   			<div class="panel-heading">
-  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" style="position:absolute; left:96%;" data-toggle="modal" data-target="#modalAdd"><i class="glyphicon-plus"></i> </button> 
-                <!-- Modal dummy -->
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" data-toggle="modal" data-target="#modalAdd" style="position:absolute; left:1000px; top:30px"><i class="glyphicon glyphicon-plus"></i> </button> 
+               <!-- Modal dummy -->
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
@@ -43,14 +43,14 @@
 									    <div class="modal-content">
 									      <div class="modal-header" style="background-color:black; color:white">
 									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title">ADD</h4>
+									        <h4 class="modal-title"><center>ADD SUPPLIER</center></h4>
 									      </div>
 									      <div class="modal-body">
 									      	<p>
 									      	<form action="/supplierAdd" method="post">
 										        <div class="form-group" style="color:black">
-													<label>* Supplier ID </label>
-												    <input value="{{$newID}}" name="supplier_id_add" id="supplier_id_add" class="form-control" type="text" required>
+													<!-- <label>* Supplier ID </label> -->
+												    <input value="{{$newID}}" name="supplier_id_add" id="supplier_id_add" type="text" hidden>
 												    
 													<label>* Supplier Name </label>
 												    <input name="supplier_name_add" id="supplier_name_add" class="form-control" type="text" required>
@@ -97,11 +97,11 @@
   			
   			<div class="table-bordered table-responsive" style="border:0px;">
 
-  			  	<table id="tableSupplier" class="table" style="border:1px">
+  			  	<table id="table" class="table" style="border:1px; color:white;">
 
   			  		<thead>
                         <tr>
-                          <th>Supplier ID</th>
+                          
                           <th>Supplier Name</th>
                           <th>Address</th>
                           <th>Contact Number</th>
@@ -115,7 +115,7 @@
                       		@if($supp->status == 1)
                       	<tr>
                       		
-                      		<td>{{$supp->strSuppId}}</td>
+                      		<td hidden>{{$supp->strSuppId}}</td>
                       		<td>{{$supp->strSuppName}}</td>
                       		<td>{{$supp->strSuppStAdd}}, {{$supp->strSuppCityAdd}}, {{$supp->strSuppStateAdd}}</td>
                       		<td>{{$supp->strSSCont}}</td>
@@ -123,8 +123,8 @@
                       		<td>{{$supp->strSSContFName}} {{$supp->strSSContMInit}}. {{$supp->strSSContLName}}</td>
 
                       		<td>
-								<button id="btn_edit" type="button" class="btn btn-default" style="background-color:black; border:black; color:white" data-toggle="modal" href="#edit{{$supp->strSuppId}}">Edit</button>
-								<button id="btn_delete" type="button" class="btn btn-danger" data-toggle="modal" href="#delete{{$supp->strSuppId}}">Delete</button>
+								<button id="btn_edit" type="button" class="btn btn-danger" data-toggle="modal" href="#edit{{$supp->strSuppId}}"><i class="glyphicon glyphicon-pencil"></i></button>
+								<button id="btn_delete" type="button" class="btn btn-danger" data-toggle="modal" href="#delete{{$supp->strSuppId}}"><i class="glyphicon glyphicon-remove"></i></button>
 								
 								<!-- Modal Delete -->
 								<div id="delete{{$supp->strSuppId}}" class="modal fade" role="dialog">
@@ -132,24 +132,23 @@
 
 									    <!-- Modal content-->
 									    <div class="modal-content">
-									      <div class="modal-header" style="background-color:black; color:white;">
-									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title" style="color:white">DELETE</h4>
-									      </div>
-									      <div class="modal-body" style="color:black">
+									      
+									      <div class="modal-body"  style="background-color:black; color:white;">
 									      	<p>
 									      	<form id="delete" action="/supplierDelete" method="post">
 								
-											<label>Supplier ID </label>
-								    		<input value="{{$supp->strSuppId}}" id="sup_ID_del" name="sup_ID_del"class="form-control" type="text" readonly>						  
-											<label>Supplier Name </label>
-								    		<input value="{{$supp->strSuppName}}" id="sup_name_del" name="sup_name_del"  class="form-control" type="text" readonly>
-							    
-											</div>
-									      <div class="modal-footer">
-									        <button type="submit" class="btn btn-danger">Confirm</button>
-									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+											<!-- <label>Supplier ID </label> -->
+											<label style="margin-left:20px; font-weight:bold;">Are you sure you want to delete?</label><br>
+													   
+								    		<input value="{{$supp->strSuppId}}" id="sup_ID_del" name="sup_ID_del" type="text" hidden>						  
+											<label style="margin-left:50px">{{$supp->strSuppName}}</label>
+								    		<input value="{{$supp->strSuppName}}" id="sup_name_del" name="sup_name_del" type="text" hidden>
+							   				 <div class="container" style="margin-left:430px">
+									        <button type="submit" class="btn btn-danger">Yes</button>
+									        <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
 									      </div>
+											</div>
+									      
 									  	</form>
 									    </div>
 									  </div>
@@ -163,13 +162,13 @@
 									    <div class="modal-content">
 									      <div class="modal-header"  style="background-color:black; color:white;">
 									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title" style="color:white"> EDIT</h4>
+									        <h4 class="modal-title" style="color:white"> <CENTER>EDIT SUPPLIER</CENTER></h4>
 									      </div>
 									      <div class="modal-body" style="color:black">
 									      	<form id="update" action="/supplierUpdate" method="post">
 										        <div class="form-group" style="color:black">
-										        	<label>Supplier ID </label>
-												    <input value="{{$supp->strSuppId}}" name="supplier_id_edit" id="supplier_id_edit" class="form-control" type="text" readonly>
+										        	<!-- <label>Supplier ID </label> -->
+												    <input value="{{$supp->strSuppId}}" name="supplier_id_edit" id="supplier_id_edit" type="text" hidden>
 												    
 													<label>Supplier Name </label>
 												    <input value="{{$supp->strSuppName}}" name="supplier_name_edit" id="supplier_name_edit" class="form-control" type="text" required>
@@ -223,11 +222,6 @@
 						@endforeach
                       </tbody>                   
   			  	</table>
-  			  	<script>
-  			  		$(document).ready(function() {
-					    $('#tableSupplier').DataTable();
-					} );
-  			  	</script>
 			</div>
   			<div class="panel-footer" style="border:0px;">
 				<label style="color:black"> No. of records:  </label>

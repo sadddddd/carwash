@@ -12,7 +12,7 @@ class PackToServ extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('tblPackToServe', function($table){
+		Schema::create('tblPackToServ', function($table){
 			$table->string('strPTSId');
 			$table->string('strPTSPack');//fk
 			$table->string('strPTSServ');//fk
@@ -31,7 +31,7 @@ class PackToServ extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('tblPackToServe');
+		Schema::dropIfExists('tblPackToServ');
 	}
 
 }

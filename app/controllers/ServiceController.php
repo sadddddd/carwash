@@ -29,15 +29,15 @@ class ServiceController extends BaseController {
 		$price = DB::table('tblServPrice')
 			->join('tblServ', 'tblServPrice.strSPServ','=','tblServ.strServId')
 			->select('tblServPrice.*')
-			->orderBy('tblServPrice.dtmServPrice', 'desc')
+			->orderBy('tblServPrice.dtmServPrice', 'asc')
 			->get();
 
 		$var = 0;
 
 		$service = DB::table('tblServ')
-			->join('tblProdSerCat', 'tblServ.strSServCat','=','tblProdSerCat.strProdSerCatId')
+			->join('tblProdSerCat', 'tblServ.strSServCat','=','tblProdSerCat.strCategId')
 			->join('tblCarType', 'tblServ.strSCarType','=','tblCarType.strCarTypeId')
-			->select('tblServ.*', 'tblProdSerCat.strProdSerName', 'tblCarType.strCarTypeName')
+			->select('tblServ.*', 'tblProdSerCat.strCategName', 'tblCarType.strCarTypeName')
 			->get();
 
 		return View::make('serviceMaintenance')->with('newID',$newID)->with('categories',$category)->with('cartypes',$cartype)

@@ -13,10 +13,12 @@ class ProdSerCat extends Migration {
 	public function up()
 	{
 		Schema::create('tblProdSerCat', function($table){
-			$table->string('strProdSerCatId')->primary();
-			$table->string('strProdSerName')->unique();
-			$table->string('strProdSerDesc');
+			$table->string('strCategId')->primary();
+			$table->string('strCategName')->unique();
+			$table->string('strCategDesc');
+			$table->string('strCategType');
 			$table->boolean('status')->default('1');
+
 			$table->timestamps();
 		});
 	}

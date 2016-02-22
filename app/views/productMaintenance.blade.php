@@ -5,9 +5,8 @@
 	<form id="Product_Details" >  	
 	<div class="panel" style="border:0px;">
   			<div class="panel-heading">
-  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" style="position:absolute; left:96%;" data-toggle="modal" data-target="#modalAdd"><i class="glyphicon-plus"></i> </button>     
-  				 
-  				<!-- Modal dummy -->
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" data-toggle="modal" data-target="#modalAdd" style="position:absolute; left:1000px; top:30px"><i class="glyphicon glyphicon-plus"></i> </button> 
+            <!-- Modal dummy -->
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
@@ -44,15 +43,15 @@
 									    <div class="modal-content">
 									      <div class="modal-header" style="background-color:black; color:white">
 									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title">ADD</h4>
+									        <h4 class="modal-title"><center>ADD PRODUCT</center></h4>
 									      </div>
 									      <div class="modal-body">
 									      	<p>
 									      	<form action="/productAdd" method="post">
 										        <div class="form-group" style="color:black">
 
-										        	<label>* Product ID </label>
-												    <input value="{{$newID}}" name="prod_id_add" id="prod_id_add" class="form-control" type="text" required>
+										        <!-- 	<label>* Product ID </label> -->
+												    <input value="{{$newID}}" name="prod_id_add" id="prod_id_add"  type="text" hidden>
 												    
 													<label>* Product Name </label>
 												    <input name="prod_name_add" id="prod_name_add" class="form-control" type="text" required>
@@ -109,11 +108,11 @@
 			
   			<div class="table-bordered table-responsive" style="border:0px;">
 
-  			  	<table id="table" class="table" style="border:1px">
+  			  	<table id="table" class="table" style="border:1px; color:white;">
 
   			  		<thead>
                         <tr>
-                          	<th>Product ID</th>
+                          	<!-- <th>Product ID</th> -->
                           	<th>Product Name</th>
                           	<th>Product Description</th>
                           	<th>Category Name</th>
@@ -127,15 +126,15 @@
                       	@foreach($products as $prod)
                       		@if($prod->status == '1')
                       	<tr>
-                      		<td>{{$prod->strProdId}}</td>
+                      		<td hidden>{{$prod->strProdId}}</td>
                       		<td>{{$prod->strProdName}}</td>
                       		<td>{{$prod->strProdDesc}}</td>
                       		<td>{{$prod->strProdSerName}}</td>
                       		<td>{{$prod->strSuppName}}</td>
                       		<td>{{$prod->intProdReOLvl}}</td>
                       		<td>
-								<button id="btn_edit" type="button"  class="btn btn-default" style="background-color:black; border:black; color:white" data-toggle="modal" href="#edit{{$prod->strProdId}}">Edit</button>
-                      			<button id="btn_delete" type="button" class="btn btn-danger" data-toggle="modal" href="#delete{{$prod->strProdId}}">Delete</button>
+								<button id="btn_edit" type="button"  class="btn btn-danger" data-toggle="modal" href="#edit{{$prod->strProdId}}"><i class="glyphicon glyphicon-pencil"></i></button>
+                      			<button id="btn_delete" type="button" class="btn btn-danger" data-toggle="modal" href="#delete{{$prod->strProdId}}"><i class="glyphicon glyphicon-remove"></i></button>
                       		
 
                       				<!-- Modal Edit -->
@@ -146,13 +145,13 @@
 									    <div class="modal-content">
 									      <div class="modal-header"  style="background-color:black; color:white;">
 									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title"> EDIT</h4>
+									        <h4 class="modal-title"> <center>EDIT PRODUCT</center></h4>
 									      </div>
 									      <div class="modal-body">
 									      	<form id="update" action="/productUp" method="post">
 										        <div class="form-group" style="color:black">
-										        	<label>Product ID </label>
-												    <input value="{{$prod->strProdId}}" name="prod_id_edit" id="prod_ser_cat_id_edit" class="form-control" type="text" readonly>
+										        	<!-- <label>Product ID </label> -->
+												    <input value="{{$prod->strProdId}}" name="prod_id_edit" id="prod_ser_cat_id_edit"  type="text" hidden>
 												    
 													<label>Product Name </label>
 												    <input value="{{$prod->strProdName}}" name="prod_name_edit" id="prod_ser_cat_id_name_edit" class="form-control" type="text" required>
@@ -214,24 +213,22 @@
 
 									    <!-- Modal content-->
 									    <div class="modal-content">
-									      <div class="modal-header" style="background-color:black; color:white;">
-									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title">DELETE</h4>
-									      </div>
-									      <div class="modal-body">
+									      
+									      <div class="modal-body" style="background-color:black; color:white">
 									      	<p>
 									      	<form id="delete" action="/productDel" method="post">
-									        <div class="form-group" style="color:black">
-									        	<label>Product ID </label>
-											    <input value="{{$prod->strProdId}}" id="prod_id_del" name="prod_id_del" class="form-control" type="text" readonly>
-											    <label>Product  Name </label>
-											    <input value="{{$prod->strProdName}}" id="prod_name_del" name="prod_name_del" class="form-control" type="text" readonly>
+									        <div class="form-group" >
+									        	<label>Are you sure you want to delete?</label><Br>
+											    <input value="{{$prod->strProdId}}" id="prod_id_del" name="prod_id_del" type="text" hidden>
+											    <label>{{$prod->strProdName}}</label>
+											    <input value="{{$prod->strProdName}}" id="prod_name_del" name="prod_name_del"  type="text" hidden >
+										  	<div class="container" style="margin-left:430px">
+									        <button type="submit" class="btn btn-danger">Yes</button>
+									        <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+									      </div>
 										  	</div>
 									      </div>
-									      <div class="modal-footer">
-									        <button type="submit" class="btn btn-danger">Confirm</button>
-									        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-									      </div>
+									      
 									  	</form>
 									    </div>
 									  </div>

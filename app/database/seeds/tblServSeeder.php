@@ -9,14 +9,14 @@ class tblServSeeder extends Seeder{
 			array(
 				'strServId' => 'SERV0001',
 				'strServName' => 'Auto Detailing',
-				'strSServCat' => 'SERVCAT0002', //fk
+				'strSServCat' => 'CAT0002', //fk
 				'strSCarType' => 'CTYPE0001', //fk
 				'status'=>'1'
 			),
 			array(
 				'strServId' => 'SERV0002',
 				'strServName' => 'Car Wash',
-				'strSServCat' => 'SERVCAT0001', //fk
+				'strSServCat' => 'CAT0001', //fk
 				'strSCarType' => 'CTYPE0003', //fk
 				'status'=>'1'
 			)

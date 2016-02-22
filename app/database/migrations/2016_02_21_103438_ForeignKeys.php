@@ -24,13 +24,13 @@ class ForeignKeys extends Migration {
 		});
 
 		Schema::table('tblProduct', function($table){
-			$table->foreign('strPCategory')->references('strProdSerCatId')->on('tblProdSerCat');
+			$table->foreign('strPCategory')->references('strCategId')->on('tblProdSerCat');
 			$table->foreign('strPSupp')->references('strSuppId')->on('tblSupplier');
 			$table->foreign('strPUOM')->references('strUOMId')->on('tblUOM');
 		});
 
 		Schema::table('tblServ', function($table){
-			$table->foreign('strSServCat')->references('strProdSerCatId')->on('tblProdSerCat');
+			$table->foreign('strSServCat')->references('strCategId')->on('tblProdSerCat');
 			$table->foreign('strSCarType')->references('strCarTypeId')->on('tblCarType');
 		});
 
@@ -43,7 +43,7 @@ class ForeignKeys extends Migration {
 			$table->foreign('strSPServ')->references('strServId')->on('tblServ');
 		});
 
-		Schema::table('tblPackToServe', function($table){
+		Schema::table('tblPackToServ', function($table){
 			$table->foreign('strPTSPack')->references('strPackId')->on('tblPackage');
 			$table->foreign('strPTSServ')->references('strServId')->on('tblServ');
 		});
@@ -109,7 +109,7 @@ class ForeignKeys extends Migration {
 			$table->dropColumn('strSPServ');
 		});	
 
-		Schema::table('tblPackToServe', function ($table) {
+		Schema::table('tblPackToServ', function ($table) {
 			$table->dropColumn('strPTSPack');
 			$table->dropColumn('strPTSServ');
 		});	

@@ -21,6 +21,14 @@ class tblServPrice extends Seeder{
 				'dtmServPrice' => '2016-07-05 00:00:00',
 				'strSPServ' => 'SERV0002',//fk
 				'status'=>'1'
+			),
+			array(
+
+				'strServPriceId' => 'SP0003',
+				'dblServPrice' => '600.00',
+				'dtmServPrice' => '2016-07-07 00:00:00',
+				'strSPServ' => 'SERV0002',//fk
+				'status'=>'1'
 			)
 		);
 	

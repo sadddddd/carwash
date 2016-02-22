@@ -20,7 +20,7 @@ class tblPackToServ extends Seeder{
 			),
 			array(
 				'strPTSId' => 'PTS0003',
-				'strPTSServ' => 'SERV0003', //fk
+				'strPTSServ' => 'SERV0001', //fk
 				'strPTSPack' => 'PACK0003',
 				'status'=>'1'
 			)

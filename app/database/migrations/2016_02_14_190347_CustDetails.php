@@ -17,10 +17,7 @@ class CustDetails extends Migration {
 			$table->string('strCustLName');
 			$table->string('strCustFName');
 			$table->string('strCustMInit');
-			$table->string('strCustStAdd');
-			$table->string('strCustCityAdd');
-			$table->string('strCustStateAdd');
-			$table->string('strCustEmail');
+			$table->string('strCustAdd');
 			$table->string('strCustContNo');
 			$table->string('strCustLiscNo');
 			$table->boolean('status')->default('1');

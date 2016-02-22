@@ -11,7 +11,7 @@ class tblProductSeeder extends Seeder{
 				'strProdName' => 'TBK Shampoo',
 				'strProdDesc' => 'for car cleaning purposes',
 				'intProdReOLvl' => '10',
-				'strPCategory' => 'SERVCAT0003',
+				'strPCategory' => 'CAT0001',
 				'strPSupp' => 'SUPP0001',
 				'strPUOM' => 'UOM0001',
 				'status'=>'1'
@@ -21,7 +21,7 @@ class tblProductSeeder extends Seeder{
 				'strProdName' => 'TBK Soap',
 				'strProdDesc' => 'for car cleaning purposes',
 				'intProdReOLvl' => '10',
-				'strPCategory' => 'SERVCAT0003',
+				'strPCategory' => 'CAT0001',
 				'strPSupp' => 'SUPP0001',
 				'strPUOM' => 'UOM0003',
 				'status'=>'1'

@@ -8,23 +8,25 @@ class tblServCatSeeder extends Seeder{
 		$prodsercat = array (
 			array(
 
-				'strProdSerCatId' => 'SERVCAT0001',
-				'strProdSerName' => 'Carwash',
-				'strProdSerDesc' => 'Carwash',
+				'strCategId' => 'CAT0001',
+				'strCategName' => 'Carwash',
+				'strCategDesc' => 'Carwash',
+				'strCategType' => '1',
 				'status'=>'1'
 			),
 			array(
 
-				'strProdSerCatId' => 'SERVCAT0002',
-				'strProdSerName' => 'Autodetail',
-				'strProdSerDesc' => 'Autodetail',
+				'strCategId' => 'CAT0002',
+				'strCategName' => 'Autodetailing',
+				'strCategDesc' => '',
+				'strCategType' => '1',
 				'status'=>'1'
 			),
 			array(
-
-				'strProdSerCatId' => 'SERVCAT0003',
-				'strProdSerName' => 'Shampoo',
-				'strProdSerDesc' => 'Shampoo',
+				'strCategId' => 'CAT0003',
+				'strCategName' => 'Shampoo',
+				'strCategDesc' => '',
+				'strCategType' => '2',
 				'status'=>'1'
 			)
 		);

@@ -5,13 +5,13 @@ class ProductServiceController extends BaseController {
 	public function maintenanceProSerCat()
 	{
 		$ids = DB::table('tblProdSerCat')
-			->select('strProdSerCatId')
+			->select('strCategId')
 			->orderBy('created_at', 'desc')
-			->orderBy('strProdSerCatId', 'desc')
+			->orderBy('strCategId', 'desc')
 			->take(1)
 			->get();
 
-		$ID = $ids["0"]->strProdSerCatId;
+		$ID = $ids["0"]->strCategId;
 		$newID = $this->smart($ID);
 
 		$cat = MProdServCat::all();
@@ -21,7 +21,7 @@ class ProductServiceController extends BaseController {
 
 	public function deleteCategory()
 	{
-		$id=Input::get('prod_ser_cat_id_del');
+		$id=Input::get('categ_id_del');
 		$cat = MProdServCat::find($id);
 		//dd($cat);
 		$cat->status='0';
@@ -32,12 +32,13 @@ class ProductServiceController extends BaseController {
 
 	public function addCategory()
 	{
-		$id = Input::get('prod_ser_cat_id_add');
+		$id = Input::get('categ_id_add');
 		//dd($id);
 		$cat = MProdServCat::create(array(
-			'strProdSerCatId' => Input::get('prod_ser_cat_id_add'),
-			'strProdSerName' => Input::get('prod_ser_cat_name_add'),
-			'strProdSerDesc' => Input::get('prod_ser_cat_desc_add'),
+			'strCategId' => Input::get('categ_id_add'),
+			'strCategType' => Input::get('categ_type_add'),
+			'strCategName' => Input::get('categ_name_add'),
+			'strCategDesc' => Input::get('categ_desc_add'),
 			'status' => '1'
 		));
 		$cat->save();
@@ -47,10 +48,11 @@ class ProductServiceController extends BaseController {
 
 	public function updateCategory()
 	{
-		$id = Input::get('prod_ser_cat_id_edit');
+		$id = Input::get('categ_id_edit');
 		$cat = MProdServCat::find($id);
-		$cat->strProdSerName = Input::get('prod_ser_cat_name_edit');
-		$cat->strProdSerDesc = Input::get('prod_ser_cat_desc_edit');
+		$cat->strCategName = Input::get('categ_name_edit');
+		$cat->strCategDesc = Input::get('categ_desc_edit');
+		$cat->strCategType = Input::get('categ_type_edit');
 		$cat->save();
 
 		return Redirect::to('/Categories');
@@ -77,9 +79,23 @@ class ProductServiceController extends BaseController {
 				->join('tblUOM',  'tblProduct.strPUOM','=','tblUOM.strUOMId')
 				->select('tblServProd.*', 'tblServ.strServName', 'tblProduct.strProdName', 'tblUOM.strUOMDesc')
 				->get();
-
+		
 		return View::make('productPerService')->with('newID',$newID)->with('servid',$serviceId)->with('product',$products)->with('pps',$pps);
 	}
+
+	public function prodUOM()
+	{
+		$pps = DB::table('tblServProd')
+				->join('tblServ', 'tblServProd.strSPServ','=','tblServ.strServId')
+				->join('tblProduct', 'tblServProd.strSPProd','=','tblProduct.strProdId')
+				->join('tblUOM',  'tblProduct.strPUOM','=','tblUOM.strUOMId')
+				->select('tblServProd.*', 'tblServ.strServName', 'tblProduct.strProdName', 'tblUOM.strUOMDesc')
+				->get();
+				
+		return Response::json($pps);
+	}
+
+
 
 	public function productPerServiceDel()
 	{
