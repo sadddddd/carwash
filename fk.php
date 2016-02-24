@@ -22,6 +22,26 @@ class ForeignKeys extends Migration {
 			$table->foreign('strCCModel')->references('strCarModelId')->on('tblCarModel');
 			$table->foreign('strCCCust')->references('strCustId')->on('tblCustomer');
 		});
+
+		Schema::table('tblProduct', function($table){
+			$table->foreign('strPCategory')->references('strProdSerCatId')->on('tblProdSerCat');
+			$table->foreign('strPSupp')->references('strSuppId')->on('tblSupplier');
+			$table->foreign('strPUOM')->references('strUOMId')->on('tblUOM');
+		});
+
+		Schema::table('tblServ', function($table){
+			$table->foreign('strSServCat')->references('strProdSerCatId')->on('tblProdSerCat');
+			$table->foreign('strSCarType')->references('strCarTypeId')->on('tblCarType');
+		});
+
+		Schema::table('tblServProd', function($table){
+			$table->foreign('strSPServ')->references('strServId')->on('tblServ');
+			$table->foreign('strSPProd')->references('strProdId')->on('tblProduct');
+		});
+
+		Schema::table('tblServPrice', function($table){
+			$table->foreign('strSPServ')->references('strServId')->on('tblServ');
+		});
 	}
 
 	/**
@@ -40,11 +60,25 @@ class ForeignKeys extends Migration {
 			$table->dropColumn('strCCModel');
 			$table->dropColumn('strCCCust');
 		});	
+
+		Schema::table('tblProduct', function ($table) {
+			$table->dropColumn('strPCategory');
+			$table->dropColumn('strPSupp');
+			$table->dropColumn('strPUOM');
+		});
+
+		Schema::table('tblServ', function ($table) {
+			$table->dropColumn('strSServCat');
+			$table->dropColumn('strSCarType');
+		});
+
+		Schema::table('tblServProd', function ($table) {
+			$table->dropColumn('strSPServ');
+			$table->dropColumn('strSPProd');
+		});	
+
+		Schema::table('tblServPrice', function ($table) {
+			$table->dropColumn('strSPServ');
+		});	
 	}
-
-	
-
 }
-
-
-

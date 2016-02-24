@@ -2,6 +2,8 @@
 
 @section('content')
 <center>
+	<br>
+	<br>
 <div class="row-lg-2" style="alignment:center">
 
                       <div class="container" style="background-color:#cc0000">

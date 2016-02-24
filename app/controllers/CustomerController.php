@@ -4,6 +4,7 @@ class CustomerController extends BaseController {
 
 	public function maintenanceCustomer()
 	{
+		$ctr=0;
 		$ids = DB::table('tblCustomer')
 			->select('strCustId')
 			->orderBy('created_at', 'desc')
@@ -15,16 +16,21 @@ class CustomerController extends BaseController {
 
 		$cust = MCustomer::all();
 		$carmodel = MCarModel::all();
-		//$custcar = MCustCar::all();
-		$custcar = DB::table('tblCustCar')
-				->join('tblCustomer', 'tblCustCar.strCCCust','=','tblCustomer.strCustId')
-				->join('tblCarModel', 'tblCustCar.strCCModel','=','tblCarModel.strCarModelId')
-				->join('tblCarType', 'tblCarModel.strCMType', '=', 'tblCarType.strCarTypeId')
-				->join('tblCarBrand', 'tblCarModel.strCMBrand', '=', 'tblCarBrand.strCarBrandId')
-				->select('tblCustCar.*', 'tblCarModel.strCarModelDesc', 'tblCustomer.strCustId', 'tblCarType.strCarTypeName','tblCarBrand.strCarBrandDesc')
-				->get();
 
-		return View::make('customerMaintenance')->with('customers', $cust)->with('custcars', $custcar)->with('carmodel', $carmodel)->with('newID', $newID);
+		return View::make('customerMaintenance')->with('customers', $cust)->with('carmodel', $carmodel)->with('newID', $newID)->with('ctr', $ctr);
+	}
+	
+	public function reactivateCustomer()
+	{
+
+		$id = Input::get('customer_id_del');
+		
+		$modelid=$id;
+		$model = MCustomer::find($modelid);
+		$model->status='1';
+		$model->save();
+		
+		return Redirect::to('/CustomerDetails');
 	}
 
 	public function updateCustomer()
@@ -35,9 +41,8 @@ class CustomerController extends BaseController {
 		$customer->strCustFName = Input::get('cus_Fname_edit');
 		$customer->strCustMInit = Input::get('cus_Mname_edit');
 		$customer->strCustLName = Input::get('cus_Lname_edit');
-		$customer->strCustStAdd = Input::get('cus_St_edit');
-		$customer->strCustCityAdd = Input::get('cus_City_edit');
-		$customer->strCustStateAdd = Input::get('cus_State_edit');
+		$customer->strCustAdd = Input::get('cus_Add_edit');
+	
 		$customer->strCustContNo = Input::get('custCont_edit');
 		$customer->strCustLiscNo = Input::get('custLisc_edit');
 		$customer->save();
@@ -52,16 +57,23 @@ class CustomerController extends BaseController {
 			'strCustLName' => Input::get('cus_Lname_add'),
 			'strCustFName' => Input::get('cus_Fname_add'),
 			'strCustMInit' => Input::get('cus_Mname_add'),
-			'strCustStAdd' => Input::get('cus_St_add'),
-			'strCustCityAdd' => Input::get('cus_City_add'),
-			'strCustStateAdd' => Input::get('cus_State_add'),
+			'strCustAdd' => Input::get('cus_Add_add'),
 			'strCustContNo' => Input::get('custCont_add'),
 			'strCustLiscNo' => Input::get('custLisc_add'),
 			'status' => '1'
 		));
 
 		$customer->save();
+
+		$newcar = MCustCar::create(array(
+			'strCCCust' => Input::get('custid_add'),
+			'strCCModel' => Input::get('carmodel_add'),
+			'strCCPlateNo' => Input::get('carplate_add'),
+			'status' => '1'
+		));
+		$newcar->save();
 		return Redirect::to('/CustomerDetails');
+	
 	}
 
 	public function deleteCustomer()

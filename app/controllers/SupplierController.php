@@ -4,6 +4,7 @@ class SupplierController extends BaseController {
 
 	public function maintenanceSupplier()
 	{
+		$ctr=0;
 		$ids = DB::table('tblSupplier')
 			->select('strSuppId')
 			->orderBy('created_at', 'desc')
@@ -15,7 +16,19 @@ class SupplierController extends BaseController {
 		$newID = $this->smart($ID);
 
 		$supplier = MSupplier::all();
-		return View::make('supplierMaintenance')->with('suppliers',$supplier)->with('newID', $newID);
+		return View::make('supplierMaintenance')->with('suppliers',$supplier)->with('newID', $newID)->with('ctr', $ctr);
+	}
+
+public function reactivateSupplier()
+	{
+		$id = Input::get('supplier_id_del');
+
+		$modelid=$id;
+		$model = MSupplier::find($modelid);
+		$model->status='1';
+		$model->save();
+		
+		return Redirect::to('/SupplierDetails');
 	}
 
 	public function addSupplier()
@@ -25,9 +38,7 @@ class SupplierController extends BaseController {
 		$supplier = MSupplier::create(array(
 			'strSuppId' => Input::get('supplier_id_add'),
 			'strSuppName' => Input::get('supplier_name_add'),
-			'strSuppStAdd' => Input::get('supplier_st_add'),
-			'strSuppCityAdd' => Input::get('supplier_brgy_add'),
-			'strSuppStateAdd' => Input::get('supplier_city_add'),
+			'strSuppAdd' => Input::get('supplier_Add_add'),
 			'strSSCont' => Input::get('supplier_contactNo_add'),
 			'strSuppEAdd' => Input::get('supplier_emailAd_add'),
 			'strSSContFName' => Input::get('supplier_fname_add'),
@@ -54,9 +65,7 @@ class SupplierController extends BaseController {
 		$id = Input::get('supplier_id_edit');
 		$supplier = MSupplier::find($id);
 		$supplier->strSuppName = Input::get('supplier_name_edit');
-		$supplier->strSuppStAdd = Input::get('supplier_st_edit');
-		$supplier->strSuppCityAdd = Input::get('supplier_brgy_edit');
-		$supplier->strSuppStateAdd = Input::get('supplier_city_edit');
+		$supplier->strSuppAdd = Input::get('supplier_Add_edit');
 		$supplier->strSSCont = Input::get('supplier_contactNo_edit');
 		$supplier->strSuppEAdd = Input::get('supplier_emailAd_edit');
 		$supplier->strSSContFName = Input::get('supplier_fname_edit');

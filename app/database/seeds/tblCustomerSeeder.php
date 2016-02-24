@@ -11,9 +11,8 @@ class tblCustomerSeeder extends Seeder{
 				'strCustLName' => 'Dela Cruz',
 				'strCustFName' => 'Juan',
 				'strCustMInit' => 'E',
-				'strCustStAdd' => '#13 Martinez St.',
-				'strCustCityAdd' => 'Taguig City',
-				'strCustStateAdd' => '',
+				'strCustAdd' => '#13 Martinez St. Bulacan',
+				
 				'strCustContNo' => '09123456788',
 				'strCustLiscNo' => '874549AADSFS',
 				'status'=>'1'
@@ -24,9 +23,8 @@ class tblCustomerSeeder extends Seeder{
 				'strCustLName' => 'Ramirez',
 				'strCustFName' => 'Sylvester',
 				'strCustMInit' => 'K',
-				'strCustStAdd' => '#4 Quirino St.',
-				'strCustCityAdd' => 'Quezon City',
-				'strCustStateAdd' => '',
+				'strCustAdd' => '#4 Quirino St. Quezon City',
+				
 				'strCustContNo' => '09356251633',
 				'strCustLiscNo' => '874549AADSFS',
 				'status'=>'1'
@@ -37,9 +35,7 @@ class tblCustomerSeeder extends Seeder{
 				'strCustLName' => 'Maneses',
 				'strCustFName' => 'Enoc',
 				'strCustMInit' => 'M',
-				'strCustStAdd' => '#19 Joliu St.',
-				'strCustCityAdd' => 'Manila City',
-				'strCustStateAdd' => '',
+				'strCustAdd' => '#19 Joliu St. Malabon City',
 				'strCustContNo' => '09213764733',
 				'strCustLiscNo' => '874549AADSFS',
 				'status'=>'1'

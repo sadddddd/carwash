@@ -13,7 +13,7 @@ class CustCar extends Migration {
 	public function up()
 	{
 		Schema::create('tblCustCar', function($table){
-			$table->string('strCCCust');
+			$table->string('strCCCust');//fk
 			$table->string('strCCModel');//fk
 			$table->string('strCCPlateNo')->unique();
 			$table->boolean('status')->default('1');

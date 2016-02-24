@@ -4,6 +4,7 @@ class CarController extends BaseController {
 
 	public function maintenanceCartype()
 	{
+		$ctr=0;
 		$ids = DB::table('tblCarType')
 			->select('strCarTypeId')
 			->orderBy('created_at', 'desc')
@@ -15,7 +16,52 @@ class CarController extends BaseController {
 		$newID = $this->smart($ID);
 
 		$types = MCarType::all();
-		return View::make('cartypeMaintenance')->with('carTypes', $types)->with('newID', $newID);
+		return View::make('cartypeMaintenance')->with('carTypes', $types)->with('newID', $newID)->with('ctr',$ctr);
+	}
+
+	public function typeValidate(){
+		
+		$id=Input::get('car_type_id_add');
+		$mname=Input::get('car_type_name_add');
+		$desc = Input::get('car_type_desc_add');
+		
+
+		$model = DB::table('tblCarType')
+				->where('strCarTypeName',$mname)
+				->pluck('strCarTypeId');
+	
+		if($model != null){
+			$this->activateCartype($model);
+			return Redirect::to('/CarType');	
+		}else{
+			$this->addCartype($id,$mname,$desc);
+			return Redirect::to('/CarType');	
+
+		
+		}
+	}
+
+		public function activateCartype($id)
+	{
+
+		$modelid=$id;
+		$model = MCarType::find($modelid);
+		$model->status='1';
+		$model->save();
+		
+		return Redirect::to('/CarType');
+	}
+
+
+	public function reactivateCartype()
+	{
+		$id = Input::get('car_type_id_del');
+		$modelid=$id;
+		$model = MCarType::find($modelid);
+		$model->status='1';
+		$model->save();
+		
+		return Redirect::to('/CarType');
 	}
 
 	public function updateCartype() 
@@ -41,14 +87,16 @@ class CarController extends BaseController {
 	return Redirect::to('/CarType');
 	}
 
-	public function addCartype() 
+	public function addCartype($id,$mname,$desc) 
 	{
+
+
 		$id = Input::get('car_type_id_add');
 		//dd($id);
 		$type = MCarType::create(array(
-			'strCarTypeId' => Input::get('car_type_id_add'),
-			'strCarTypeName' => Input::get('car_type_name_add'),
-			'strCarTypeDesc' => Input::get('car_type_desc_add'),
+			'strCarTypeId' => $id,
+			'strCarTypeName' => $mname,
+			'strCarTypeDesc' => $desc,
 			'status' => '1'
 		));
 		$type->save();
@@ -57,6 +105,7 @@ class CarController extends BaseController {
 
 	public function maintenanceCarbrand()
 	{
+		$ctr=0;
 		$ids = DB::table('tblCarBrand')
 			->select('strCarBrandId')
 			->orderBy('created_at', 'desc')
@@ -68,7 +117,51 @@ class CarController extends BaseController {
 
 		$brands = MCarBrand::all();
 
-		return View::make('carbrandMaintenance')->with('carbrands', $brands)->with('newID', $newID);
+		return View::make('carbrandMaintenance')->with('carbrands', $brands)->with('newID', $newID)->with('ctr',$ctr);
+	}
+
+public function brandValidate(){
+		
+		$id=Input::get('car_brand_id_add');
+		$mname=Input::get('car_brand_name_add');
+		
+
+		$model = DB::table('tblCarBrand')
+				->where('strCarBrandDesc',$mname)
+				->pluck('strCarBrandId');
+	
+		if($model != null){
+			$this->activateCarbrand($model);
+			return Redirect::to('/CarBrand');	
+		}else{
+			$this->addCarbrand($id,$mname);
+			return Redirect::to('/CarBrand');	
+
+		
+		}
+	}
+
+		public function activateCarbrand($id)
+	{
+
+		$modelid=$id;
+		$model = MCarBrand::find($modelid);
+		$model->status='1';
+		$model->save();
+		
+		return Redirect::to('/CarBrand');
+	}
+
+
+	public function reactivateCarbrand()
+	{
+		$id = Input::get('car_brand_id_del');
+		$modelid=$id;
+		$model = MCarBrand::find($modelid);
+		$model->status='1';
+		$model->save();
+		
+		return Redirect::to('/CarBrand');
 	}
 
 	public function updateCarbrand() 
@@ -108,6 +201,8 @@ class CarController extends BaseController {
 
 	public function maintenanceCarmodel()
 	{
+
+		$ctr=0;
 		$ids = DB::table('tblCarModel')
 			->select('strCarModelId')
 			->orderBy('created_at', 'desc')
@@ -118,6 +213,8 @@ class CarController extends BaseController {
 		$ID = $ids["0"]->strCarModelId;
 		$newID = $this->smart($ID);
 
+		
+		
 		$models = DB::table('tblCarModel')
 			->join('tblCarBrand', 'tblCarModel.strCMBrand','=','tblCarBrand.strCarBrandId')
 			->join('tblCarType', 'tblCarModel.strCMType','=','tblCarType.strCarTypeId')
@@ -129,18 +226,43 @@ class CarController extends BaseController {
 		//$types = MCarType::lists('strCarTypeId', 'strCarTypeName');
 		//$brands = MCarBrand::lists('strCarBrandId', 'strCarBrandDesc');
 		return View::make('carmodelMaintenance')->with('carModels', $models)->with('carTypes', $types)->with('carBrands', $brands)
-		->with('newID', $newID);
+		->with('newID', $newID)->with('ctr',$ctr);
 	}
 
-	public function addCarmodel()
+	public function modelValidate(){
+		$check = true;
+		$id=Input::get('car_model_id_add');
+		$mname=Input::get('car_model_name_add');
+		$brand = Input::get('carbrand_add');
+		$type = Input::get('cartype_add');
+
+		$model = DB::table('tblCarModel')
+				->where('strCarModelDesc',$mname)
+				->pluck('strCarModelId');
+	
+		if($model != null){
+			$this->activateCarmodel($model);
+			return Redirect::to('/CarModel');	
+		}else{
+			$this->addCarmodel($id,$mname,$brand,$type);
+			return Redirect::to('/CarModel');	
+
+		
+		}
+		
+
+		
+}
+	public function addCarmodel($id,$mname,$brand,$type)
 	{
-		$id = Input::get('car_model_id_add');
+
+		//$id = Input::get('car_model_id_add');
 		//dd(Input::get('carbrand_add'));
 		$model= MCarModel::create(array(
-			'strCarModelId'=> Input::get('car_model_id_add'),
-			'strCarModelDesc'=> Input::get('car_model_name_add'),
-			'strCMBrand'=> Input::get('carbrand_add'),
-			'strCMType'=> Input::get('cartype_add')
+			'strCarModelId'=> $id,
+			'strCarModelDesc'=> $mname,
+			'strCMBrand'=> $brand,
+			'strCMType'=> $type
 		));
 
 		$model->save();
@@ -157,6 +279,28 @@ class CarController extends BaseController {
 		return Redirect::to('/CarModel');
 	}
 
+	public function activateCarmodel($id)
+	{
+
+		$modelid=$id;
+		$model = MCarModel::find($modelid);
+		$model->status='1';
+		$model->save();
+		
+		return Redirect::to('/CarModel');
+	}
+
+
+	public function reactivateCarmodel()
+	{
+		$id = Input::get('car_model_id_del');
+		$modelid=$id;
+		$model = MCarModel::find($modelid);
+		$model->status='1';
+		$model->save();
+		
+		return Redirect::to('/CarModel');
+	}
 	public function updateCarmodel()
 	{
 		$id = Input::get('car_model_id_edit');

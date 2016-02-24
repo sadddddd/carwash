@@ -18,6 +18,15 @@ class DatabaseSeeder extends Seeder {
 		$this->call('tblCustomerSeeder');
 		$this->call('tblCustCarSeeder');
 		$this->call('tblSupplierSeeder');
+		$this->call('tblServCatSeeder');
+		$this->call('tblUOMSeeder');
+		$this->call('tblProductSeeder');
+		$this->call('tblServSeeder');
+		$this->call('tblServProdSeeder');
+		$this->call('tblServPrice');
+		$this->call('tblPackageSeeder');
+		$this->call('tblPackPrice');
+		$this->call('tblPackToServ');
 	}
 
 }

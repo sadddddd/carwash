@@ -2,20 +2,20 @@
 
 class CustCarController extends BaseController {
 
-	public function carDetails()
+	public function carDetails() 
 	{
 		$custid = Input::get('customerId');
-
+		$label='';
 		$custcar = DB::table('tblCustCar')
 				->join('tblCustomer', 'tblCustCar.strCCCust','=','tblCustomer.strCustId')
 				->join('tblCarModel', 'tblCustCar.strCCModel','=','tblCarModel.strCarModelId')
 				->join('tblCarType', 'tblCarModel.strCMType', '=', 'tblCarType.strCarTypeId')
 				->join('tblCarBrand', 'tblCarModel.strCMBrand', '=', 'tblCarBrand.strCarBrandId')
-				->select('tblCustCar.*', 'tblCarModel.strCarModelDesc', 'tblCustomer.strCustId', 'tblCarType.strCarTypeName','tblCarBrand.strCarBrandDesc')
+				->select('tblCustCar.*', 'tblCarModel.strCarModelDesc', 'tblCustomer.strCustId', 'tblCarType.strCarTypeName','tblCarBrand.strCarBrandDesc','tblCustomer.strCustFName')
 				->get();
 		$carmodel = MCarModel::all();
 
-		return View::make('custcarMaintenance')->with('custcars', $custcar)->with('custid', $custid)->with('carmodels', $carmodel);
+		return View::make('custcarMaintenance')->with('custcars', $custcar)->with('custid', $custid)->with('carmodels', $carmodel)->with('label',$label);
 	}
 
 	public function carAdd()
@@ -58,5 +58,7 @@ class CustCarController extends BaseController {
 
 		return Redirect::to('/CustomerDetails');
 	}
+
+
 
 }

@@ -15,9 +15,7 @@ class Supplier extends Migration {
 		Schema::create('tblSupplier', function($table){
 			$table->string('strSuppId')->primary();
 			$table->string('strSuppName');
-			$table->string('strSuppStAdd');
-			$table->string('strSuppCityAdd');
-			$table->string('strSuppStateAdd');
+			$table->string('strSuppAdd');
 			$table->string('strSuppEAdd');
 			$table->String('strSSContLName');
 			$table->String('strSSContFName');

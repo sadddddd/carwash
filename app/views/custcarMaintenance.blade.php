@@ -2,11 +2,25 @@
 
 @section('contentMaintenance')
 
-	<form id="Customer_Cars" >  			
-  		<div class="panel" style="border:0px;">
+	<form id="Customer_Cars" >
+
+
+<div class="navbar navbar-inverse navbar-fixed-top" style="background-color:transparent; border:0px" >
+				    <div class="container" >
+				        <div class="collapse navbar-collapse" >
+				            <ul class="nav navbar-nav" >
+				            <!-- <button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" data-toggle="modal" data-target="#modalAdd" style="position:absolute; left:940px;"><i class="glyphicon glyphicon-plus"></i> </button> </td> -->
+            				<li>	<a data-toggle="modal" data-parent="#accordion" class="btn btn-danger btn-circle btn-lg " href="#modalAdd" style="position:absolute; margin-left:1152px;margin-top:70px; border:0px"><span data-toggle="tooltip" title="Add" data-placement="bottom" ><i class="glyphicon glyphicon-plus"></i><span></a></li>
+  							<li>	<a data-toggle="collapse" id="inactive" data-parent="#accordion" title="inactive" class="btn btn-danger btn-circle btn-lg " href="#Inactivediv" style="position:absolute; margin-left:1152px;margin-top:125px; border:0px "><span data-toggle="tooltip" title="Open Inactive" data-placement="bottom"><i class="glyphicon glyphicon-folder-open"></i><span></a></li>
+ 				            </ul>
+				        </div>
+				    </div>
+				</div>  			
+  		<div class="panel" style="border:0px; width:1010px; background-color:white">
   			<div class="panel-heading">
-  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" style="position:absolute; left:96%;" data-toggle="modal" data-target="#modalAdd"><i class="glyphicon-plus"></i> </button>     
   				
+            <!-- Modal dummy -->
+	
   				<!-- Modal dummy -->
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
@@ -42,9 +56,9 @@
 
 									    <!-- Modal content-->
 									    <div class="modal-content">
-									      <div class="modal-header">
+									      <div class="modal-header" style="background-color:black">
 									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title" style="color:black">CAR ADD</h4>
+									        <h4 class="modal-title" style="color:white"><center>ADD CAR</center></h4>
 									      </div>
 									      <div class="modal-body">
 									      	<p>
@@ -53,11 +67,11 @@
 												    <input value="{{ $custid }}" id="custid_caradd" name="custid_caradd"type="text" hidden>
 													
 													<div class="form-group">
-														<label>Plate Number</label>
+														<label>* Plate Number</label>
 													    <input class="form-control" type="text" name="carplate_add" id="carplate_add" required>
 												    </div>
 
-												    <label>Pick the car's model:</label>
+												    <label>* Pick the car's model:</label>
 												    <div class="input-field">
 												      <select class="form-control" name="carmodel_add" id="carmodel_add" required>
 												        <option selected disabled value="Pick car model">Pick car model</option>
@@ -71,7 +85,7 @@
 												</div>
 									      	</p>
 										      <div class="modal-footer">
-										        <button type="submit" class="btn btn-info">Save</button>
+										        <button type="submit" class="btn btn-info">Add</button>
 										        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 										      </div>
 									  		</form>
@@ -81,11 +95,17 @@
                      <br>
             </div>
        
-  				<h2 style="color:white">LIST OF CARS</H2>		
+       			@foreach($custcars as $cc)
+                    @if(($cc->strCCCust == $custid))
+                    <label hidden>{{$label = $cc->strCustFName}}</label>
+  					@endif	
+  				@endforeach
+
+  				<h2 style="color:gray">{{$label}}'s Car(s)</H2>		
   		
   			
-  			<div class="table-bordered table-responsive" style="border:0px;">
-  				<table id="table" class="table table-bordered table-responsive" style="color:white">
+  			<div class="table-bordered table-responsive" style="border:0px; ">
+  				<table id="table" class="table table-bordered table-responsive" style="color:black">
 					<thead>
 						<tr>
 							
@@ -106,9 +126,9 @@
 
 									    <!-- Modal content-->
 									    <div class="modal-content">
-									      <div class="modal-header">
+									      <div class="modal-header"  style="color:white; background-color:black">
 									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title" style="color:black">CAR EDIT</h4>
+									        <h4 class="modal-title"><center>CAR EDIT</center></h4>
 									      </div>
 									      <div class="modal-body">
 									      	<p>
@@ -121,7 +141,7 @@
 													    <input value="{{ $custcar->strCCPlateNo }}" id="carplate_edit" name="carplate_edit" class="form-control" type="text" required>
 												    </div>
 
-												    <label>Pick the car's brand:</label>
+												    <label>Pick the car's model:</label>
 												    <div class="input-field">
 												      <select class="form-control" name="carmodel_edit" id="carmodel_edit" required>
 												        <option selected value="{{$custcar->strCCModel}}">{{$custcar->strCarModelDesc}}</option>
@@ -149,8 +169,8 @@
 								<td>{{$custcar->strCarBrandDesc}}</td>
 								<td>{{$custcar->strCarTypeName}}</td>
 								<td>
-									<button id="btn_caredit" type="button" class="btn btn-info" data-toggle="modal" href="#carEdit{{$custcar->strCCPlateNo}}" data-dismiss="modal">Edit</button>
-									<button id="btn_cardelete" type="button" class="btn btn-info" data-toggle="modal" href="#carDelete{{$custcar->strCCPlateNo}}" data-dismiss="modal">Delete</button>
+									<button id="btn_caredit" type="button" class="btn btn-danger" data-toggle="modal" href="#carEdit{{$custcar->strCCPlateNo}}" data-dismiss="modal" title="Edit"><i class="glyphicon glyphicon-pencil"></i></button>
+									<button id="btn_cardelete" type="button" class="btn btn-danger" data-toggle="modal" href="#carDelete{{$custcar->strCCPlateNo}}" data-dismiss="modal" title="Delete"><i class="glyphicon glyphicon-remove"></i></button>
 
 								</td>	
 								
@@ -160,30 +180,27 @@
 
 									    <!-- Modal content-->
 									    <div class="modal-content">
-									      <div class="modal-header">
-									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h4 class="modal-title" style="color:black">CAR DELETE</h4>
-									      </div>
-									      <div class="modal-body">
+									      
+									      <div class="modal-body"  style="background-color:black; color:white">
 									      	<p>
 									      	<form action="/carDelete" method="post">
-										        <div class="form-group" style="color:black">
+										      
 												    <input value="{{ $custid }}" id="custid_cardelete" name="custid_cardelete" type="text" hidden>
 													<div class="form-group">
-														<label>Plate Number</label>
-													    <input value="{{ $custcar->strCCPlateNo }}" id="carplate_delete" name="carplate_delete" class="form-control" type="text" readonly>
+														<label>Are you sure you want to delete?</label><br>
+													    <input value="{{ $custcar->strCCPlateNo }}" id="carplate_delete" name="carplate_delete" type="text" hidden>
+												   
+														<label>{{$custcar->strCarModelDesc}}</label><br>
+														<label>Plate no.: {{$custcar->strCCPlateNo}}</label>
+													    <input value="{{$custcar->strCCPlateNo}}" id="carmodel_delete" name="carmodel_delete" type="text" hidden>
 												    </div>
-												    <div class="form-group">
-														<label>Car Model</label>
-													    <input value="{{$custcar->strCarModelDesc}}" id="carmodel_delete" name="carmodel_delete" class="form-control" type="text" readonly>
-												    </div>
-												</div>
-									      	</p>
-										      <div class="modal-footer">
-										        <button type="submit" class="btn btn-info">Save</button>
-										        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-										      </div>
-									  		</form>
+											</p>
+										    
+									  		<div class="container" style="margin-left:430px">
+										        <button type="submit" class="btn btn-danger">Yes</button>
+										        <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+										    </div>
+										    </form>
 									    </div>
 									  </div>
 									</div><!-- Car Delete -->
@@ -226,10 +243,6 @@
 					</tbody>
 				</table>
 			</div>
-
-  			<div class="panel-footer" style="border:0px;">
-				<label style="color:black"> No. of records:  </label>
-  			</div>
   		</div>
   									
     </form>

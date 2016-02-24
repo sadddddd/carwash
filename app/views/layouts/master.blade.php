@@ -15,30 +15,48 @@
 		{{ HTML::style('css/metisMenu.min.css') }}
 		{{ HTML::style('css/sb-admin-2.css') }}
 		{{ HTML::style('css/font-awesome.min.css') }}
+		{{ HTML::style('DataTables-1.10.11/media/css/jquery.dataTables.min.css') }}
+		{{ HTML::style('DataTables-1.10.11/media/css/dataTables.bootstrap.min.css') }}
+ <style>
+
+ #content_title{
+	font-family: Trajan Pro;
+	font-size: 50px;
+	color:#87CEEB;
+	}
+	.drop_shadow{
+	-webkit-box-shadow: 0 0 15px 12px rgba(0, 0, 0, .5);
+        box-shadow: 0 0 4px 4px white
+	}
+	.drop_navbar{
+	-webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
+        box-shadow: 0 0 7px 5px #000000;
+	}
+	
+ </style>
 		<!--STYLES END -->
-<nav role="navigation" class="navbar navbar-inner navbar-fixed-top">
+<nav role="navigation" class="navbar navbar-inner navbar-fixed-top" style="background-image:url({{ URL::asset('images/bg.jpg'); }}); " >
   
+  	
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
+        <div class="navbar-header" >
             <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div class="navbar-brand">TBK Carwash</div>
+            <div class="navbar-brand"><font size=10px>Carwash Management System</font></div>
         </div>
         <!-- Collection of nav links and other content for toggling -->
-        <div id="navbarCollapse" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li ><a href="/Home">Home</a></li>
+        <div id="navbarCollapse" class="collapse navbar-collapse" style="margin-right:40px">
+         
+			<ul class="nav navbar-nav navbar-right">
+             
                 <li class="active"><a href="/Maintenance">Maintenance</a></li>
                 <li><a href="#">Scheduling</a></li>
 				<li><a href="#">Transaction</a></li>
 				<li><a href="#">Reports</a></li>
-            </ul>
-			<ul class="nav navbar-top-links navbar-right">
-              
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         Account
@@ -57,16 +75,22 @@
                 </li>
                 <!-- /.dropdown -->
             </ul>
-        </div>
-
+      
+		</div>
+  			@yield('sidebar')
+  	
 </nav> -->
 	</head>
 
-	<body style = "
-	background-color:#000000;
-	background-repeat:no-repeat;
-	background-attachment:fixed;
 
+	<body style = "
+	background-size:cover;
+
+
+	background-color:#262626;
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-attachment:fixed;
 	overflow-x: hidden;
 	overflow-y: scroll;">
 		<main >
@@ -79,8 +103,78 @@
 		{{ HTML::script('js/jquery.dataTables.min.js') }}
 		{{ HTML::script('js/dataTables.bootstrap.min.js') }}
 		{{ HTML::script('js/metisMenu.min.js') }}
+		{{ HTML::script('js/Validation.min.js') }}
 		{{ HTML::script('js/sb-admin-2.js') }}
 		{{ HTML::script('js/app.js') }}
+		{{ HTML::script('DataTables-1.10.11/media/js/jquery.dataTables.js') }}
+		{{ HTML::script('DataTables-1.10.11/media/js/dataTables.bootstrap.js') }}
+		
+		<script type="text/javascript"> 
+			$(document).ready(function(){
+			    $('#dataTables-example').DataTable({
+			   		"lengthMenu":[10],
+			   		"Paginate":false,
+			   		"filter":true,
+			   		"lengthChange":false,
+			   		"AutoWidth":false,
+			    	"ordering":false,
+			    	"info":false
+
+			    });   
+			});
+
+		</script>
+
+		<script type="text/javascript"> 
+			$(document).ready(function(){
+			    $('#dataTables2-example').DataTable({
+			   		"lengthMenu":[10],
+			   		"Paginate":false,
+			   		"filter":true,
+			   		"lengthChange":false,
+			   		"AutoWidth":false,
+			    	"ordering":false,
+			    	"info":false
+
+			    });   
+			});
+
+		</script>
+		<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+		    <script>
+    	$(document).ready(function() {
+        	$('#dataTables-example').DataTable({
+                responsive: true
+			} );
+    	});
+			</script>
+		    <script>
+    	$(document).ready(function() {
+        	$('#dataTables2-example').DataTable({
+                responsive: true
+			} );
+    	});
+			</script>
+		    <script>
+    	$(document).ready(function() {
+        	$('#dataTables3-example').DataTable({
+                responsive: true
+			} );
+    	});
+			</script>
+		    <script>
+    	$(document).ready(function() {
+        	$('#dataTables4-example').DataTable({
+                responsive: true
+			} );
+    	});
+			</script>
+
 		<!--SCRIPTS END-->
 		
 	</body>
