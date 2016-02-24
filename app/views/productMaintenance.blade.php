@@ -53,23 +53,23 @@
 										        <!-- 	<label>* Product ID </label> -->
 												    <input value="{{$newID}}" name="prod_id_add" id="prod_id_add"  type="text" hidden>
 												    
+												    <label>* Product Category</label>
+								                    <select class="form-control" name="prod_sercat_add" id="prod_sercat_add" required>
+												        <option selected disabled value="Pick a category">Pick a category</option>
+						                                @foreach($categories as $cat)
+						                                @if($cat->status=='1' && $cat->strCategType == 2)
+						                                <option value="{{ $cat->strCategId }}">{{ $cat->strCategName }}</option>
+						                                @endif
+						                                @endforeach
+											      	</select>
+
 													<label>* Product Name </label>
 												    <input name="prod_name_add" id="prod_name_add" class="form-control" type="text" required>
 
 												    <label>Product Description </label>
 												    <input name="prod_desc_add" id="prod_desc_add" class="form-control" type="text">
 													
-												    <label>* Service Category Name</label>
-								                    <select class="form-control" name="prod_sercat_add" id="prod_sercat_add" required>
-												        <option selected disabled value="Pick a category">Pick a category</option>
-						                                @foreach($categories as $cat)
-						                                @if($cat->status=='1')
-						                                <option value="{{ $cat->strProdSerCatId }}">{{ $cat->strProdSerName }}</option>
-						                                @endif
-						                                @endforeach
-											      	</select>
-
-											      	<label>* Supplier Name</label>
+												    <label>* Supplier Name</label>
 								                    <select class="form-control" name="prod_supp_add" id="prod_supp_add" required>
 												        <option selected disabled value="Pick a supplier">Pick a supplier</option>
 						                                @foreach($suppliers as $supp)
@@ -88,7 +88,9 @@
 						                                @endif
 						                                @endforeach
 											      	</select>
-
+											      	<label>* Initial Number of Stock </label>
+											      	<input name="prod_stock_add" id="prod_stock_add" class="form-control" type="number" min="0" required>
+														
 													<label>* Reorder Level </label>
 												    <input name="prod_reorderLevel_add" id="prod_reorderLevel_add" class="form-control" type="number" min="0" required>
 																					
@@ -117,6 +119,7 @@
                           	<th>Product Description</th>
                           	<th>Category Name</th>
                           	<th>Supplier</th>
+                          	<th>Number of Stock</th>
                         	<th>Reorder Level</th>
 							<th>Actions</th>
 							<th hidden>Stock</th>
@@ -129,8 +132,9 @@
                       		<td hidden>{{$prod->strProdId}}</td>
                       		<td>{{$prod->strProdName}}</td>
                       		<td>{{$prod->strProdDesc}}</td>
-                      		<td>{{$prod->strProdSerName}}</td>
+                      		<td>{{$prod->strCategName}}</td>
                       		<td>{{$prod->strSuppName}}</td>
+                      		<td>{{$prod->intProdStock}}</td>
                       		<td>{{$prod->intProdReOLvl}}</td>
                       		<td>
 								<button id="btn_edit" type="button"  class="btn btn-danger" data-toggle="modal" href="#edit{{$prod->strProdId}}"><i class="glyphicon glyphicon-pencil"></i></button>
@@ -153,23 +157,23 @@
 										        	<!-- <label>Product ID </label> -->
 												    <input value="{{$prod->strProdId}}" name="prod_id_edit" id="prod_ser_cat_id_edit"  type="text" hidden>
 												    
+												    <label>Product Category</label>
+								                    <select class="form-control" name="prod_sercat_edit" id="prod_sercat_edit" required>
+												        <option selected value="{{$prod->strPCategory}}">{{$prod->strCategName}}</option>
+						                                @foreach($categories as $cat)
+						                                @if(($cat->status=='1') && ($cat->strCategId != $prod->strPCategory) && ($cat->strCategType == 2))
+						                                <option value="{{ $cat->strCategId }}">{{ $cat->strCategName }}</option>
+						                                @endif
+						                                @endforeach
+											      	</select>
+
 													<label>Product Name </label>
 												    <input value="{{$prod->strProdName}}" name="prod_name_edit" id="prod_ser_cat_id_name_edit" class="form-control" type="text" required>
 
 												    <label>Product Description </label>
 												    <input value="{{$prod->strProdDesc}}" name="prod_desc_edit" id="prod_ser_cat_desc_edit" class="form-control" type="text">
 												
-												    <label>Service Category Name</label>
-								                    <select class="form-control" name="prod_sercat_edit" id="prod_sercat_edit" required>
-												        <option selected value="{{$prod->strPCategory}}">{{$prod->strProdSerName}}</option>
-						                                @foreach($categories as $cat)
-						                                @if(($cat->status=='1') && ($cat->strProdSerCatId != $prod->strPCategory))
-						                                <option value="{{ $cat->strProdSerCatId }}">{{ $cat->strProdSerName }}</option>
-						                                @endif
-						                                @endforeach
-											      	</select>
-
-											      	<label>Supplier Name</label>
+												    <label>Supplier Name</label>
 								                    <select class="form-control" name="prod_supp_edit" id="prod_supp_edit" required>
 												        <option selected value="{{$prod->strPSupp}}">{{$prod->strSuppName}}</option>
 						                                @foreach($suppliers as $supp)

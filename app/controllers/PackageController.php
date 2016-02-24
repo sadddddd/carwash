@@ -30,7 +30,7 @@ class PackageController extends BaseController {
 
 		$servprice = DB::table('tblServPrice')
 			->join('tblServ', 'tblServPrice.strSPServ','=','tblServ.strServId')
-			->select('tblServPrice.*')
+			->select('tblServPrice.*','tblServ.strServName')
 			->orderBy('tblServPrice.dtmServPrice', 'asc')
 			->get();
 
@@ -44,7 +44,7 @@ class PackageController extends BaseController {
 
 		$var = 0;
 
-		return View::make('packageMaintenance')->with('newID',$newID)->with('pack',$package)
+		return View::make('packageMaintenance')->with('newID',$newID)->with('pack',$package)->with('service',$servprice)
 		->with('packprice',$packprice)->with('var',$var)->with('ctr',$ctr)->with('category',$category);
 
 	}
@@ -81,12 +81,6 @@ class PackageController extends BaseController {
 			->select('tblPackToServ.*','tblPackage.strPackName','tblServ.strServName')
 			->get();
 
-		$servprice =  DB::table('tblServPrice')
-			->join('tblServ', 'tblServPrice.strSPServ','=','tblServ.strServId')
-			->select('tblServPrice.*')
-			->orderBy('tblServPrice.dtmServPrice', 'asc')
-			->get();
-
 		$ids = DB::table('tblPackToServ')
 			->select('strPTSId')
 			->orderBy('created_at', 'desc')
@@ -97,8 +91,27 @@ class PackageController extends BaseController {
 		$ID = $ids["0"]->strPTSId;
 		$newID = $this->smart($ID);
 
-		return View::make('ServicesPerPackages')->with('servpack',$packserv)->with('newID',$newID)
-		->with('packID',$packageid)->with('var',$var)->with('servprice',$servprice)->with('sum',$sum)->with('label',$label);
+		$servprice = DB::table('tblServ')
+			->join('tblServPrice', 'tblServPrice.strSPServ','=','tblServ.strServId')
+			->select('tblServ.*','tblServPrice.dblServPrice','tblServPrice.dblServPrice')
+			->orderBy('tblServPrice.dtmServPrice', 'asc')
+			->get();
+
+		$servpack= DB::table('tblPackToServ')
+			->select('tblPackToServ.strPTSServ')
+			->where('tblPackToServ.strPTSPack', $packageid)
+			->first();
+			// dd($servpack);
+
+		$service1 = DB::table('tblServ')
+		->join('tblPackToServ', 'tblServ.strServId','=','tblPackToServ.strPTSServ')
+		->select('tblServ.*')
+		->whereNotIn('tblServ.strServId', [$servpack->strPTSServ])
+		->get();
+		//dd($service1);
+
+		return View::make('ServicesPerPackages')->with('servpack',$packserv)->with('newID',$newID)->with('serv',$service1)
+		->with('packID',$packageid)->with('var',$var)->with('service',$servprice)->with('sum',$sum)->with('label',$label);
 	}
 
 	public function deleteServpack()
@@ -107,6 +120,19 @@ class PackageController extends BaseController {
 		$package = MPackToServ::find($PackId);
 		$package->status='0';
 		$package->save();
+
+		return Redirect::to('/Package');
+	}
+
+	public function servicePackageAdd()
+	{
+		$servpack = MPackToServ::create(array(
+			'strPTSId' => Input::get('servpack_id_add'),
+			'strPTSPack' => Input::get('pack_id_add'),
+			'strPTSServ' => Input::get('service_id_add'),
+			'status' => '1'
+		));
+		$servpack->save();
 
 		return Redirect::to('/Package');
 	}

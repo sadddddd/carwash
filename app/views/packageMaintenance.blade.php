@@ -157,7 +157,7 @@
 									      	<p>
 									      	<form action="" method="post">
 										        <div class="form-group" style="color:black">
-										        	<label> Service Category Name</label>
+										        	<!-- <label> Service Category Name</label>
 													<select class="form-control" value="" name="sevpack_cat_add" id="servpack_cat_add">
 								                        <option selected disabled value="Pick a category">Choose a Service</option>
 						                                @foreach($category as $cat)
@@ -165,7 +165,7 @@
 						                                		<option value="{{ $cat->strCategId }}" onclick="calcola();">{{ $cat->strCategName }}</option>
 						                                	@endif
 						                                @endforeach
-								                    </select>
+								                    </select> -->
 
 												    <input value="{{$newID}}" name="package_id_add" id="package_id_add" type="text" hidden>
 												    
@@ -173,36 +173,30 @@
 												    <input value="" name="package_name_add" id="package_name_add" class="form-control" type="text" required>
 
 												    
-								                    <label>Inclusive Services </label>
+								                    <label>Inclusive Service</label>
 								                    <select class="form-control" name="sevpack_add" id="servpack_add">
-								                    	<option></option>
+								                    	<option value="Choose a service">Choose a service</option>
 								                        <!-- <option selected disabled value="Pick a category">Choose a Service</option> -->
-						                                <!-- @foreach($category as $cat)
-						                                	@if(($cat->status == '1') && ($cat->strCategType == '1'))
-						                                		<option value="{{ $cat->strCategId }}" onclick="calcola();">{{ $cat->strCategName }}</option>
+						                                @foreach($service as $serv)
+						                                	@if(($serv->status == '1'))
+						                                		<option value="{{ $serv->strSPServ }}">{{ $serv->strServName }} (price: {{$serv->dblServPrice }})</option>
 						                                	@endif
-						                                @endforeach -->
+						                                @endforeach
 								                    </select>
 								                	
-
+								                    <label>Discount by: </label>
 														<table align=center>
-												<tr>	
+														<tr>	
 															<td>
 															<input type="radio" name="package_disc" value="percentage"> Percentage
-															<input id="percentage" style="width:100px; margin-left:20px" class="form-control" type="number" placeholder="%">
+															<input type="number" min=0 max=99 id="percentage" style="width:100px; margin-left:20px" class="form-control" placeholder="%">
 															</td>
 															<td><input type="radio" name="package_disc" value="amount"> Amount
-																	 
-															
-															<input id="amount" style="width:100px; margin-left:20px"class="form-control" type="number" step="any" min="0">
+															<input id="amount" style="width:100px; margin-left:20px" class="form-control" type="number" min="0">
 														</td>
 														</tr>
-							
-													 </table>
-												 	<label>Total Price </label>
-												    <input value="" name="service_price_edit" id="service_price_edit" class="form-control" type="number" required>
-												
-												 	
+													</table>
+
 												 	<label>Package Price </label>
 												    <input value="" name="service_price_edit" id="service_price_edit" class="form-control" type="number" required>
 											</div>
@@ -225,6 +219,8 @@
 			</div>
   			<div class="panel-footer" style="border:0px;">
 				<label style="color:black"> No. of records: {{$ctr}} </label>
+
+												
   			</div>
   		</div>
     </form>

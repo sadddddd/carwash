@@ -26,6 +26,21 @@ class ServiceController extends BaseController {
 
 		$category = MProdServCat::all();
 		$cartype = MCarType::all();
+		$products = DB::table('tblProduct')
+			->join('tblUOM', 'tblProduct.strPUOM','=','tblUOM.strUOMId')
+			->select('tblProduct.*','tblUOM.strUOMDesc')
+			->get();
+
+		$ids3 = DB::table('tblServProd')
+			->select('strServProd')
+			->orderBy('created_at', 'desc')
+			->orderBy('strServProd', 'desc')
+			->take(1)
+			->get();
+
+		$ID3 = $ids3["0"]->strServProd;
+		$spID = $this->smart($ID3);
+
 		$price = DB::table('tblServPrice')
 			->join('tblServ', 'tblServPrice.strSPServ','=','tblServ.strServId')
 			->select('tblServPrice.*')
@@ -40,8 +55,8 @@ class ServiceController extends BaseController {
 			->select('tblServ.*', 'tblProdSerCat.strCategName', 'tblCarType.strCarTypeName')
 			->get();
 
-		return View::make('serviceMaintenance')->with('newID',$newID)->with('categories',$category)->with('cartypes',$cartype)
-		->with('services',$service)->with('servprice',$price)->with('var',$var)->with('priceId',$priceID);
+		return View::make('serviceMaintenance')->with('newID',$newID)->with('spID',$spID)->with('categories',$category)->with('cartypes',$cartype)
+		->with('services',$service)->with('servprice',$price)->with('var',$var)->with('priceId',$priceID)->with('product',$products);
 	}
 
 	public function addService()
@@ -64,6 +79,15 @@ class ServiceController extends BaseController {
 			'dtmServPrice' => date("Y-m-d")
 		));
 		$price->save();
+
+		$servprod = MServProd::create(array(
+			'strServProd' => Input::get('sp_id_add'),
+			'strSPServ' => Input::get('service_id_add'),
+			'strSPProd' => Input::get('prod_add'),
+			'dblUseProd' => Input::get('prodM_add'),
+			'status' => '1'
+		));
+		$servprod->save();
 
 		return Redirect::to('/ServiceDetails');
 	}

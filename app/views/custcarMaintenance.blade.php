@@ -82,7 +82,13 @@
                      <br>
             </div>
        
-  				<h2 style="color:white">LIST OF CARS</H2>		
+       			@foreach($custcars as $cc)
+                    @if(($cc->strCCCust == $custid))
+                    <label hidden>{{$label = $cc->strCustFName}}</label>
+  					@endif	
+  				@endforeach
+
+  				<h2 style="color:white">{{$label}}'s Car(s)</H2>		
   		
   			
   			<div class="table-bordered table-responsive" style="border:0px;">
@@ -171,19 +177,17 @@
 														<label>Are you sure you want to delete?</label><br>
 													    <input value="{{ $custcar->strCCPlateNo }}" id="carplate_delete" name="carplate_delete" type="text" hidden>
 												   
-														<label>{{$custcar->strCarModelDesc}}</label>
-													    <input value="{{$custcar->strCarModelDesc}}" id="carmodel_delete" name="carmodel_delete" type="text" hidden>
+														<label>{{$custcar->strCarModelDesc}}</label><br>
+														<label>Plate no.: {{$custcar->strCCPlateNo}}</label>
+													    <input value="{{$custcar->strCCPlateNo}}" id="carmodel_delete" name="carmodel_delete" type="text" hidden>
 												    </div>
-
-											
-
-									      	</p>
-										      
-									  		</form>
+											</p>
+										    
 									  		<div class="container" style="margin-left:430px">
 										        <button type="submit" class="btn btn-danger">Yes</button>
 										        <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
-										      </div>
+										    </div>
+										    </form>
 									    </div>
 									  </div>
 									</div><!-- Car Delete -->

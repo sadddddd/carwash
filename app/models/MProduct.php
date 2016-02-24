@@ -4,7 +4,7 @@ class MProduct extends Eloquent
 {
 	protected $table = 'tblProduct';
 	protected $primaryKey = 'strProdId';
-	protected $fillable = array( 'strProdId','strProdName','strProdDesc','intProdReOLvl','strPCategory','strPSupp','strPUOM' ,'status');
+	protected $fillable = array( 'strProdId','strProdName','strProdDesc','intProdReOLvl','strPCategory','strPSupp','strPUOM','intProdStock' ,'status');
 	
 	public function supplier() {
 		return $this->hasMany('MSupplier', 'strSuppId');

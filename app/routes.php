@@ -110,6 +110,8 @@ Route::get('/FreqCard', "FreqCardController@maintenanceFreqCard");
 
 Route::post('/ServPack', array('uses'=>'PackageController@servicePackage'));
 
+Route::post('/servpackAdd', array('uses'=>'PackageController@servicePackageAdd'));
+
 Route::post('/servpackDel', array('uses'=>'PackageController@deleteServpack'));
 
 Route::get('/productUOM', "ProductController@prodUOM");

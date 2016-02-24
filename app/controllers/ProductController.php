@@ -17,8 +17,8 @@ class ProductController extends BaseController {
 		$product = DB::table('tblProduct')
 			->join('tblSupplier', 'tblProduct.strPSupp','=','tblSupplier.strSuppId')
 			->join('tblUOM', 'tblProduct.strPUOM','=','tblUOM.strUOMId')
-			->join('tblProdSerCat','tblProduct.strPCategory','=','tblProdSerCat.strProdSerCatId')
-			->select('tblProduct.*', 'tblSupplier.strSuppName', 'tblUOM.strUOMDesc', 'tblProdSerCat.strProdSerName')
+			->join('tblProdSerCat','tblProduct.strPCategory','=','tblProdSerCat.strCategId')
+			->select('tblProduct.*', 'tblSupplier.strSuppName', 'tblUOM.strUOMDesc', 'tblProdSerCat.strCategName')
 			->get();
 		$category = MProdServCat::all();
 		$supplier = MSupplier::all();
@@ -60,6 +60,7 @@ class ProductController extends BaseController {
 		$product = MProduct::create(array(
 			'strProdId' => Input::get('prod_id_add'),
 			'strProdName' => Input::get('prod_name_add'),
+			'intProdStock' => Input::get('prod_stock_add'),
 			'strProdDesc' => Input::get('prod_desc_add'),
 			'strPCategory' => Input::get('prod_sercat_add'),
 			'strPSupp' => Input::get('prod_supp_add'),

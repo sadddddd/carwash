@@ -61,18 +61,35 @@
 														<input id="cus_Lname_add" name="cus_Lname_add" class="form-control" type="text" placeholder="Last name" required>
 												    </div>
 
-												    <div class="form-group">
-														<label>Address </label>
-														<input id="cus_St_add" name="cus_St_add" class="form-control" type="text" placeholder="Street">
-													    <input id="cus_City_add" name="cus_City_add" class="form-control" type="text" placeholder="City">
-													    <input id="cus_State_add" name="cus_State_add" class="form-control" type="text" placeholder="State">
-													</div>
+												    
+													<label>Address </label>
+													<input id="custAdd_add" name="custAdd_add" class="form-control" type="multitext">
+													
 
 													<label>* Contact Number</label>
 												    <input id="custCont_add" name="custCont_add" class="form-control" type="text" required>
 													
 													<label>* License Number</label>
 												    <input id="custLisc_add" name="custLisc_add" class="form-control" type="text" required>
+
+												    <h4>Customer's Car</h4>
+
+												    <div class="form-group">
+														<label>* Plate Number</label>
+													    <input class="form-control" type="text" name="carplate_add" id="carplate_add" required>
+												    </div>
+
+												    <label>* Pick the car's model:</label>
+												    <div class="input-field">
+												      <select class="form-control" name="carmodel_add" id="carmodel_add" required>
+												        <option selected disabled value="Pick car model">Pick car model</option>
+						                                @foreach($carmodel as $cmodel)
+						                                	@if(($cmodel->status == '1'))
+						                                		<option value="{{ $cmodel->strCarModelId }}">{{ $cmodel->strCarModelDesc }}</option>
+						                                	@endif
+						                                @endforeach
+												      </select>
+												    </div>
 												</div>
 											</p>
 									      </div>
@@ -110,7 +127,7 @@
                       			<input value="{{ $cust->strCustId }}"  id="customerId" name="customerId" type="text" hidden>
                       		<td hidden>{{ $cust->strCustId }}</td>
                       		<td>{{ $cust->strCustFName }} {{ $cust->strCustMInit }}. {{ $cust->strCustLName }}</td>
-                      		<td>{{ $cust->strCustStAdd }}, {{$cust->strCustCityAdd}}, {{$cust->strCustStateAdd}}</td>
+                      		<td>{{ $cust->strCustAdd }}</td>
                       		<td>{{ $cust->strCustContNo }}</td>
                       		<td>{{ $cust->strCustLiscNo }}</td>
                       		<td>
@@ -150,12 +167,9 @@
 														<input value="{{ $cust->strCustLName }}" id="cus_Lname_edit" name="cus_Lname_edit" class="form-control" type="text" placeholder="Last name" required>
 												    </div>
 
-												    <div class="form-group">
-														<label>Address </label>
-														<input value="{{ $cust->strCustStAdd }}" id="cus_St_edit" name="cus_St_edit" class="form-control" type="text" placeholder="Street">
-													    <input value="{{ $cust->strCustCityAdd }}" id="cus_City_edit" name="cus_City_edit" class="form-control" type="text" placeholder="Banranggay">
-													    <input value="{{ $cust->strCustStateAdd }}" id="cus_State_edit" name="cus_State_edit" class="form-control" type="text" placeholder="City">
-													</div>
+												   
+													<label>Address </label>
+													<input value="{{ $cust->strCustAdd }}" id="custAdd_edit" name="custAdd_edit" class="form-control" type="text">
 
 													<label>Contact Number</label>
 												    <input value="{{ $cust->strCustContNo }}" id="custCont_edit" name="custCont_edit" class="form-control" type="text" required>

@@ -59,8 +59,8 @@
                       	<tr>
                       		<td>{{$services->strPTSServ}}</td>
 							<td>{{$services->strServName}}</td>
-							@foreach($servprice as $price)
-                      			@if($price->strSPServ == $services->strPTSServ)
+							@foreach($service as $price)
+                      			@if($price->strServId == $services->strPTSServ)
                       			<input value="{{$var = $price->dblServPrice}}"  id="price" name="price" type="text" hidden>
                       			@endif
                       		@endforeach
@@ -141,21 +141,23 @@
 									      </div>
 									      <div class="modal-body">
 									      	<p>
-									      	<form action="" method="post">
+									      	<form action="/servpackAdd" method="post">
 										        <div class="form-group" style="color:black">
-										        	<label>Service ID</label>
-													<select class="form-control" value="" name="service_id_add" id="service_id_add">
-								                        <option>1</option>
-								                        <option>2</option>
-								                        <option>3</option>
-								                        <option>4</option>
-								                        <option>5</option>
-								                    </select>
 
+										        	<input value="{{ $newID }}" id="servpack_id_add" name="servpack_id_add" type="text" >
+										        	<input value="{{ $packID }}" id="pack_id_add" name="pack_id_add" type="text" >
+										        	
 										        	<label>Service Name</label>
-												    <input value="" name="service_name_add" id="service_name_add" class="form-control" type="text" required>
-												   
-												</div>
+													<select class="form-control" value="" name="service_id_add" id="service_id_add">
+								                        <option value="Choose a service">Choose a service</option>
+								                       
+						                                @foreach($serv as $serv2)
+						                                	@if($serv2->status == 1)
+						                                		<option value="{{ $serv2->strServId }}">{{ $serv2->strServName }}</option>
+						                                	@endif
+						                                @endforeach
+								                    </select>
+								                </div>
 											</p>
 									    </div>
 									      <div class="modal-footer">

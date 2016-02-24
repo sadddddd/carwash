@@ -17,6 +17,7 @@ class Product extends Migration {
 			$table->string('strProdName');
 			$table->string('strProdDesc');
 			$table->integer('intProdReOLvl');
+			$table->integer('intProdStock');
 			$table->string('strPCategory');//fk
 			$table->string('strPSupp'); //fk
 			$table->string('strPUOM'); //fk

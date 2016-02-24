@@ -14,6 +14,7 @@ class Package extends Migration {
 	{
 		Schema::create('tblPackage', function($table){
 			$table->string('strPackId')->primary();
+			$table->string('strPackCateg');
 			$table->string('strPackName');
 			$table->boolean('status')->default('1');
 			$table->timestamps();

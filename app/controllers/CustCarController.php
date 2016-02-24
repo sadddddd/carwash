@@ -4,6 +4,8 @@ class CustCarController extends BaseController {
 
 	public function carDetails()
 	{
+		$sum = 0;
+		$label = '';
 		$custid = Input::get('customerId');
 
 		$custcar = DB::table('tblCustCar')
@@ -11,7 +13,8 @@ class CustCarController extends BaseController {
 				->join('tblCarModel', 'tblCustCar.strCCModel','=','tblCarModel.strCarModelId')
 				->join('tblCarType', 'tblCarModel.strCMType', '=', 'tblCarType.strCarTypeId')
 				->join('tblCarBrand', 'tblCarModel.strCMBrand', '=', 'tblCarBrand.strCarBrandId')
-				->select('tblCustCar.*', 'tblCarModel.strCarModelDesc', 'tblCustomer.strCustId', 'tblCarType.strCarTypeName','tblCarBrand.strCarBrandDesc')
+				->select('tblCustCar.*', 'tblCarModel.strCarModelDesc', 'tblCustomer.strCustFName', 'tblCustomer.strCustMInit',
+					'tblCustomer.strCustLName', 'tblCarType.strCarTypeName','tblCarBrand.strCarBrandDesc')
 				->get();
 		$carmodel = MCarModel::all();
 

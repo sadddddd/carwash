@@ -71,7 +71,10 @@ class ProductServiceController extends BaseController {
 		$newID = $this->smart($ID);
 
 		$serviceId = Input::get('servId');
-		$products = MProduct::all();
+		$products = DB::table('tblProduct')
+			->join('tblUOM', 'tblProduct.strPUOM','=','tblUOM.strUOMId')
+			->select('tblProduct.*','tblUOM.strUOMDesc')
+			->get();
 
 		$pps = DB::table('tblServProd')
 				->join('tblServ', 'tblServProd.strSPServ','=','tblServ.strServId')

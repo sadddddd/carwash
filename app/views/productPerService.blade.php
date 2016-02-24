@@ -1,38 +1,6 @@
 @extends('maintenance')
 
 @section('contentMaintenance')
-<script type="text/javascript">
-    // $("#prod_edit").onchange(function(){//palitan nyo ng method para sa combobox XD
-    //     $.ajax({
-    //         url: 'productUOM', //eto yung url nyo sa route
-    //         type: 'GET',
-    //         traditional: true,
-    //         contentType: 'application/json; charset=utf-8',
-    //         success: function(data){
-    //             $("#uom_add").val(data[0].strUOMDesc); //palitan nyo yung uom kung anong pangalan na nakalagay sa json
-    //         }
-    //     });
-    // });   
-
-	document.getElementById("#prod_edit").onchange = function() {myFunction()};
-
-
-	function myFunction() {
-	    //var x = document.getElementById("prod_edit");
-	    //x.value = x.value.toUpperCase();
-	    $.ajax({
-            url: 'productUOM', //eto yung url nyo sa route
-            type: 'GET',
-            traditional: true,
-            contentType: 'application/json; charset=utf-8',
-            success: function(data){
-            	var y = document.getElementById("#uom_add")
-            	y.value = data[0].strSPServ;
-                //$("#uom_add").val(data[0].strUOMDesc); //palitan nyo yung uom kung anong pangalan na nakalagay sa json
-            }
-        });
-	}
-  </script>
 
 	<form id="ProductService_Details" >  	
 	<div class="panel" style="border:0px;">
@@ -85,23 +53,20 @@
 
 										        	<input value="{{$newID}}" id="product_id_edit" name="product_id_edit" type="text" hidden>
 										        	<input value="{{$servid}}" id="serv_id_edit" name="serv_id_edit" type="text" hidden>
-										        	<label>Product Name</label>
+										        	<label>* Product Name</label>
 													<div class="input-field">
 												      <select class="form-control" name="prod_edit" id="prod_edit" required>
 												        <option selected disabled value="Pick a product">Pick a product</option>
 						                                @foreach($product as $prod)
 						                                	@if(($prod->status == '1'))
-						                                		<option value="{{ $prod->strProdId }}">{{ $prod->strProdName }}</option>
+						                                		<option value="{{ $prod->strProdId }}">{{ $prod->strProdName }} (per {{$prod->strUOMDesc}})</option>
 						                                	@endif
 						                                @endforeach
 												      </select>
 												    </div>
 
-												    <input name="uom_add" id="uom_add" class="form-control" type="text">
-
-										        	<label>Product Measurement</label>
+												    <label>* Product Measurement</label>
 												    <input name="measure_add" id="measure_add" class="form-control" type="number" min="0" required>
-												   
 											</div>
 											</p>
 									      </div>
@@ -132,16 +97,16 @@
                       	@if(($prodserv->status == 1) && ($prodserv->strSPServ == $servid))
                       	<tr>
 
-                      		<td hidden>{{$prodserv->strServProd}}</td>
-                      		<td hidden>{{$prodserv->strSPServ}}</td>
+                      		<td >{{$prodserv->strServProd}}</td>
+                      		<td >{{$prodserv->strSPServ}}</td>
                       		<td>{{$prodserv->strProdName}}</td>
                       		<td>{{$prodserv->dblUseProd}} {{$prodserv->strUOMDesc}}</td>
                       		<td>
-								<button id="btn_edir" type="button" class="btn btn-info" data-toggle="modal" href="#edit{{$prodserv->strSPServ}}">Edit</button>
-                      			<button id="btn_delete" type="button" class="btn btn-danger" data-toggle="modal" href="#delete{{$prodserv->strSPServ}}">Delete</button>
+								<button id="btn_edit" type="button" class="btn btn-info" data-toggle="modal" href="#edit{{$prodserv->strServProd}}">Edit</button>
+                      			<button id="btn_delete" type="button" class="btn btn-danger" data-toggle="modal" href="#delete{{$prodserv->strServProd}}">Delete</button>
                       				
                       				<!-- Modal Delete -->
-									<div id="delete{{$prodserv->strSPServ}}" class="modal fade" role="dialog">
+									<div id="delete{{$prodserv->strServProd}}" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
 									    <!-- Modal content-->
@@ -170,7 +135,7 @@
 									</div><!-- Modal Delete -->
 
 									<!-- Modal Edit -->
-									<div id="edit{{$prodserv->strSPServ}}" class="modal fade" role="dialog">
+									<div id="edit{{$prodserv->strServProd}}" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
 										<!-- Modal content -->
@@ -186,8 +151,11 @@
 
 										        	<input value="{{$prodserv->strServProd}}" id="product_id_edit" name="product_id_edit" type="text" hidden>
 										        	<input value="{{$prodserv->strSPServ}}" id="serv_id_edit" name="serv_id_edit" type="text" hidden>
+										        	<input value="{{$prodserv->strSPProd}}" id="prod_edit" name="prod_edit" type="text" hidden>
 										        	<label>Product Name</label>
-													<div class="input-field">
+										        	<input value="{{$prodserv->strProdName}}" class="form-control" type="text" readonly>
+										  
+													<!-- <div class="input-field">
 												      <select class="form-control" name="prod_edit" id="prod_edit" required>
 												        <option selected value="{{$prodserv->strSPProd}}">{{$prodserv->strProdName}}</option>
 						                                @foreach($product as $prodEdit)
@@ -196,11 +164,10 @@
 						                                	@endif
 						                                @endforeach
 												      </select>
-												    </div>
+												    </div> -->
 
-										        	<label>Product Measurement</label>
+										        	<label>Product measurement per {{$prodserv->strUOMDesc}}</label>
 												    <input value="{{$prodserv->dblUseProd}}" name="measure_edit" id="measure_edit" class="form-control" type="number" min="0" required>
-												   
 											</div>
 											</p>
 									      </div>

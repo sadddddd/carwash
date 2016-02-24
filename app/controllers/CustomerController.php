@@ -27,9 +27,7 @@ class CustomerController extends BaseController {
 		$customer->strCustFName = Input::get('cus_Fname_edit');
 		$customer->strCustMInit = Input::get('cus_Mname_edit');
 		$customer->strCustLName = Input::get('cus_Lname_edit');
-		$customer->strCustStAdd = Input::get('cus_St_edit');
-		$customer->strCustCityAdd = Input::get('cus_City_edit');
-		$customer->strCustStateAdd = Input::get('cus_State_edit');
+		$customer->strCustAdd = Input::get('custAdd_edit');
 		$customer->strCustContNo = Input::get('custCont_edit');
 		$customer->strCustLiscNo = Input::get('custLisc_edit');
 		$customer->save();
@@ -44,15 +42,20 @@ class CustomerController extends BaseController {
 			'strCustLName' => Input::get('cus_Lname_add'),
 			'strCustFName' => Input::get('cus_Fname_add'),
 			'strCustMInit' => Input::get('cus_Mname_add'),
-			'strCustStAdd' => Input::get('cus_St_add'),
-			'strCustCityAdd' => Input::get('cus_City_add'),
-			'strCustStateAdd' => Input::get('cus_State_add'),
+			'strCustAdd' => Input::get('custAdd_add'),
 			'strCustContNo' => Input::get('custCont_add'),
 			'strCustLiscNo' => Input::get('custLisc_add'),
 			'status' => '1'
 		));
-
 		$customer->save();
+
+		$newcar = MCustCar::create(array(
+			'strCCCust' => Input::get('custid_add'),
+			'strCCModel' => Input::get('carmodel_add'),
+			'strCCPlateNo' => Input::get('carplate_add'),
+			'status' => '1'
+		));
+		$newcar->save();
 		return Redirect::to('/CustomerDetails');
 	}
 
