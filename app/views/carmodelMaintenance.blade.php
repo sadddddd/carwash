@@ -97,6 +97,7 @@
   	</div>
   </div>
 
+<<<<<<< HEAD
 
   		<div class="panel drop_navbar" style="border:0px; background-color:white; width:1010px">
   			
@@ -104,6 +105,13 @@
   				
            <!--   <a href="#Inactive" class="btn btn-info" data-toggle="collapse">Simple collapsible</a>
           -->     <!-- Modal dummy -->
+=======
+	<form id="Car_Model" >  			
+  		<div class="panel" style="border:0px;">
+  			<div class="panel-heading">
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" data-toggle="modal" data-target="#modalAdd" style="position:absolute; left:1000px; top:30px"><i class="glyphicon glyphicon-plus"></i> </button> 
+              <!-- Modal dummy -->
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
@@ -146,10 +154,19 @@
 									      	<form action="/carmodelValidate" method="post">
 									        <div class="form-group" style="color:black">
 
+<<<<<<< HEAD
 									  		    <label>*Pick the car's type:</label>
 											    <div class="input-field">
 											      <select class="form-control" name="cartype_add" id="cartype_add" required >
 											        <option value="" disabled selected>Pick a Model</option> @foreach($carTypes as $type)
+=======
+									        	
+											    <label>*Pick the car's type:</label>
+											    <div class="input-field">
+											      <select class="form-control" name="cartype_add" id="cartype_add" required >
+											        <option selected disabled value="Pick a car type">Pick a type</option>
+					                                @foreach($carTypes as $type)
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 					                                <option value="{{ $type->strCarTypeId }}">{{ $type->strCarTypeName }}</option>
 					                                @endforeach
 											      </select>
@@ -186,6 +203,7 @@
 									  </div>
 									</div><!-- Modal Add -->
 
+<<<<<<< HEAD
 
   			            <div class="panel-heading">
 				  			<h1 style="color:gray">CAR MODELS</H1>
@@ -203,6 +221,23 @@
                                         </tr>
                                     </thead>
                       <tbody style="height:100px;overflow-y:scroll; ">
+=======
+  			<h2 style="color:white">CAR MODELS</H2>
+  			<div class="table-bordered table-responsive" style="border:0px;">
+
+  			  	<table id="table" class="table" style="border:1px; color:white">
+
+                        		<thead>
+                        <tr>
+                          
+                          <th>Car Model Name</th>
+                          <th>Car Brand</th>
+                          <th>Car Type</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                       	@foreach($carModels as $cmodel)
                       		@if($cmodel->status == 1)
                       		<input value="{{$ctr++}}" hidden>
@@ -212,10 +247,16 @@
                       		<td>{{ $cmodel->strCarBrandDesc }}</td>
                       		<td>{{ $cmodel->strCarTypeName }}</td>
                       		<td>
+<<<<<<< HEAD
 								
                       			<a data-toggle="modal" data-parent="#accordion" class="btn btn-danger" href="#edit{{ $cmodel->strCarModelId  }}" ><span data-toggle="tooltip" title="Edit" data-placement="left" ><i class="glyphicon glyphicon-pencil"></i><span></a></li>
   								<a data-toggle="modal" data-parent="#accordion" class="btn btn-danger" href="#delete{{ $cmodel->strCarModelId  }}" ><span data-toggle="tooltip" title="Delete" data-placement="right" ><i class="glyphicon glyphicon-remove"></i><span></a></li>
                       			
+=======
+								<button id="btn_edit" type="button" class="btn btn-danger" data-toggle="modal" href="#edit{{ $cmodel->strCarModelId }}"><i class="glyphicon glyphicon-pencil"></i></button>
+								<button id="btn_delete" type="button" class="btn btn-danger" data-toggle="modal" href="#delete{{ $cmodel->strCarModelId }}"><i class="glyphicon glyphicon-remove	"></i></button>
+
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                       			<!-- Modal Edit -->
 									<div id="edit{{ $cmodel->strCarModelId }}" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
@@ -235,7 +276,10 @@
 												
 
 											    <label>Pick the car's type:</label>
+<<<<<<< HEAD
 											    <br>
+=======
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 											    <div class="input-field">
 											      <select class="form-control" name="cartype_edit" id="cartype_edit" required>
 											        <option selected value="{{ $cmodel->strCMType }}">{{ $cmodel->strCarTypeName }}</option>
@@ -245,9 +289,14 @@
 					                                	@endif
 					                                @endforeach
 											      </select>
+<<<<<<< HEAD
 												<br>
 												<label>Pick the car's brand:</label>
 												<br>
+=======
+												
+												<label>Pick the car's brand:</label>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 											    <div class="input-field">
 											      <select class="form-control" name="carbrand_edit" id="carbrand_edit" required>
 											        <option selected value="{{ $cmodel->strCMBrand }}">{{ $cmodel->strCarBrandDesc }}</option>
@@ -258,14 +307,23 @@
 					                                @endforeach
 											      </select>
 											    </div>
+<<<<<<< HEAD
 											     <br>
+=======
+											     
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 											   <!--   <label>Car Model ID </label> -->
 											    <input value="{{ $cmodel->strCarModelId }}" id="car_model_id_edit" name="car_model_id_edit"  type="text" hidden>
 												
 												<label>Car Model Name </label>
+<<<<<<< HEAD
 											    <br>
 											    <input value="{{ $cmodel->strCarModelDesc }}" id="car_model_name_edit" name="car_model_name_edit" class="form-control" type="text" required>
 												<br>
+=======
+											    <input value="{{ $cmodel->strCarModelDesc }}" id="car_model_name_edit" name="car_model_name_edit" class="form-control" type="text" required>
+												
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 											    </div>
 											</p>
 											</div>
@@ -315,6 +373,7 @@
 							@endif
                         @endforeach
                       </tbody>                   
+<<<<<<< HEAD
                           </table>
                             </div>
                             <!-- /.table-responsive -->
@@ -322,6 +381,13 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->  			
+=======
+  			  	</table>
+  			</div>
+  			<div class="panel-footer" style="border:0px;">
+				<label style="color:black"> No. of records:  </label>
+  			</div>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
   		</div>
 
 </div>

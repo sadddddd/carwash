@@ -60,6 +60,10 @@ class ProductController extends BaseController {
 		$product = MProduct::create(array(
 			'strProdId' => Input::get('prod_id_add'),
 			'strProdName' => Input::get('prod_name_add'),
+<<<<<<< HEAD
+=======
+			'intProdStock' => Input::get('prod_stock_add'),
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 			'strProdDesc' => Input::get('prod_desc_add'),
 			'strPCategory' => Input::get('prod_sercat_add'),
 			'strPSupp' => Input::get('prod_supp_add'),

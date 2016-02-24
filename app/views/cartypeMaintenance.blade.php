@@ -2,6 +2,7 @@
 
 @section('contentMaintenance')
 	<form id="Car_Type" >  			
+<<<<<<< HEAD
 <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:transparent; border:0px" >
 				    <div class="container" >
 				        <div class="collapse navbar-collapse" >
@@ -46,6 +47,12 @@
                       		<td>
 								<a data-toggle="modal" data-parent="#accordion" class="btn btn-danger" href="#activate{{ $ctypes->strCarTypeId }}" ><span data-toggle="tooltip" title="Activate" data-placement="right" ><i class="glyphicon glyphicon-arrow-up"></i><span></a></li>
                       		<!-- Modal dummy -->
+=======
+  		<div class="panel" style="border:0px;">
+  			<div class="panel-heading">
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" data-toggle="modal" data-target="#modalAdd" style="position:absolute; left:1000px; top:30px"><i class="glyphicon glyphicon-plus"></i> </button> 
+             <!-- Modal dummy -->
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
@@ -164,6 +171,7 @@
 									</div><!-- Modal Add -->
 
 
+<<<<<<< HEAD
   			            <div class="panel-heading">
 				  			<h1 style="color:gray">CAR TYPES</H1>
                         </div>
@@ -179,6 +187,23 @@
                                         </tr>
                                     </thead>
                                                           <tbody>
+=======
+  			<h2 style="color:white">CAR TYPES</H2>
+  			
+  			<div class="table-bordered table-responsive" style="border:0px;">
+
+  			  	<table id="table" class="table" style="border:1px; color:white;">
+
+  			  		<thead>
+                        <tr>
+                         
+                          <th>Car Type Name</th>
+                          <th>Car Type Description</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                       	@foreach($carTypes as $ctypes)
                       		@if($ctypes->status == 1)
                       		<input value="{{$ctr++}}" hidden>
@@ -187,9 +212,15 @@
                       		<td>{{ $ctypes->strCarTypeName }}</td>
                       		<td>{{ $ctypes->strCarTypeDesc }}</td>
                       		<td>
+<<<<<<< HEAD
 									<a data-toggle="modal" data-parent="#accordion" class="btn btn-danger" href="#edit{{  $ctypes->strCarTypeId }}" ><span data-toggle="tooltip" title="Edit" data-placement="left" ><i class="glyphicon glyphicon-pencil"></i><span></a></li>
   								<a data-toggle="modal" data-parent="#accordion" class="btn btn-danger" href="#delete{{  $ctypes->strCarTypeId }}" ><span data-toggle="tooltip" title="Delete" data-placement="right" ><i class="glyphicon glyphicon-remove"></i><span></a></li>
                       			
+=======
+								<button id="btn_edit" type="button" class="btn btn-danger" data-toggle="modal" href="#edit{{ $ctypes->strCarTypeId }}" title="Edit"><i class="glyphicon glyphicon-pencil"></i> </button>
+                      			<button id="btn_delete" type="button" class="btn btn-danger" data-toggle="modal" href="#delete{{ $ctypes->strCarTypeId }}" title="Delete"><i class="glyphicon glyphicon-remove"></i></button>
+                      		
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 
                       				
 				
@@ -235,7 +266,11 @@
 										        <div class="form-group" style="color:black;">
 										        	<!-- <label>Car Type ID </label> -->
 												    <input value="{{$ctypes->strCarTypeId}}" name="car_type_id_edit" id="car_type_id_edit" type="text" hidden>
+<<<<<<< HEAD
 												    <br>
+=======
+												    
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 													<label>Car Type Name </label>
 												    <br>
 												    <input value="{{ $ctypes->strCarTypeName }}" name="car_type_name_edit" id="car_type_name_edit" class="form-control" type="text" required>
@@ -261,6 +296,7 @@
                       		@endif
                         @endforeach
                       </tbody>
+<<<<<<< HEAD
 
                           </table>
                             </div>
@@ -269,6 +305,13 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->  			
+=======
+  			  	</table>
+			</div>
+  			<div class="panel-footer" style="border:0px;">
+				<label style="color:black"> No. of records:  </label>
+  			</div>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
   		</div>
 
 

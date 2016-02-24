@@ -18,7 +18,11 @@
 				</div>  			
   		<div class="panel" style="border:0px; width:1010px; background-color:white">
   			<div class="panel-heading">
+<<<<<<< HEAD
   				
+=======
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" data-toggle="modal" data-target="#modalAdd" style="position:absolute; left:1000px; top:30px"><i class="glyphicon glyphicon-plus"></i> </button> 
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
             <!-- Modal dummy -->
 	
   				<!-- Modal dummy -->
@@ -101,7 +105,11 @@
   					@endif	
   				@endforeach
 
+<<<<<<< HEAD
   				<h2 style="color:gray">{{$label}}'s Car(s)</H2>		
+=======
+  				<h2 style="color:white">{{$label}}'s Car(s)</H2>		
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
   		
   			
   			<div class="table-bordered table-responsive" style="border:0px; ">

@@ -2,10 +2,17 @@
 
 @section('sidebar')
     
+<<<<<<< HEAD
         <nav role="navigation" class="navbar navbar-inner navbar-fixed-top" style=" width:200px; height:1000px; background-image:url({{ URL::asset('images/bg.jpg'); }});" >
             <div class="sidebar-nav navbar-collapse" >
                     
                     <ul class="nav" id="side-menu" style=" width:200px; height:1000px; color:white;position:absolute; top:50px;">
+=======
+        <nav role="navigation" class="navbar navbar-inner navbar-fixed-top" >
+            <div class="sidebar-nav navbar-collapse" >
+                    
+                    <ul class="nav" id="side-menu" style=" width:200px; height:500px; color:white;position:absolute; top:50px;">
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                       
                         <li>
                             <a href="/CustomerDetails">1.0 Customer</a>
@@ -66,7 +73,11 @@
     
 @section('content')
 <div class="container" style="position:absolute; top:55px; left:200px; background-color:black opacity:0.4 ;  ">
+<<<<<<< HEAD
     <div class="panel-body" style=" width:1100px; min-width:1100px; color:white;">
+=======
+    <div class="panel-body" style=" width:1100px; min-height:1700px; min-width:500px; color:white;">
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                      
                     @yield('contentMaintenance')
     </div>

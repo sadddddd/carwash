@@ -3,6 +3,7 @@
 @section('contentMaintenance')
 
 	<form id="Product_Details" >  	
+<<<<<<< HEAD
 <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:transparent; border:0px" >
 				    <div class="container" >
 				        <div class="collapse navbar-collapse" >
@@ -18,6 +19,11 @@
 
 	<div class="panel" style="border:0px; background-color:white; width:1010px">
   			<div class="panel-heading">
+=======
+	<div class="panel" style="border:0px;">
+  			<div class="panel-heading">
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" data-toggle="modal" data-target="#modalAdd" style="position:absolute; left:1000px; top:30px"><i class="glyphicon glyphicon-plus"></i> </button> 
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
             <!-- Modal dummy -->
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
@@ -92,6 +98,7 @@
 											      	</select>
 
 											      	<label>* Unit of Measurement</label>
+<<<<<<< HEAD
 											      	<table>
 									                 <tr><td colspan="9">   <select class="form-control" name="prod_uom_add" id="prod_uom_add" style="width:530px; margin-right:10px"required>
 													        <option selected disabled value="unit of measurement">unit of measurement</option>
@@ -124,6 +131,19 @@
 
 			                                          </tr>
 			                                          </table>
+=======
+								                    <select class="form-control" name="prod_uom_add" id="prod_uom_add" required>
+												        <option selected disabled value="unit of measurement">unit of measurement</option>
+						                                @foreach($uom as $uom)
+						                                @if($uom->status=='1')
+						                                <option value="{{ $uom->strUOMId }}">{{ $uom->strUOMDesc }}</option>
+						                                @endif
+						                                @endforeach
+											      	</select>
+											      	<label>* Initial Number of Stock </label>
+											      	<input name="prod_stock_add" id="prod_stock_add" class="form-control" type="number" min="0" required>
+														
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 													<label>* Reorder Level </label>
 												    <input name="prod_reorderLevel_add" id="prod_reorderLevel_add" class="form-control" type="number" min="0" required>
 																					
@@ -138,6 +158,7 @@
 									    </div>
 									  </div> 
 									</div><!-- Modal Add -->
+<<<<<<< HEAD
 
   			            <div class="panel-heading">
 				  			<h2 style="color:gray">PRODUCTS</H2>
@@ -157,6 +178,28 @@
 					                            <th hidden> Stock</th>
                                         </tr>
                                     </thead>
+=======
+
+  				<h2 style="color:white">PRODUCTS</H2>	
+			
+  			<div class="table-bordered table-responsive" style="border:0px;">
+
+  			  	<table id="table" class="table" style="border:1px; color:white;">
+
+  			  		<thead>
+                        <tr>
+                          	<!-- <th>Product ID</th> -->
+                          	<th>Product Name</th>
+                          	<th>Product Description</th>
+                          	<th>Category Name</th>
+                          	<th>Supplier</th>
+                          	<th>Number of Stock</th>
+                        	<th>Reorder Level</th>
+							<th>Actions</th>
+							<th hidden>Stock</th>
+                        </tr>
+                      </thead>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                       <tbody>
                       	@foreach($products as $prod)
                       		@if($prod->status == '1')
@@ -166,6 +209,10 @@
                       		<td>{{$prod->strProdDesc}}</td>
                       		<td>{{$prod->strCategName}}</td>
                       		<td>{{$prod->strSuppName}}</td>
+<<<<<<< HEAD
+=======
+                      		<td>{{$prod->intProdStock}}</td>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                       		<td>{{$prod->intProdReOLvl}}</td>
                       		<td>
 								<button id="btn_edit" type="button"  class="btn btn-danger" data-toggle="modal" href="#edit{{$prod->strProdId}}"><i class="glyphicon glyphicon-pencil"></i></button>
@@ -189,7 +236,10 @@
 												    <input value="{{$prod->strProdId}}" name="prod_id_edit" id="prod_ser_cat_id_edit"  type="text" hidden>
 												    
 												    <label>Product Category</label>
+<<<<<<< HEAD
 												    <br>
+=======
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 								                    <select class="form-control" name="prod_sercat_edit" id="prod_sercat_edit" required>
 												        <option selected value="{{$prod->strPCategory}}">{{$prod->strCategName}}</option>
 						                                @foreach($categories as $cat)
@@ -198,18 +248,30 @@
 						                                @endif
 						                                @endforeach
 											      	</select>
+<<<<<<< HEAD
 											      	<br>
+=======
+
+													<label>Product Name </label>
+												    <input value="{{$prod->strProdName}}" name="prod_name_edit" id="prod_ser_cat_id_name_edit" class="form-control" type="text" required>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 
 													<label>Product Name </label>
 													<br>
 												    <input value="{{$prod->strProdName}}" name="prod_name_edit" id="prod_ser_cat_id_name_edit" class="form-control" type="text" required>
 												    <br>
 												    <label>Product Description </label>
+<<<<<<< HEAD
 												    <br>
 												    <input value="{{$prod->strProdDesc}}" name="prod_desc_edit" id="prod_ser_cat_desc_edit" class="form-control" type="text">
 													<br>
 												    <label>Supplier Name</label>
 												    <br>
+=======
+												    <input value="{{$prod->strProdDesc}}" name="prod_desc_edit" id="prod_ser_cat_desc_edit" class="form-control" type="text">
+												
+												    <label>Supplier Name</label>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 								                    <select class="form-control" name="prod_supp_edit" id="prod_supp_edit" required>
 												        <option selected value="{{$prod->strPSupp}}">{{$prod->strSuppName}}</option>
 						                                @foreach($suppliers as $supp)
@@ -218,9 +280,14 @@
 						                                @endif
 						                                @endforeach
 											      	</select>
+<<<<<<< HEAD
 											      	<br>
 											      	<label>Unit of Measurement</label>
 								                    <br>
+=======
+
+											      	<label>Unit of Measurement</label>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 								                    <select class="form-control" name="prod_uom_edit2" id="prod_uom_edit2" required>
 												        <option selected value="{{$prod->strPUOM}}">{{$prod->strUOMDesc}}</option>
 						                                @foreach($uom2 as $ewan)
@@ -229,12 +296,20 @@
 						                                @endif
 						                                @endforeach
 											      	</select>
+<<<<<<< HEAD
 											      	<br>
 											      	<input value="{{$prod->strPUOM}}" name="prod_uom_edit" id="prod_uom_edit" type="text" hidden>
 													<br>
 
 												 	<label >Reorder Level </label>
 												    <br>
+=======
+
+											      	<input value="{{$prod->strPUOM}}" name="prod_uom_edit" id="prod_uom_edit" type="text" hidden>
+												
+
+												 	<label >Reorder Level </label>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 												    <input value="{{$prod->intProdReOLvl}}" name="prod_reorderLevel_edit" id="prod_reorderLevel_edit" class="form-control" type="text" required>
 												
 

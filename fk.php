@@ -42,6 +42,42 @@ class ForeignKeys extends Migration {
 		Schema::table('tblServPrice', function($table){
 			$table->foreign('strSPServ')->references('strServId')->on('tblServ');
 		});
+<<<<<<< HEAD
+=======
+
+		Schema::table('tblPackToServe', function($table){
+			$table->foreign('strPTSPack')->references('strPackId')->on('tblPackage');
+			$table->foreign('strPTSServ')->references('strServId')->on('tblServ');
+		});
+
+		Schema::table('tblPackPrice', function($table){
+			$table->foreign('strPPPack')->references('strPackId')->on('tblPackage');
+		});
+
+		Schema::table('tblCardFreq', function($table){
+			$table->foreign('strCFCard')->references('strCardId')->on('tblCard');
+		});
+
+		Schema::table('tblServFreq', function($table){
+			$table->foreign('strSFServ')->references('strServId')->on('tblServ');
+			$table->foreign('strSFFreq')->references('strCFId')->on('tblCardFreq');
+		});
+
+		Schema::table('tblPackFreq', function($table){
+			$table->foreign('strPFPack')->references('strPackId')->on('tblPackage');
+			$table->foreign('strPFFreq')->references('strCFId')->on('tblCardFreq');
+		});
+
+		Schema::table('tblPromoServ', function($table){
+			$table->foreign('strPSServ')->references('strServId')->on('tblServ');
+			$table->foreign('strPSPromo')->references('strPromoId')->on('tblPromo');
+		});
+
+		Schema::table('tblPromoPack', function($table){
+			$table->foreign('strPPPack')->references('strPackId')->on('tblPackage');
+			$table->foreign('strPPPromo')->references('strPromoId')->on('tblPromo');
+		});
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 	}
 
 	/**
@@ -60,6 +96,7 @@ class ForeignKeys extends Migration {
 			$table->dropColumn('strCCModel');
 			$table->dropColumn('strCCCust');
 		});	
+<<<<<<< HEAD
 
 		Schema::table('tblProduct', function ($table) {
 			$table->dropColumn('strPCategory');
@@ -79,6 +116,60 @@ class ForeignKeys extends Migration {
 
 		Schema::table('tblServPrice', function ($table) {
 			$table->dropColumn('strSPServ');
+=======
+
+		Schema::table('tblProduct', function ($table) {
+			$table->dropColumn('strPCategory');
+			$table->dropColumn('strPSupp');
+			$table->dropColumn('strPUOM');
+		});
+
+		Schema::table('tblServ', function ($table) {
+			$table->dropColumn('strSServCat');
+			$table->dropColumn('strSCarType');
+		});
+
+		Schema::table('tblServProd', function ($table) {
+			$table->dropColumn('strSPServ');
+			$table->dropColumn('strSPProd');
+		});	
+
+		Schema::table('tblServPrice', function ($table) {
+			$table->dropColumn('strSPServ');
+		});	
+
+		Schema::table('tblPackToServe', function ($table) {
+			$table->dropColumn('strPTSPack');
+			$table->dropColumn('strPTSServ');
+		});	
+
+		Schema::table('tblPackPrice', function ($table) {
+			$table->dropColumn('strPPPack');
+		});	
+
+		Schema::table('tblCardFreq', function ($table) {
+			$table->dropColumn('strCFCard');
+		});	
+
+		Schema::table('tblServFreq', function ($table) {
+			$table->dropColumn('strSFServ');
+			$table->dropColumn('strSFFreq');
+		});	
+
+		Schema::table('tblPackFreq', function ($table) {
+			$table->dropColumn('strPFPack');
+			$table->dropColumn('strPFFreq');
+		});	
+
+		Schema::table('tblPromoServ', function ($table) {
+			$table->dropColumn('strPSServ');
+			$table->dropColumn('strPSPromo');
+		});	
+
+		Schema::table('tblPromoPack', function ($table) {
+			$table->dropColumn('strPPPack');
+			$table->dropColumn('strPPPromo');
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 		});	
 	}
 }

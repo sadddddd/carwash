@@ -35,7 +35,16 @@
 	
  </style>
 		<!--STYLES END -->
+<<<<<<< HEAD
 <nav role="navigation" class="navbar navbar-inner navbar-fixed-top" style="background-image:url({{ URL::asset('images/bg.jpg'); }}); " >
+=======
+
+		{{ HTML::script('js/jquery.min.js') }}
+		{{ HTML::script('js/jquery.dataTables.min.js') }}
+		{{ HTML::script('js/dataTables.bootstrap.min.js') }}
+		
+<nav role="navigation" class="navbar navbar-inner navbar-fixed-top">
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
   
   	
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -98,10 +107,8 @@
 		</main>
 
 		<!--SCRIPTS START-->
-		{{ HTML::script('js/jquery.min.js') }}
+		
 		{{ HTML::script('js/bootstrap.min.js') }}
-		{{ HTML::script('js/jquery.dataTables.min.js') }}
-		{{ HTML::script('js/dataTables.bootstrap.min.js') }}
 		{{ HTML::script('js/metisMenu.min.js') }}
 		{{ HTML::script('js/Validation.min.js') }}
 		{{ HTML::script('js/sb-admin-2.js') }}

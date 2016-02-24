@@ -10,6 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('/', "HomeController@showWelcome");
 
 
 
@@ -71,6 +72,7 @@ Route::get('/Categories', "ProductServiceController@maintenanceProSerCat");
 
 Route::post('/categoryDel', array('uses'=>'ProductServiceController@deleteCategory'));
 
+
 Route::post('/categoryUp', array('uses'=>'ProductServiceController@updateCategory'));
 
 Route::post('/categoryAdd', array('uses'=>'ProductServiceController@addCategory'));
@@ -82,6 +84,19 @@ Route::post('/serviceAdd', array('uses'=>'ServiceController@addService'));
 Route::post('/serviceDel', array('uses'=>'ServiceController@deleteService'));
 
 Route::post('/serviceUp', array('uses'=>'ServiceController@updateService'));
+
+Route::post('/categoryUp', array('uses'=>'ProductServiceController@updateCategory'));
+
+Route::post('/categoryAdd', array('uses'=>'ProductServiceController@addCategory'));
+
+Route::get('/ServiceDetails', "ServiceController@maintenanceService");
+
+Route::post('/serviceAdd', array('uses'=>'ServiceController@addService'));
+
+Route::post('/serviceDel', array('uses'=>'ServiceController@deleteService'));
+
+Route::post('/serviceUp', array('uses'=>'ServiceController@updateService'));
+
 
 Route::post('/ProdPerServ', array('uses'=>'ProductServiceController@productPerService'));
 
@@ -101,9 +116,14 @@ Route::post('/productAdd', array('uses'=>'ProductController@addProduct'));
 
 Route::get('/Package', "PackageController@maintenancePackage");
 
+Route::post('/packDel', array('uses'=>'PackageController@deletePackage'));
+
+Route::post('/packageUp', array('uses'=>'PackageController@updatePackage'));
+
 Route::get('/Promo', "PromoController@maintenancePromo");
 
 Route::get('/FreqCard', "FreqCardController@maintenanceFreqCard");
+
 
 
 Route::post('/carmodelActive', array('uses'=>'CarController@activateCarmodel'));
@@ -131,4 +151,11 @@ Route::post('/cartypeActive', array('uses'=>'CarController@activateCartype'));
 
 Route::post('/cartypeValidate', array('uses'=>'CarController@typeValidate'));
 
+Route::post('/ServPack', array('uses'=>'PackageController@servicePackage'));
+
+Route::post('/servpackAdd', array('uses'=>'PackageController@servicePackageAdd'));
+
+Route::post('/servpackDel', array('uses'=>'PackageController@deleteServpack'));
+
+Route::get('/productUOM', "ProductController@prodUOM");
 

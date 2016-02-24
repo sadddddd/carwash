@@ -4,7 +4,10 @@ class ServiceController extends BaseController {
 
 	public function maintenanceService()
 	{
+<<<<<<< HEAD
 		$ctr=0;
+=======
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 		$ids = DB::table('tblServ')
 			->select('strServId')
 			->orderBy('created_at', 'desc')
@@ -57,7 +60,11 @@ class ServiceController extends BaseController {
 			->get();
 
 		return View::make('serviceMaintenance')->with('newID',$newID)->with('spID',$spID)->with('categories',$category)->with('cartypes',$cartype)
+<<<<<<< HEAD
 		->with('services',$service)->with('servprice',$price)->with('var',$var)->with('priceId',$priceID)->with('product',$products)->with('ctr', $ctr);
+=======
+		->with('services',$service)->with('servprice',$price)->with('var',$var)->with('priceId',$priceID)->with('product',$products);
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 	}
 
 	public function addService()

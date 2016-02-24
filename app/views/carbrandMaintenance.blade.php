@@ -3,6 +3,7 @@
 @section('contentMaintenance')
 
 	<form id="Car_Brand" >  			
+<<<<<<< HEAD
 <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:transparent; border:0px" >
 				    <div class="container" >
 				        <div class="collapse navbar-collapse" >
@@ -24,6 +25,12 @@
 
 <div class="panel-heading">
 	  <!-- Modal dummy -->
+=======
+  		<div class="panel" style="border:0px;">
+  			<div class="panel-heading">
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" data-toggle="modal" data-target="#modalAdd" style="position:absolute; left:1000px; top:30px"><i class="glyphicon glyphicon-plus"></i> </button> 
+             <!-- Modal dummy -->
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
@@ -148,6 +155,7 @@
 										    </div>
 										  </div>
 										</div><!-- Modal Add -->
+<<<<<<< HEAD
 
 
 
@@ -166,6 +174,21 @@
 					                          <th hidden = "true"> problem</th>
                                         </tr>
                                     </thead>
+=======
+  			<h2 style="color:white">CAR BRANDS</H2>
+  			
+  			<div class="table-bordered table-responsive" style="border:0px;">
+
+  			  	<table id="table" class="table" style="border:1px;color:white">
+
+  			  		<thead>
+                        <tr>
+                          <!-- <th>Car Brand ID</th> -->
+                          <th>Car Brand Name</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                       <tbody>
                       	@foreach($carbrands as $cbrands)
                       		@if($cbrands->status == 1)
@@ -173,9 +196,15 @@
                       		<td hidden>{{ $cbrands->strCarBrandId }}</td>
                       		<td>{{ $cbrands->strCarBrandDesc }}</td>
                       		<td>
+<<<<<<< HEAD
 									<a data-toggle="modal" data-parent="#accordion" class="btn btn-danger" href="#edit{{  $cbrands->strCarBrandId}}" ><span data-toggle="tooltip" title="Edit" data-placement="left" ><i class="glyphicon glyphicon-pencil"></i><span></a></li>
   								<a data-toggle="modal" data-parent="#accordion" class="btn btn-danger" href="#delete{{  $cbrands->strCarBrandId }}" ><span data-toggle="tooltip" title="Delete" data-placement="right" ><i class="glyphicon glyphicon-remove"></i><span></a></li>
                       			
+=======
+								<button id="btn_edit" type="button" class="btn btn-danger" data-toggle="modal" href="#edit{{ $cbrands->strCarBrandId }}"><i class="glyphicon glyphicon-pencil"></i></button>
+                      			<button id="btn_delete" type="button" class="btn btn-danger" data-toggle="modal" href="#delete{{ $cbrands->strCarBrandId }}"><i class="glyphicon glyphicon-remove"></i></button>
+                      		
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 									
 
                       				<!-- Modal Delete -->
@@ -185,7 +214,11 @@
 									    <!-- Modal content-->
 									    <div class="modal-content">
 									      
+<<<<<<< HEAD
 									      <div class="modal-body" style="background-color:black;color:white">
+=======
+									      <div class="modal-body" style="background-color:black">
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 									      	<form id="delete" action="/carbrandDel" method="post">
 									        <div class="form-group">
 									        	<!-- <label>Car Brand ID </label> -->
@@ -242,6 +275,7 @@
                       		@endif
                         @endforeach
                       </tbody>
+<<<<<<< HEAD
 
                           </table>
                             </div>
@@ -256,6 +290,14 @@
 
 </div>
 
+=======
+  			  	</table>
+			</div>
+  			<div class="panel-footer" style="border:0px;">
+				<label style="color:black"> No. of records:  </label>
+  			</div>
+  		</div>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
     </form>
 
 @stop

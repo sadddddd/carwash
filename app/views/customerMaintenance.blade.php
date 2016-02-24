@@ -13,6 +13,7 @@
    					</select></td>
   		<td><button type="submit" class="btn btn-danger" style="margin:10px;">Go</button>		</td> -->
 
+<<<<<<< HEAD
 <form>
 <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:transparent; border:0px" >
 				    <div class="container" >
@@ -145,6 +146,13 @@
   				<form id="Customers" >  
 													  
   				<!-- Modal dummy -->
+=======
+	<form id="Customers" >  			
+  		<div class="panel" style="border:0px;">
+  			<div class="panel-heading">
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" data-toggle="modal" data-target="#modalAdd" style="position:absolute; left:1000px; top:30px"><i class="glyphicon glyphicon-plus"></i> </button> 
+                <!-- Modal dummy -->
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
@@ -198,17 +206,29 @@
 														<input id="cus_Lname_add" name="cus_Lname_add" class="form-control" type="text" placeholder="Last name" required>
 												    </div>
 
+<<<<<<< HEAD
 												   
 														<label>Address </label>
 														<input id="cus_Add_add" name="cus_Add_add" class="form-control" type="text" placeholder="Address">
 													   
+=======
+												    
+													<label>Address </label>
+													<input id="custAdd_add" name="custAdd_add" class="form-control" type="multitext">
+													
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 
 													<label>* Contact Number</label>
 												    <input id="custCont_add" name="custCont_add" class="form-control" type="text" required>
 													
 													<label>* License Number</label>
 												    <input id="custLisc_add" name="custLisc_add" class="form-control" type="text" required>
+<<<<<<< HEAD
 													<h4>Customer's Car</h4>
+=======
+
+												    <h4>Customer's Car</h4>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 
 												    <div class="form-group">
 														<label>* Plate Number</label>
@@ -238,6 +258,7 @@
 									  </div>
 									</div><!-- Modal Add -->
 
+<<<<<<< HEAD
   			            <div class="panel-heading" >
 				  			<h1 style="color:gray"><i class="glyphicon glyphicon-user"></i> &nbsp;&nbsp;&nbsp;CUSTOMERS</H1>
                         </div>
@@ -257,14 +278,38 @@
                                         </tr>
                                     </thead>
 
+=======
+  			<h2 style="color:white">CUSTOMERS</H2>
+  			
+  			<div class="table-bordered table-responsive" style="border:0px;">
+
+  			  	<table id="table" class="table" style="border:1px; color:white">
+
+  			  		<thead>
+                        <tr>
+                          
+                          <th>Customer Name</th>
+                          <th>Address</th>
+                          <th>Contact No.</th>
+                          <th>License No.</th>
+                          <th>Car/s</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                       <tbody>
                       	@foreach($customers as $cust)
                       		@if($cust->status == 1)
                       		
                       	<tr>
                       		<form action="/details" method="post">
+<<<<<<< HEAD
                       			
                       		<td hidden><input value="{{ $cust->strCustId }}"  id="customerId" name="customerId" type="text" hidden></td>
+=======
+                      			<input value="{{ $cust->strCustId }}"  id="customerId" name="customerId" type="text" hidden>
+                      		<td hidden>{{ $cust->strCustId }}</td>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                       		<td>{{ $cust->strCustFName }} {{ $cust->strCustMInit }}. {{ $cust->strCustLName }}</td>
                       		<td>{{ $cust->strCustAdd }}</td>
                       		<td>{{ $cust->strCustContNo }}</td>
@@ -276,11 +321,16 @@
                       		</td>
                       				
                       		<td>
+<<<<<<< HEAD
                       			
                       			<a data-toggle="modal" data-parent="#accordion" class="btn btn-danger" href="#edit{{ $cust->strCustId }}" ><span data-toggle="tooltip" title="Edit" data-placement="left" ><i class="glyphicon glyphicon-pencil"></i><span></a></li>
   								<a data-toggle="modal" data-parent="#accordion" class="btn btn-danger" href="#delete{{ $cust->strCustId }}" ><span data-toggle="tooltip" title="Delete" data-placement="right" ><i class="glyphicon glyphicon-remove"></i><span></a></li>
                       			
                       			
+=======
+								<button id="btn_edit" type="button" class="btn btn-danger" data-toggle="modal" href="#edit{{ $cust->strCustId }}" title="Edit"><i class="glyphicon glyphicon-pencil"> </i></button>
+                      			<button id="btn_delete" type="button" class="btn btn-danger" data-toggle="modal" href="#delete{{ $cust->strCustId }}" title="Delete"><i class="glyphicon glyphicon-remove"> </i></button>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                       		</td>
                       		
 
@@ -310,10 +360,16 @@
 														<input value="{{ $cust->strCustLName }}" id="cus_Lname_edit" name="cus_Lname_edit" class="form-control" type="text" placeholder="Last name" required>
 												    </div>
 
+<<<<<<< HEAD
 												    <div class="form-group">
 														<label>Address </label>
 														<input value="{{ $cust->strCustAdd }}" id="cus_Add_edit" name="cus_Add_edit" class="form-control" type="text" placeholder="Street">
 													  	</div>
+=======
+												   
+													<label>Address </label>
+													<input value="{{ $cust->strCustAdd }}" id="custAdd_edit" name="custAdd_edit" class="form-control" type="text">
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 
 													<label>Contact Number</label>
 												    <input value="{{ $cust->strCustContNo }}" id="custCont_edit" name="custCont_edit" class="form-control" type="text" required>
@@ -371,6 +427,7 @@
                       		@endif
                         @endforeach
                     
+<<<<<<< HEAD
                       </tbody>                            
 
                           </table>
@@ -387,5 +444,15 @@
   </div>
 
 </div>
+=======
+                      </tbody>
+  			  	</table>
+  			</div>
+  			<div class="panel-footer" style="border:0px;">
+				<label style="color:black"> No. of records:  </label>
+  			</div>
+  		</div>
+  		<script> </script>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
     </form>
 @stop

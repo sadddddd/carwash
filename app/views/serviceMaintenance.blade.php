@@ -3,6 +3,7 @@
 @section('contentMaintenance')
 
 	<form id="Service_Details" >  	
+<<<<<<< HEAD
 <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:transparent; border:0px" >
 				    <div class="container" >
 				        <div class="collapse navbar-collapse" >
@@ -17,6 +18,11 @@
 	<div class="panel" style="border:0px; width:1010px; background-color:white">
   			<div class="panel-heading">
   				
+=======
+	<div class="panel" style="border:0px;">
+  			<div class="panel-heading">
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" data-toggle="modal" data-target="#modalAdd" style="position:absolute; left:1000px; top:30px"><i class="glyphicon glyphicon-plus"></i> </button> 
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
              <!-- Modal dummy -->
 			 	<!-- Modal dummy -->
 									<div id="delete" class="modal fade" role="dialog">
@@ -119,6 +125,7 @@
 									    </div>
 									  </div> 
 									</div><!-- Modal Add -->
+<<<<<<< HEAD
 
 
   			            <div class="panel-heading" >
@@ -139,21 +146,52 @@
 					                        <th hidden> problem</th>
                                         </tr>
                                     </thead>
+=======
+  				<h2 style="color:white">SERVICES</H2>
+  				
+  			
+            <div class="table-bordered table-responsive" style="border:0px;">
+
+  			  	<table id="table" class="table" style="border:1px; color:white">
+
+  			  		<thead>
+  			  			
+                        <tr>
+                        <!-- 	<th>Service ID</th> -->
+                          	<th>Service Name</th>
+                          	<th>Service Category Name</th>
+                          	<th>Car Type</th>
+                          	<th>Price</th>
+                          	<th>Products</th>
+                          	<th>Actions</th>
+                        </tr>
+                    </thead>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                     <tbody>
                       	@foreach($services as $serv)
                       	@if($serv->status == 1)
                       	
                       	<tr>
+<<<<<<< HEAD
 							<form action="/ProdPerServ" method="post">								
                       		<td hidden><input value="{{$serv->strServId}}"  id="servId" name="servId" type="text" hidden></td>
+=======
+							<form action="/ProdPerServ" method="post">
+								<input value="{{$serv->strServId}}"  id="servId" name="servId" type="text" hidden>
+                      		<td hidden>{{$serv->strServId}}</td>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                       		<td>{{$serv->strServName}}</td>
                       		<td>{{$serv->strCategName}}</td>
                       		<td>{{$serv->strCarTypeName}}</td>
                       		@foreach($servprice as $price)
                       			@if($price->strSPServ == $serv->strServId)
                       			<input value="{{$var = $price->dblServPrice}}"  id="price" name="price" type="text" hidden>
+<<<<<<< HEAD
                       				
                       			@endif
+=======
+                      			@endif 
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                       		@endforeach
                       		<td>{{$var}}</td>
                       		<td> 
@@ -211,11 +249,17 @@
 												    <input value="{{$serv->strServId}}" name="service_id_edit" id="service_id_edit"  type="text" hidden>
 												    
 													<label>Service Name </label>
+<<<<<<< HEAD
 												    <br>
 												    <input value="{{$serv->strServName}}" name="service_name_edit" id="service_name_edit" class="form-control" type="text" required>
 												    <br>
 												    <label> Service Category Name</label>
 													<br>
+=======
+												    <input value="{{$serv->strServName}}" name="service_name_edit" id="service_name_edit" class="form-control" type="text" required>
+
+												    <label> Service Category Name</label>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 													<select class="form-control" name="service_cat_edit" id="service_cat_edit" required>
 								                        <option selected value="{{$serv->strSServCat}}">{{$serv->strCategName}}</option>
 								                        @foreach($categories as $category)
@@ -224,9 +268,14 @@
 							                                @endif
 						                                @endforeach
 								                    </select>
+<<<<<<< HEAD
 								                    <br>
 												    <label>Car Type </label>
 												    <br>
+=======
+
+												    <label>Car Type </label>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 												    <div class="input-field">
 												    <select class="form-control" name="ser_cartype_edit" id="ser_cartype_edit" required>
 								                        <option selected value="{{$serv->strSCarType}}">{{$serv->strCarTypeName}}</option>
@@ -237,10 +286,16 @@
 						                                @endforeach
 								                    </select>
 								                    </div>
+<<<<<<< HEAD
 													<input value="{{$priceId}}" name="price_id_edit" id="price_id_edit" type="text" hidden>
 								                	<br>
 								                	<label>Price </label>
 								                	<br>
+=======
+
+													<input value="{{$priceId}}" name="price_id_edit" id="price_id_edit" type="text" hidden>
+								                	<label>Price </label>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 												    <input value="{{$var}}" name="service_price_edit" id="service_price_edit" class="form-control" type="number" min="0" required>
 												</div>
 									      </div>
@@ -259,6 +314,7 @@
                       	</tr>
                       	@endif
                       	@endforeach
+<<<<<<< HEAD
                       </tbody>                          </table>
                             </div>
                             <!-- /.table-responsive -->
@@ -267,6 +323,14 @@
                     </div>
                     <!-- /.panel -->  			
 
+=======
+                      </tbody>
+  			  	</table>
+			</div>
+  			<div class="panel-footer" style="border:0px;">
+				<label style="color:black"> No. of records:  </label>
+  			</div>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
   		</div>
     </form>
 

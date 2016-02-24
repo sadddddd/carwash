@@ -17,6 +17,7 @@ class CustomerController extends BaseController {
 		$cust = MCustomer::all();
 		$carmodel = MCarModel::all();
 
+<<<<<<< HEAD
 		return View::make('customerMaintenance')->with('customers', $cust)->with('carmodel', $carmodel)->with('newID', $newID)->with('ctr', $ctr);
 	}
 	
@@ -31,6 +32,9 @@ class CustomerController extends BaseController {
 		$model->save();
 		
 		return Redirect::to('/CustomerDetails');
+=======
+		return View::make('customerMaintenance')->with('customers', $cust)->with('carmodel', $carmodel)->with('newID', $newID);
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 	}
 
 	public function updateCustomer()
@@ -41,8 +45,12 @@ class CustomerController extends BaseController {
 		$customer->strCustFName = Input::get('cus_Fname_edit');
 		$customer->strCustMInit = Input::get('cus_Mname_edit');
 		$customer->strCustLName = Input::get('cus_Lname_edit');
+<<<<<<< HEAD
 		$customer->strCustAdd = Input::get('cus_Add_edit');
 	
+=======
+		$customer->strCustAdd = Input::get('custAdd_edit');
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 		$customer->strCustContNo = Input::get('custCont_edit');
 		$customer->strCustLiscNo = Input::get('custLisc_edit');
 		$customer->save();
@@ -57,12 +65,15 @@ class CustomerController extends BaseController {
 			'strCustLName' => Input::get('cus_Lname_add'),
 			'strCustFName' => Input::get('cus_Fname_add'),
 			'strCustMInit' => Input::get('cus_Mname_add'),
+<<<<<<< HEAD
 			'strCustAdd' => Input::get('cus_Add_add'),
+=======
+			'strCustAdd' => Input::get('custAdd_add'),
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 			'strCustContNo' => Input::get('custCont_add'),
 			'strCustLiscNo' => Input::get('custLisc_add'),
 			'status' => '1'
 		));
-
 		$customer->save();
 
 		$newcar = MCustCar::create(array(

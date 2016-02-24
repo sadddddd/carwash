@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 @extends('maintenance')
@@ -36,6 +37,18 @@ function haha(toot){
   			<div class="panel-heading">
   			
         <!-- Modal dummy -->
+=======
+@extends('maintenance')
+
+@section('contentMaintenance')
+
+	<form id="ProductService_Details" >  	
+	<div class="panel" style="border:0px;">
+  			<div class="panel-heading">
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" style="position:absolute; left:96%;" data-toggle="modal" data-target="#modalAdd"><i class="glyphicon-plus"></i> </button> 
+                
+  				<!-- Modal dummy -->
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 									<div id="delete" class="modal fade" role="dialog">
 									  <div class="modal-dialog">
 
@@ -72,7 +85,11 @@ function haha(toot){
 									    <div class="modal-content">
 									      <div class="modal-header" style="background-color:black; color:white">
 									        <button type="button" class="close" data-dismiss="modal">&times;</button>
+<<<<<<< HEAD
 									        <h4 class="modal-title"><center>ADD PRODUCT FOR THE SERVICE</center></h4>
+=======
+									        <h4 class="modal-title">ADD</h4>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 									      </div>
 									      <div class="modal-body">
 									      	<p>
@@ -81,21 +98,34 @@ function haha(toot){
 
 										        	<input value="{{$newID}}" id="product_id_edit" name="product_id_edit" type="text" hidden>
 										        	<input value="{{$servid}}" id="serv_id_edit" name="serv_id_edit" type="text" hidden>
+<<<<<<< HEAD
 										        	<label>Product Name</label>
+=======
+										        	<label>* Product Name</label>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 													<div class="input-field">
 												      <select class="form-control" name="prod_edit" id="prod_edit" required>
 												        <option selected disabled value="Pick a product">Pick a product</option>
 						                                @foreach($product as $prod)
 						                                	@if(($prod->status == '1'))
+<<<<<<< HEAD
 						                                		<option value="{{ $prod->strProdId }}">{{ $prod->strProdName }}</option>
+=======
+						                                		<option value="{{ $prod->strProdId }}">{{ $prod->strProdName }} (per {{$prod->strUOMDesc}})</option>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 						                                	@endif
 						                                @endforeach
 												      </select>
 												    </div>
 
+<<<<<<< HEAD
 										        	<label>Product Measurement</label>
 												    <input name="measure_add" id="measure_add" class="form-control" type="number" min="0" required>
 												   
+=======
+												    <label>* Product Measurement</label>
+												    <input name="measure_add" id="measure_add" class="form-control" type="number" min="0" required>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 											</div>
 											</p>
 									      </div>
@@ -107,6 +137,7 @@ function haha(toot){
 									    </div>
 									  </div> 
 									</div><!-- Modal Add -->
+<<<<<<< HEAD
   			            <div class="panel-heading">
 				  			<h2 style="color:gray">PRODUCTS PER SERVICE</H2>
                         </div>
@@ -121,11 +152,28 @@ function haha(toot){
 					                        <th hidden = "true"> problem</th>
                                         </tr>
                                     </thead>
+=======
+
+  				<h2 style="color:white">PRODUCTS PER SERVICE</H2>
+  			
+  			<div class="table-bordered table-responsive" style="border:0px;">
+
+  			  	<table id="table" class="table" style="border:1px">
+
+  			  		<thead>
+                        <tr>
+                          	<th>Product Name</th>
+                      		<th>Product Measurement</th>
+                 			<th>Actions</th>
+                        </tr>
+                      </thead>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                       <tbody>
                       	@foreach($pps as $prodserv)
                       	@if(($prodserv->status == 1) && ($prodserv->strSPServ == $servid))
                       	<tr>
 
+<<<<<<< HEAD
                       		<td hidden>{{$prodserv->strServProd}}</td>
                       		<td hidden>{{$prodserv->strSPServ}}</td>
                       		<td>{{$prodserv->strProdName}}</td>
@@ -136,6 +184,18 @@ function haha(toot){
                       				
                       				<!-- Modal Delete -->
 									<div id="delete{{$prodserv->strSPServ}}" class="modal fade" role="dialog">
+=======
+                      		<td >{{$prodserv->strServProd}}</td>
+                      		<td >{{$prodserv->strSPServ}}</td>
+                      		<td>{{$prodserv->strProdName}}</td>
+                      		<td>{{$prodserv->dblUseProd}} {{$prodserv->strUOMDesc}}</td>
+                      		<td>
+								<button id="btn_edit" type="button" class="btn btn-info" data-toggle="modal" href="#edit{{$prodserv->strServProd}}">Edit</button>
+                      			<button id="btn_delete" type="button" class="btn btn-danger" data-toggle="modal" href="#delete{{$prodserv->strServProd}}">Delete</button>
+                      				
+                      				<!-- Modal Delete -->
+									<div id="delete{{$prodserv->strServProd}}" class="modal fade" role="dialog">
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 									  <div class="modal-dialog">
 
 									    <!-- Modal content-->
@@ -164,14 +224,22 @@ function haha(toot){
 									</div><!-- Modal Delete -->
 
 									<!-- Modal Edit -->
+<<<<<<< HEAD
 									<div id="edit{{$prodserv->strSPServ}}" class="modal fade" role="dialog">
+=======
+									<div id="edit{{$prodserv->strServProd}}" class="modal fade" role="dialog">
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 									  <div class="modal-dialog">
 
 										<!-- Modal content -->
 									    <div class="modal-content">
 									      <div class="modal-header" style="background-color:black; color:white">
 									        <button type="button" class="close" data-dismiss="modal">&times;</button>
+<<<<<<< HEAD
 									        <h4 class="modal-title"><center>EDIT PRODUCT FOR SERVICE</center></h4>
+=======
+									        <h4 class="modal-title">EDIT</h4>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 									      </div>
 									      <div class="modal-body">
 									      	<p>
@@ -179,6 +247,7 @@ function haha(toot){
 										        <div class="form-group" style="color:black">
 
 										        	<input value="{{$prodserv->strServProd}}" id="product_id_edit" name="product_id_edit" type="text" hidden>
+<<<<<<< HEAD
 										        	
 										        	<input value="{{$prodserv->strSPServ}}" id="serv_id_edit" name="serv_id_edit" type="text" hidden>
 										        	<br>
@@ -207,6 +276,26 @@ function haha(toot){
 												    <br>
 												   	<input style="position:absolute; top:120px; left:120px" id="UOMama" hidden> {{$prodserv->strUOMDesc}}</input>
 												   	<br>
+=======
+										        	<input value="{{$prodserv->strSPServ}}" id="serv_id_edit" name="serv_id_edit" type="text" hidden>
+										        	<input value="{{$prodserv->strSPProd}}" id="prod_edit" name="prod_edit" type="text" hidden>
+										        	<label>Product Name</label>
+										        	<input value="{{$prodserv->strProdName}}" class="form-control" type="text" readonly>
+										  
+													<!-- <div class="input-field">
+												      <select class="form-control" name="prod_edit" id="prod_edit" required>
+												        <option selected value="{{$prodserv->strSPProd}}">{{$prodserv->strProdName}}</option>
+						                                @foreach($product as $prodEdit)
+						                                	@if(($prod->status == '1') && ($prodEdit->strProdId != $prodserv->strSPProd))
+						                                		<option value="{{ $prodEdit->strProdId }}">{{ $prodEdit->strProdName }}</option>
+						                                	@endif
+						                                @endforeach
+												      </select>
+												    </div> -->
+
+										        	<label>Product measurement per {{$prodserv->strUOMDesc}}</label>
+												    <input value="{{$prodserv->dblUseProd}}" name="measure_edit" id="measure_edit" class="form-control" type="number" min="0" required>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
 											</div>
 											</p>
 									      </div>
@@ -224,6 +313,7 @@ function haha(toot){
                       	@endif
                       	@endforeach
                       </tbody>
+<<<<<<< HEAD
                       </table>
                             </div>
                             <!-- /.table-responsive -->
@@ -232,6 +322,13 @@ function haha(toot){
                     </div>
                     <!-- /.panel -->  			
   		</div>
+=======
+  			  	</table>
+			</div>
+  			<div class="panel-footer" style="border:0px;">
+				<label style="color:black"> No. of records:  </label>
+  			</div>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
   		</div>
     </form>
 

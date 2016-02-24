@@ -6,6 +6,7 @@
   				<br>
   				<br>
 	<form id="pro_ser_cat" >
+<<<<<<< HEAD
 
 <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:transparent; border:0px" >
 				    <div class="container" >
@@ -21,6 +22,11 @@
 
 		<div class="panel" style="border:0px; width:1010px; margin-top:-75px; background-color:white">
   			<div class="panel-heading">
+=======
+		<div class="panel" style="border:0px;">
+  			<div class="panel-heading">
+  				<button type="button" class="btn btn-danger btn-circle btn-lg" title="Add" data-toggle="modal" data-target="#modalAdd" style="position:absolute; left:1000px; top:30px"><i class="glyphicon glyphicon-plus"></i> </button> 
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
             
   				<!-- Modal dummy -->
 									<div id="delete" class="modal fade" role="dialog">
@@ -91,6 +97,7 @@
 									  </div> 
 									</div><!-- Modal Add -->
 
+<<<<<<< HEAD
   			            <div class="panel-heading">
 				  			<h2 style="color:gray">SERVICE CATEGORY</H2>
                         </div>
@@ -106,6 +113,23 @@
 					                          <th hidden = "true"> problem</th>
                                         </tr>
                                     </thead>
+=======
+  				<h2 style="color:white">SERVICES</H2>
+  			</div>
+  			
+  			<div class="table-bordered table-responsive" style="border:0px;">
+
+  			  	<table id="table" class="table" style="border:1px; color:white">
+
+  			  		<thead>
+                        <tr>
+                         <!--  <th>Category ID</th> -->
+                          <th>Category Name</th>
+                          <th>Category Description</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                       <tbody>
                       	@foreach($categories as $cat)
                       		@if(($cat->status == '1') && ($cat->strCategType == '1'))
@@ -187,6 +211,7 @@
                       	@endif
                       	@endforeach
                       </tbody>
+<<<<<<< HEAD
                      </table>
                             </div>
                             <!-- /.table-responsive -->
@@ -210,6 +235,30 @@
 					                          <th hidden = "true"> problem</th>
                                         </tr>
                                     </thead>
+=======
+  			  	</table>
+			</div>
+  			<div class="panel-footer" style="border:0px;">
+				<label style="color:black"> No. of records:  </label>
+  			</div>
+
+  		</div>
+<div class="panel" style="border:0px;">
+	<div class="panel-heading"> <h2 style="color:white">PRODUCTS</H2></div>
+	
+  			<div class="table-bordered table-responsive" style="border:0px;">
+
+  			  	<table id="table" class="table" style="border:1px; color:white">
+
+  			  		<thead>
+                        <tr>
+                         <!--  <th>Category ID</th> -->
+                          <th>Category Name</th>
+                          <th>Category Description</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
                       <tbody>
                       	@foreach($categories as $cat)
                       		@if(($cat->status == '1')&&($cat->strCategType == '2'))
@@ -290,6 +339,7 @@
                       	@endif
                       	@endforeach
                       </tbody>
+<<<<<<< HEAD
                   </table>
                             </div>
                             <!-- /.table-responsive -->
@@ -301,6 +351,15 @@
 
            		
   				
+=======
+  			  	</table>
+  			  	<div class="panel-footer" style="border:0px;">
+				<label style="color:black"> No. of records:  </label>
+  			</div>
+
+  			  </div>
+
+>>>>>>> 1b9db34e36ca0038c0a633e20f1aceedf4ca4997
     </form>
 
 @stop
